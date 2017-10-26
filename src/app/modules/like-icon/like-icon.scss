@@ -1,0 +1,44 @@
+@import '../../styles/custom/variables';
+
+.like-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparentize($light, .3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: .3s;
+  color: $brand-secondary;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    background: transparentize($light, .1);
+  }
+
+  .like, .dislike {
+    position: absolute;
+    left: calc(50% - 10px);
+    top: calc(50% - 9px);
+    width: 20px;
+    height: 18px;
+    pointer-events: none;
+  }
+
+  &.link-circle {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-right: 5px;
+    color: $brand-secondary;
+
+    &:hover,
+    &:active {
+      color: $brand-secondary;
+    }
+
+    @media (min-width: $point) {
+      margin: 0 0 10px;
+    }
+  }
+}

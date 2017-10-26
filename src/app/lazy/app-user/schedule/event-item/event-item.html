@@ -1,0 +1,15 @@
+<div *ngIf="type !== 'available'; else availableCalls" class="call-item-content">
+  <p class="title">{{event?.start_time | date: 'd MMMM y, EEEE'}}</p>
+  <p class="calls-time">{{event?.start_time | date: 'h:mm a'}} - {{event?.end_time | date: 'h:mm a'}}</p>
+  <p class="discuss-requirements"><span>FMP</span> {{event?.location}} to discuss {{event?.name}} requirements.</p>
+  <p class="link" *ngIf="type === 'completed'">{{event?.status}}</p>
+  <div class="btn-group" *ngIf="type === 'pending'">
+    <a class="link" (click)="cancelEvent()" (touchstart)="cancelEvent()">Cancel Call</a>
+    <button type="button" class="btn btn-auto btn-primary" (click)="completeEvent()">Complete</button>
+  </div>
+</div>
+
+<ng-template #availableCalls>
+  <p class="title">{{event?.name}}</p>
+  <button type="button" class="btn btn-auto btn-primary" (click)="scheduleCall()">Schedule a Call</button>
+</ng-template>

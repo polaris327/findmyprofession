@@ -1,0 +1,31 @@
+@import '../../../../../styles/custom/variables';
+
+.accordion-tab-questions {
+  font-size: 0.889rem;
+
+  @media (min-width: $point) {
+    font-size: 1.111rem;
+  }
+
+  .form-group {
+    h5 {
+      font: 300 0.889rem $font-family-sans-serif;
+      margin-bottom: 9px;
+
+      @media (min-width: 500px) {
+        padding-top: 6px;
+      }
+      @media (min-width: $point) {
+        font-size: 1.111rem;
+      }
+
+      &.title-fixed {
+        align-self: flex-start;
+      }
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+  }
+}

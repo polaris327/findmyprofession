@@ -1,0 +1,12 @@
+<div class="managing-icons">
+  <span class="edit" *ngIf="isEditShow" (click)="onEditClick()">
+    <svg width="20" height="20">
+      <use xlink:href="../../../../../assets/images/sprite.svg#edit"></use>
+    </svg>
+  </span>
+  <span class="close" *ngIf="isCloseShow" (click)="onCloseClick()">
+    <svg width="17" height="17">
+      <use xlink:href="../../../../../assets/images/sprite.svg#close"></use>
+    </svg>
+  </span>
+</div>

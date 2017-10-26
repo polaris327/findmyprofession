@@ -1,0 +1,123 @@
+@import '../../../styles/custom/variables';
+@import '../../../styles/custom/mixins';
+
+.article-preview {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: $light;
+  transition: .3s;
+  padding-bottom: 30px;
+
+  &:hover,
+  &:active {
+    color: $light;
+    background: $brand-secondary;
+
+    .btn {
+      background: $brand-primary;
+      color: $light;
+    }
+  }
+
+  .article-preview-img {
+    margin-bottom: 16px;
+    cursor: pointer;
+    padding-top: 49%;
+    overflow: hidden;
+    height: 0;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    @media (min-width: $point) {
+      margin-bottom: 14px;
+    }
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    cursor: pointer;
+
+    @media (min-width: 620px) {
+      height: 60px;
+    }
+    @media (min-width: 1155px) {
+      height: 55px;
+    }
+    @media (min-width: $point-md) {
+      height: 85px;
+      font-size: 1.333rem;
+    }
+  }
+
+  .article-preview-content {
+    padding: 0 15px;
+    font-size: 0.889rem;
+    margin-bottom: 20px;
+
+    @media (min-width: $point) {
+      font-size: 1rem;
+      padding: 0 27px;
+      margin-bottom: 22px;
+    }
+  }
+
+  .description {
+    margin-bottom: 18px;
+
+    @media (min-width: 620px) {
+      min-height: 95px;
+    }
+    @media (min-width: $point) {
+      min-height: 125px;
+    }
+    @media (min-width: 1090px) {
+      min-height: 100px;
+    }
+
+  }
+
+  .author-holder {
+    display: flex;
+    align-items: center;
+
+    .circle-img {
+      display: inline-block;
+      margin-right: 5px;
+      @include circle-img($blue-light, 32px, 24px, 24px);
+    }
+    .author {
+      opacity: 0.6;
+    }
+  }
+
+  .btn {
+    text-align: center;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      background: $brand-primary;
+      height: 1px;
+      width: 100vw;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &::before {
+      right: calc(100% + 10px);
+    }
+    &::after {
+      left: calc(100% + 10px);
+    }
+  }
+}

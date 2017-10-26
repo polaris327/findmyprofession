@@ -1,0 +1,138 @@
+<form class="profile-career-preferences-tab" *ngIf="modelForm" [formGroup]="modelForm" (submit)="saveForm()">
+
+  <div #industryBlock class="form-group form-group-content">
+    <span>Industry:</span>
+
+    <fmp-custom-dropdown-component
+      [values]="selectData.categories"
+      [selectedValue]="modelForm.controls['industry'].value"
+      [placeholder]="'Job Category'"
+      (valueSelected)="onSelect('industry' , $event)">
+    </fmp-custom-dropdown-component>
+
+  </div>
+
+  <div class="form-group form-group-content">
+    <span class="title-fixed">Headline or Job Title:</span>
+
+    <rl-tag-input
+      class="form-control-multiple"
+      [ngModel]="modelForm.controls['job_titles'].value"
+      (addTag)="addNewTag($event , 'job_titles')"
+      (removeTag)="removeExistingTag($event , 'job_titles')"
+      [ngModelOptions]="{standalone: true}"
+      placeholder="Headline or Job Title. Add multiple items(upto 5) by using Tab">
+    </rl-tag-input>
+
+  </div>
+
+  <div class="form-group form-group-content choices-holder" formArrayName="job_types">
+    <span class="title-fixed title-fixed-choice">Desired Job Types:</span>
+    <div class="form-group-inline form-group-quarter">
+      <p class="form-group-choice" *ngFor="let jobType of selectData.types; let i = index">
+        <label class="custom-choice custom-choice-blue">
+          <input type="checkbox" [value]="jobType" [formControlName]="i">
+          <span class="indicator">
+            <svg>
+              <use xlink:href="../../../../../../assets/images/sprite-anim.svg#checkbox"></use>
+            </svg>
+          </span>
+          {{jobType}}
+        </label>
+      </p>
+    </div>
+  </div>
+
+  <div class="form-group form-group-content">
+    <span class="title-fixed title-fixed-choice">Relocation</span>
+
+    <div class="form-group-relocation">
+      <p class="form-group-choice">
+        <label class="custom-choice custom-choice-blue">
+          <input type="checkbox" formControlName="relocation_value">
+          <span class="indicator">
+            <svg>
+              <use xlink:href="../../../../../../assets/images/sprite-anim.svg#checkbox"></use>
+            </svg>
+          </span>
+          Yes
+        </label>
+      </p>
+      <div *ngIf="modelForm.controls['relocation_value'].value">
+        <div class="form-group-inline form-group-couple">
+          <p class="form-group-choice">
+            <label class="custom-choice custom-choice-blue">
+              <input type="radio" value="anywhere" name="relocation_type" formControlName="relocation_type">
+              <span class="indicator indicator-radio"></span>
+              Anywhere
+            </label>
+          </p>
+          <p class="form-group-choice">
+            <label class="custom-choice custom-choice-blue">
+              <input type="radio" value="specific_location" name="relocation_type" formControlName="relocation_type">
+              <span class="indicator indicator-radio"></span>
+              Specific Location
+            </label>
+          </p>
+        </div>
+
+        <rl-tag-input
+          class="form-control-multiple"
+          *ngIf="modelForm.controls['relocation_type'].value === 'specific_location'"
+          [ngModel]="modelForm.controls['relocation_location'].value"
+          (addTag)="addNewTag($event , 'relocation_location')"
+          (removeTag)="removeExistingTag($event , 'relocation_location')"
+          [ngModelOptions]="{standalone: true}"
+          [placeholder]="'Enter Prefereed Locations. Add multiple items (upto 3) by using Tab'">
+        </rl-tag-input>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group form-group-content">
+    <span>Experience:</span>
+
+    <fmp-custom-dropdown-component
+      [values]="selectData.experience"
+      [selectedValue]="modelForm.controls['experience'].value"
+      [placeholder]="'Select your experience'"
+      (valueSelected)="onSelect('experience', $event)">
+    </fmp-custom-dropdown-component>
+
+  </div>
+
+  <div class="form-group form-group-content">
+    <span>Education:</span>
+
+    <fmp-custom-dropdown-component
+      [values]="selectData.education"
+      [selectedValue]="modelForm.controls['education'].value"
+      [placeholder]="'Select your education'"
+      (valueSelected)="onSelect('education', $event)">
+    </fmp-custom-dropdown-component>
+
+  </div>
+
+  <div class="form-group form-group-content">
+    <span>Desired Salary ($):</span>
+
+    <div class="form-group-salary">
+      <input type="number"
+             class="form-control-border-light"
+             placeholder="From"
+             formControlName="desire_salary_value">
+      <span>&#8212;</span>
+
+      <fmp-custom-dropdown-component
+        [values]="selectData.salary"
+        [selectedValue]="modelForm.controls['desire_salary_type'].value"
+        [placeholder]="'Select type'"
+        (valueSelected)="onSelect('desire_salary_type' , $event)">
+      </fmp-custom-dropdown-component>
+
+    </div>
+  </div>
+
+</form>

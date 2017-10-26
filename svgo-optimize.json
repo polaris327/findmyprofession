@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    {
+      "removeTitle": true
+    },
+    {
+      "removeRasterImages": true
+    },
+    {
+      "transformsWithOnePath": true
+    },
+    {
+      "removeDimensions": true
+    }
+  ]
+}

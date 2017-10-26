@@ -1,0 +1,48 @@
+@import '../../../styles/custom/variables';
+
+.home-carousel-content {
+
+  .photo {
+    width: 120px;
+    min-width: 120px;
+    height: 120px;
+    min-height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+  }
+
+  .name {
+    font-size: 1.111rem;
+    font-weight: 400;
+    line-height: 1.833rem;
+    margin-bottom: 20px;
+  }
+
+  .feedback {
+    font-size: 0.889rem;
+    line-height: 1.222rem;
+  }
+
+  @media (min-width: $point) {
+    display: flex;
+
+    .photo {
+      width: 176px;
+      min-width: 176px;
+      height: 176px;
+      min-height: 176px;
+      margin: 0 45px 0 0;
+    }
+    .name-feedback {
+      text-align: left;
+    }
+    .name {
+      font-size: 1.667rem;
+      font-weight: 400;
+    }
+    .feedback {
+      font-size: 1.111rem;
+      line-height: 1.833rem;
+    }
+  }
+}

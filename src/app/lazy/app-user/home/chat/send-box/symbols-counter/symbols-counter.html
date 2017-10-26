@@ -1,0 +1,4 @@
+<span *ngIf="value">
+  <span [ngClass]="{ 'error-text': value?.length > maxSymbols }">{{value?.length}}</span>
+  <span> / {{maxSymbols}}</span>
+</span>

@@ -1,0 +1,49 @@
+<div class="testimonials-page">
+  <div class="title-description">
+    <h2 *ngIf="content?.title" [innerHTML]="content?.title"></h2>
+    <p *ngIf="content?.sub_title" [innerHTML]="content?.sub_title"></p>
+  </div>
+  <ul class="chat">
+    <li *ngFor="let item of items">
+
+      <div class="photo-name"></div>
+
+      <div class="feedback">
+        <p *ngIf="item.name" [innerHTML]="item.name | truncate: '20'"></p>
+        <p class="help-with" *ngIf="item?.service">
+          Help with:
+          <fmp-custom-link
+            [title]="item.service.name | truncate: '20'"
+            [linkArray]="[item.service.link]">
+          </fmp-custom-link>
+        </p>
+        <div class="text-content" *ngIf="item.detail" [innerHTML]="item.detail"></div>
+        <div class="date-rating">
+          <p class="date">
+            <span>Date:</span>
+            {{item.date | date: 'mediumDate'}}
+          </p>
+          <p class="rating-holder">
+            <span>Rated:</span>
+
+            <fmp-rating-stars-component
+              [stars]="item.rating">
+            </fmp-rating-stars-component>
+
+          </p>
+        </div>
+      </div>
+
+    </li>
+  </ul>
+
+  <ngb-pagination
+    *ngIf="collectionSize > defaultLimit"
+    class="pagination-custom"
+    [collectionSize]="collectionSize"
+    [(page)]="currentPage"
+    [pageSize]="defaultLimit"
+    (pageChange)="pageSelected()">
+  </ngb-pagination>
+
+</div>

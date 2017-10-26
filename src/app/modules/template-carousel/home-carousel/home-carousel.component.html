@@ -1,0 +1,9 @@
+<img *ngIf="isAvatarLoaded || item?.index === 7; else notLoaded" class="photo" [src]="item.avatar || defaultImage | uploads" [alt]="'Avatar for '+item?.name" (error)="authorAvatarNotLoaded($event)">
+<div class="name-feedback">
+  <p class="name" *ngIf="item.name" [innerHTML]="item.name"></p>
+  <p class="feedback" *ngIf="item.detail" [innerHTML]="item.detail"></p>
+</div>
+
+<ng-template #notLoaded>
+  <img class="photo" [src]="defaultImage" [alt]="'Avatar for '+item?.name">
+</ng-template>

@@ -1,0 +1,70 @@
+@import '../../styles/custom/variables';
+
+.page-404-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: $brand-secondary-light;
+  color: #fff;
+  padding: 70px 0 80px;
+
+  @media (min-width: $point) {
+    height: 100%;
+    max-height: 930px;
+    padding: 86px 0 20px;
+  }
+
+  @media only screen
+  and (min-device-width: 1024px)
+  and (max-device-width: 1366px) {
+    height: 700px;
+  }
+
+  @media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    padding: 20px 0 30px;
+  }
+
+  h1 {
+    font-size: 70px;
+    line-height: 1;
+    font-weight: normal;
+
+    @media (min-width: $point-xs) {
+      font-size: 120px;
+    }
+
+    @media (min-width: $point) {
+      font-size: 160px;
+    }
+  }
+
+  .subtitle {
+    text-align: center;
+    padding-bottom: 20px;
+
+    @media (min-width: $point-xs) {
+      padding-bottom: 35px;
+    }
+  }
+
+  .btn-md {
+    width: auto;
+    font-size: 22px;
+    padding: 0 20px;
+    height: 58px;
+    line-height: 56px;
+
+    @media (min-width: $point-xs) {
+      height: 63px;
+      font-size: 30px;
+      line-height: 61px;
+      padding: 0 40px;
+    }
+  }
+}

@@ -1,0 +1,139 @@
+@import "../../../../../styles/custom/variables";
+
+.dropdown {
+  .dropdown-menu {
+    left: auto;
+    float: none;
+    border-radius: 0;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+    transform-origin: right top;
+    transform: scale(0,0);
+  }
+
+  &.show {
+    font-weight: bold;
+    .dropdown-menu {
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1,1);
+    }
+  }
+}
+
+%account-user {
+  padding: 15px 10px 0;
+  font-weight: 300;
+
+  .photo-info-holder {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $brand-primary;
+
+    svg {
+      fill: $brand-secondary-dark;
+      margin-right: 10px;
+    }
+  }
+
+  .account-menu {
+    margin: 0 -10px;
+
+    a {
+      cursor: pointer;
+      display: block;
+      padding: 0 10px;
+
+      &:hover,
+      &.active {
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+.account-user {
+  &-mobile {
+    @extend %account-user;
+    padding: 15px 10px 0;
+    background: $brand-secondary;
+
+    .photo-info-holder {
+      padding: 0 0 10px;
+    }
+
+    .account-menu {
+      font-size: 1rem;
+
+      a {
+        height: 45px;
+        line-height: 45px;
+        padding: 0 10px;
+
+        &:hover,
+        &:active,
+        &.active {
+          background: $brand-secondary-dark;
+        }
+      }
+    }
+
+    .user-info {
+      &-name {
+        font-size: 1rem;
+        font-weight: 500;
+      }
+      &-email {
+        font-size: 0.889rem;
+      }
+    }
+  }
+
+  &-desktop {
+    @extend %account-user;
+    background: $light;
+    border: 1px solid $brand-primary;
+    color: $gray-dark;
+    font-family: $font-family-sans-serif;
+    position: absolute;
+    right: 0;
+    top: 67px;
+    min-width: 351px;
+
+    .photo-info-holder {
+      padding-bottom: 20px;
+
+      svg {
+        fill: $brand-secondary;
+      }
+    }
+
+    .account-menu {
+      font-size: 1.222rem;
+
+      a {
+        height: 60px;
+        line-height: 60px;
+        padding-left: 45px;
+
+        &:hover,
+        &.active {
+          background: $blue-light;
+        }
+      }
+    }
+
+    .user-info {
+      &-name {
+        font-size: 1.222rem;
+        font-weight: 500;
+      }
+      &-email {
+        font-size: 1rem;
+      }
+    }
+  }
+}

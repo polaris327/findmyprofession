@@ -1,0 +1,100 @@
+@import '../../../../styles/custom/variables';
+@import '../../../../styles/custom/mixins';
+
+.job-list-holder {
+  padding-top: 15px;
+
+  @media (min-width: $point) {
+    padding-top: 24px;
+  }
+
+  .sort-container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    font-size: 1.111rem;
+    margin-bottom: 25px;
+
+    .custom-dropdown {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto 29px;
+    }
+
+    @media (min-width: $point) {
+      min-height: 67px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .text-holder {
+        text-align: left;
+        min-width: 320px;
+      }
+
+      .dropdown {
+        width: 20%;
+        height: 50px;
+        margin: 0 auto;
+      }
+
+      .btn-holder {
+        text-align: right;
+        min-width: 320px;
+      }
+    }
+
+    p {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+      transform: translateX(-60px);
+
+      @media (min-width: $point) {
+        transform: translateX(0);
+      }
+
+      span {
+        position: absolute;
+        left: calc(100% + 5px);
+        top: 50%;
+        transform: translateY(-50%);
+        white-space: nowrap;
+      }
+
+      @media (min-width: $point) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .job-liked-empty {
+    opacity: .5;
+    text-align: center;
+    padding: 22px 0 75px;
+
+    @media (min-width: $point) {
+      padding: 49px 0 125px;
+    }
+
+    p {
+      font-size: 1.6rem;
+      margin-bottom: 22px;
+
+      @media (min-width: $point) {
+        font-size: 2.667rem;
+      }
+    }
+  }
+
+  .job-list-filled {
+    > li {
+      margin-bottom: 26px;
+
+      @media (max-width: $point-xs) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

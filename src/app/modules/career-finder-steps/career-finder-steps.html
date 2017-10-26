@@ -1,0 +1,19 @@
+<div class="job-applied-empty">
+  <div class="text-top">
+    <p>Sign up for our Career Finder <span>and we'll apply to jobs for you.</span></p>
+    <span>How it works</span>
+  </div>
+  <ul class="steps">
+    <li>
+      <p>We rewrite & optimize <span>your professional resume</span></p>
+    </li>
+    <li>
+      <p>We find & apply <span>to jobs for you</span></p>
+    </li>
+    <li>
+      <p>We work with you <span>until you get hired</span></p>
+    </li>
+  </ul>
+  <p class="guarantee" *ngIf="type === 'jobs'">100% Satisfaction Guarantee</p>
+  <button type="button" class="btn btn-auto btn-primary btn-border-anim" (click)="buttonClicked($event)">{{buttonText}}</button>
+</div>

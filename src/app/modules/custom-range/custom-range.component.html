@@ -1,0 +1,43 @@
+<div class="range-container">
+
+  <div class="currency-money-text">
+    <div class="currency-money">
+      <span class="currency">$</span>
+      <input class="form-control-money"
+             [attr.min]="customRange.minValue"
+             [attr.max]="customRange.maxValue"
+             [value]="customRange.currentValue"
+             (blur)="valueInput($event.target.value)"
+             (keydown)="keyEntered($event)">
+    </div>
+    <p class="text-bold-sf price-holder">per year x {{customRange.fee}} = <span class="price-content">{{customRange.price | number:'1.0-0'}}</span></p>
+  </div>
+
+  <div class="custom-range-container">
+    <input type="range"
+      [attr.min]="customRange.minValue"
+      [attr.step]="customRange.step"
+      [attr.max]="customRange.maxValue"
+      [value]="customRange.currentValue === null ? customRange.startValue : customRange.currentValue"
+      (input)="setNewValue($event.target.value)"
+      (mousedown)="inputValueChanged($event)">
+    <div #rootProgressBar class="progress-bar-outer">
+      <div class="progress-bar-inner"
+        role="progressbar"
+        [ngStyle]="{ width: customRange.progressWidth + '%' }">
+      </div>
+    </div>
+    <div class="range-text-container">
+      <span>$ {{customRange?.minValue | number:'1.0-0'}}</span>
+      <span>$ {{customRange?.maxValue | number:'1.0-0'}}</span>
+    </div>
+  </div>
+
+  <p class="text-bottom">
+    <span>Your Career Finder cost:</span>
+    <span class="price price-holder price-aligning">
+      $ <span class="price-content">{{customRange.price | number:'1.0-0'}}</span>
+    </span>
+  </p>
+
+</div>

@@ -1,0 +1,126 @@
+@import 'variables';
+
+@mixin circle-style($bg, $circle-size, $circle-size-desk) {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $bg;
+  width: $circle-size;
+  height: $circle-size;
+
+  @media (min-width: $point) {
+    width: $circle-size-desk;
+    height: $circle-size-desk;
+  }
+}
+
+@mixin circle-icon($bg, $circle-size, $circle-size-desk) {
+  @include circle-style($bg, $circle-size, $circle-size-desk);
+
+  svg {
+    width: $circle-size;
+    height: $circle-size;
+  }
+
+  @media (min-width: $point) {
+    svg {
+      width: $circle-size-desk;
+      height: $circle-size-desk;
+    }
+  }
+}
+
+@mixin circle-icon2($bg, $circle-size, $icon, $circle-size-desk, $icon-desk) {
+  @include circle-style($bg, $circle-size, $circle-size-desk);
+
+  svg {
+    width: $icon;
+    height: $icon;
+  }
+
+  @media (min-width: $point) {
+    svg {
+      width: $icon-desk;
+      height: $icon-desk;
+    }
+  }
+}
+
+@mixin circle-img($bg, $circle-size, $img-width, $img-height) {
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: $bg;
+  width: $circle-size;
+  height: $circle-size;
+
+  img {
+    width: $img-width;
+    height: $img-height;
+  }
+}
+
+@mixin circle-icon-dif-sizes($icon-width, $icon-height, $icon-width-desk, $icon-height-desk) {
+  width: $icon-width;
+  height: $icon-height;
+
+  @media (min-width: $point) {
+    width: $icon-width-desk;
+    height: $icon-height-desk;
+  }
+}
+
+@mixin btn-size($width, $height, $font-size, $border-radius) {
+  width: $width;
+  height: $height;
+  font-size: $font-size;
+  line-height: $height - 2px;
+  border-radius: $border-radius;
+}
+
+@mixin btn-outline($border-color) {
+  border: 1px solid $border-color;
+}
+
+@mixin placeholderCustom($prop, $val) {
+  &::-webkit-input-placeholder {
+    #{$prop}: $val;
+    transition: .3s;
+  }
+  &::-moz-placeholder {
+    #{$prop}: $val;
+    transition: .3s;
+  }
+  &:-ms-input-placeholder {
+    #{$prop}: $val;
+    transition: .3s;
+  }
+}
+
+@mixin link-style($color, $color-hover, $line-bg, $line-height: 1px) {
+  color: $color;
+
+  &:not([href]):not([tabindex]) {
+    color: $color;
+  }
+
+  &:hover,
+  &:not([href]):not([tabindex]):hover {
+    color: $color-hover;
+  }
+
+  &::after {
+    background: $line-bg;
+    height: $line-height;
+  }
+}
+
+@mixin text-overflow($width: 100%) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: $width;
+  display: inline-block;
+}

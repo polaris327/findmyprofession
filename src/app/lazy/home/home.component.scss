@@ -1,0 +1,193 @@
+@import "../../styles/custom/variables";
+
+.home-container {
+
+  .career-finder-slider-holder {
+    padding: 0 10px 35px;
+
+    @media (min-width: $point) {
+      padding: 0 10px 35px;
+      margin-bottom: 115px;
+    }
+    @media (min-width: $point-md) {
+      padding: 0 0 35px;
+    }
+  }
+
+  .box-blue-holder {
+    height: 438px;
+    color: $light;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: -5px;
+
+    @media (min-width: 820px) {
+      height: 50vw;
+    }
+    @media (min-width: $point) {
+      height: 100vh;
+      margin-bottom: 115px;
+    }
+
+    .container-md {
+      position: relative;
+    }
+
+    .box-blue-bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: {
+        image: url("../../../assets/images/home-bg.jpg");
+        position: 75% bottom;
+        size: cover;
+        repeat: no-repeat;
+      }
+      filter: blur(1px);
+
+      @media (min-width: $point) {
+        filter: blur(0);
+        background: {
+          image: linear-gradient($brand-secondary, $brand-secondary), url("../../../assets/images/home-bg.jpg");
+          size: 48vw 100%, cover;
+          position: left, center;
+        }
+      }
+      @media (min-width: 1150px) {
+        background-size: 43.5vw 100%, cover;
+      }
+    }
+
+    .box-blue-text {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 44px 10px 65px;
+      text-align: center;
+
+      h1, .h1 {
+        line-height: 44px;
+        font-size: 2.333rem;
+        margin-bottom: 25px;
+      }
+      p {
+        margin-bottom: 30px;
+        width: 205px;
+        line-height: 23px;
+
+        @media (min-width: 450px) {
+          width: auto;
+        }
+      }
+
+      @media (min-width: $point) {
+        $anim-duration: 1.5s;
+
+        padding: 44px 10px 9px 2vw;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
+        width: 470px;
+
+        h1, .h1 {
+          font-size: 4rem;
+          line-height: 77px;
+          margin-bottom: 50px;
+          animation: move-from-left $anim-duration forwards .2s;
+        }
+
+        p {
+          font-size: 1.333rem;
+          margin-bottom: 60px;
+          animation: move-from-left $anim-duration forwards .4s;
+        }
+
+        .btn {
+          animation: move-from-left $anim-duration forwards .6s;
+        }
+
+        h1, .h1, p, .btn {
+          will-change: transform, opacity;
+          transform: translateX(-470px);
+          opacity: 0;
+        }
+
+        @keyframes move-from-left {
+          60% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+      }
+      @media (min-width: 1100px) {
+        padding-left: 20px;
+      }
+      @media (min-width: $point-md) {
+        padding-left: 10px;
+      }
+      @media (min-width: 1360px) {
+        padding-left: 0;
+      }
+
+      @media (max-height: 850px) {
+        h1, .h1, p {
+          margin-bottom: 6vh;
+        }
+      }
+      @media (max-height: 900px) and (min-width: $point) {
+        padding-top: 34vh;
+        justify-content: flex-start;
+      }
+
+      @media (max-height: 800px) and (min-width: $point) {
+        padding-top: 27vh;
+        justify-content: flex-start;
+      }
+      @media (max-height: 700px) and (min-width: $point) {
+        padding-top: 30vh;
+        justify-content: flex-start;
+      }
+      @media (max-height: 900px) and (min-width: $point) and (max-width: 1224px) {
+        padding-top: 34vh;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  .calendly-free-consultation {
+    display: block;
+    margin-bottom: 50px;
+
+    html,
+    body {
+      height: auto !important;
+    }
+
+    iframe {
+      @media (min-width: 921px) {
+        height: 520px;
+      }
+    }
+  }
+
+  .carousel-component {
+    margin-bottom: 20px;
+
+    @media (min-width: $point) {
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+    }
+
+    @media (max-width: $point-xs) {
+      margin-bottom: 0;
+    }
+  }
+}

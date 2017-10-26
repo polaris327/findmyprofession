@@ -1,0 +1,73 @@
+<div class="job-item">
+  <div class="logo-position-company">
+    <img class="job-item-logo" [src]="'//logo.clearbit.com/'+item.linkForAvatar" (error)="logoError($event)" (click)="openCompanyLink(item.link)">
+    <div class="position-company">
+      <span class="position text-overflow">
+        <a [href]="item.link" target="_blank">{{item.position}}</a>
+      </span>
+      <span class="company text-overflow">{{item.company}}</span>
+    </div>
+  </div>
+  <div class="box-right">
+    <div class="download-dropdown">
+      <div class="download-file">
+        <label
+          *ngIf="!item.attachment"
+          class="link link-line-remove-center"
+          (click)="uploadCoverLetterClick()">
+          Upload Cover Letter
+        </label>
+        <input #uploadCover type="file" (change)="uploadCoverLetter($event)">
+        <div class="file" *ngIf="item.attachment">
+          <span class="clip">
+            <svg width="23" height="23">
+              <use xlink:href="../../../../../../assets/images/sprite.svg#attachment"></use>
+            </svg>
+          </span>
+          <a class="link link-line-remove-center text-overflow"
+             [href]="item.attachment"
+             download=""
+             (click)="downloadAttachment(item, $event)">{{item.attachment_name}}</a>
+          <span class="close"  (click)="removeCoverLetter(item)">
+            <svg width="15" height="15">
+              <use xlink:href="../../../../../../assets/images/sprite.svg#close"></use>
+            </svg>
+          </span>
+        </div>
+      </div>
+      <fmp-custom-dropdown-component
+        class="dropdown-holder"
+        [type]="'jobs'"
+        [values]="statuses"
+        [selectedValue]="item.status"
+        (valueSelected)="statusChanged($event)">
+      </fmp-custom-dropdown-component>
+    </div>
+    <div class="choice-liked">
+      <label class="custom-choice custom-choice-blue">
+        <input type="checkbox" [ngModel]="item.checked" (change)="applyStatusChanged($event)">
+        <span class="indicator">
+        <svg>
+          <use xlink:href="../../../../../../assets/images/sprite-anim.svg#checkbox"></use>
+        </svg>
+      </span>
+        <span class="text-overflow">FMP Apply</span>
+      </label>
+      <p class="text-liked bottom">
+        <span *ngIf="item?.section === 'applied'; else likedSection">
+          Applied: {{item.applied_date | date: 'MMMM d, y'}}
+        </span>
+        <ng-template #likedSection>
+          <span *ngIf="item.added_by !== 'user'">FMP</span>
+          <span *ngIf="item.added_by === 'user'">You</span>
+          Added: {{item.date | date: 'MMMM d, y'}}
+        </ng-template>
+      </p>
+    </div>
+  </div>
+  <span class="close" (click)="removeJob(item)">
+    <svg width="15" height="15">
+      <use xlink:href="../../../../../../assets/images/sprite.svg#close"></use>
+    </svg>
+  </span>
+</div>

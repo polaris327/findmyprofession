@@ -1,0 +1,116 @@
+@import "../../../../../styles/custom/variables";
+
+nav {
+  @media (min-width: $point) {
+    user-select: none;
+  }
+}
+
+.nav-mobile {
+  position: absolute;
+  left: 0;
+  top: $header-height;
+  width: 100%;
+  background: $brand-secondary-dark;
+  transform: translateY(-100%);
+  transition: .5s;
+
+  .nav-user-unreg {
+    padding-bottom: 15px;
+  }
+
+  .nav-menu {
+    padding: 15px 0;
+    text-align: center;
+
+    a {
+      display: block;
+      height: 50px;
+      line-height: 50px;
+
+      &:hover,
+      &:active,
+      &.active {
+        background: $brand-secondary;
+      }
+    }
+  }
+
+  &.nav-show {
+    transform: translateY(0);
+  }
+}
+
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 1;
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 480px;
+    max-width: 630px;
+
+    .main-header-reg & {
+      font-size: 1.556rem;
+    }
+
+    > li {
+      &:not(.account-item) {
+        width: 38%;
+        text-align: center;
+      }
+      &.link-home {
+        width: 24%;
+      }
+      &.account-item {
+        margin-left: 50px;
+        position: relative;
+        height: 86px;
+        display: flex;
+        align-items: center;
+
+        .dropdown-toggle {
+          background: none;
+          border: none;
+          color: inherit;
+          font-family: $font-family-serif;
+          outline: none;
+          cursor: pointer;
+          height: 37px;
+          padding: 0;
+          position: relative;
+          min-width: 0;
+          margin-left: 0;
+          font-size: inherit;
+          font-weight: inherit;
+
+          &::after {
+            border: none;
+          }
+
+          .btn-align {
+            text-align: right;
+            justify-content: flex-start;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+
+            span {
+              margin-left: 10px;
+            }
+          }
+
+          &:hover {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

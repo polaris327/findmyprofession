@@ -1,0 +1,30 @@
+<div ngbDropdown class="custom-dropdown" [autoClose]="true">
+
+  <button type="button" class="form-control-border-light" ngbDropdownToggle [disabled]="isDisabled">
+    <span class="text-overflow" *ngIf="type === 'common' || type === 'jobs'"
+          [ngClass]="!selectedValue ? 'default-selected' : ''"
+          [innerHTML]="selectedValue || placeholder">
+    </span>
+    <span class="dropdown-item-package" *ngIf="type === 'congratulation'">
+      <span class="plan-name">{{selectedValue.title}}</span>
+      <span class="plan-price">{{selectedValue.price | currency:'USD':true:'1.2-2'}}</span>
+    </span>
+  </button>
+
+  <ul class="dropdown-menu">
+    <li *ngFor="let value of values" [ngClass]="selectedValue === value || !selectedValue && placeholder === value ? 'value-selected': ''">
+      <button
+        type="button"
+        *ngIf="type === 'common' || type === 'jobs'"
+        class="dropdown-item"
+        (click)="selectValue(value)">
+        <span class="text-overflow" [innerHTML]="value"></span>
+      </button>
+      <div class="dropdown-item-package" *ngIf="type === 'congratulation'" (click)="selectValue(value)">
+        <span class="plan-name">{{value.title}}</span>
+        <span class="plan-price">{{value.price | currency:'USD':true:'1.2-2'}}</span>
+      </div>
+    </li>
+  </ul>
+
+</div>

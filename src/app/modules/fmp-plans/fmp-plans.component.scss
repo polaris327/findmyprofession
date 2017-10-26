@@ -1,0 +1,125 @@
+@import '../../styles/custom/variables';
+@import '../../styles/custom/mixins';
+
+.plans-component {
+  display: block;
+  text-align: center;
+  font-weight: 400;
+  padding: 0 10px;
+
+  @media (min-width: $point-lg) {
+    padding: 0;
+  }
+
+  .h2 {
+    margin-bottom: 30px;
+  }
+
+  > p {
+    margin-bottom: 28px;
+  }
+
+  .list-plans {
+    @media (min-width: $point) {
+      display: flex;
+      margin: 0 -5px;
+    }
+  }
+
+  .plan-card {
+    border-top: 3px solid $brand-secondary;
+    background: $light;
+    transition: .3s;
+    padding: 30px 2%;
+    font-size: 0.889rem;
+    flex: 1 0 240px;
+    width: 100%;
+
+    &:not(:last-of-type) {
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 540px) {
+      display: inline-block;
+      width: 49%;
+
+      &:nth-child(odd) {
+        margin-right: 5px;
+      }
+      &:nth-child(even) {
+        margin-left: 5px;
+      }
+    }
+
+    @media (min-width: $point) {
+      display: block;
+      width: auto;
+      margin: 0 5px;
+
+      &:not(:last-of-type) {
+        margin-bottom: 0;
+      }
+    }
+
+    &:hover {
+      background: $brand-secondary;
+      color: $light;
+
+      .circle-icon {
+        background: #1c6e96;
+      }
+
+      .btn {
+        background: $brand-primary;
+        color: $light;
+      }
+    }
+
+    .circle-icon {
+      transition: .3s;
+      margin: 0 auto 30px;
+
+      @include circle-icon($blue-light, 120px, 180px);
+
+      svg {
+        fill: inherit;
+      }
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 30px;
+      height: 42px;
+    }
+
+    .description {
+      margin-bottom: 28px;
+      text-align: left;
+      
+      @media (min-width: 540px) {
+        height: 210px;
+      }
+      @media (min-width: 580px) {
+        height: 180px;
+      }
+      @media (min-width: 640px) {
+        height: 150px;
+      }
+      @media (min-width: 710px) {
+        height: 130px;
+      }
+      @media (min-width: 820px) {
+        height: 110px;
+      }
+      @media (min-width: $point) {
+        height: 210px;
+      }
+      @media (min-width: 1150px) {
+        height: 190px;
+      }
+      @media (min-width: 1394px) {
+        height: 175px;
+      }
+    }
+  }
+}

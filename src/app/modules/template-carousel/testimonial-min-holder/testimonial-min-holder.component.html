@@ -1,0 +1,29 @@
+<div class="name-rating">
+  <span class="name" *ngIf="currentSlide.name" [innerHTML]="currentSlide.name | truncate : 30"></span>
+
+  <fmp-rating-stars-component
+    [stars]="currentSlide.rating">
+  </fmp-rating-stars-component>
+
+</div>
+<div class="age-industry">
+  <span class="age">Age: {{currentSlide.age}}</span>
+  <span class="text-overflow" *ngIf="currentSlide.industry" [innerHTML]="'Industry: ' + currentSlide.industry"></span>
+</div>
+<p class="review">
+  <span *ngIf="currentSlide.detail" [innerHTML]="currentSlide.detail | slice: 0 : 120"></span>
+
+  <a class="link" *ngIf="currentSlide?.detail?.length > 120" (click)="openTestimonial($event)" (touchstart)="openTestimonial($event)">...more</a>
+
+</p>
+<div class="date-rating">
+  <span class="date">Date: {{currentSlide.date | date: 'mediumDate'}}</span>
+  <div class="rating-holder">
+    <span>Rated:</span>
+
+    <fmp-rating-stars-component
+      [stars]="currentSlide.rating">
+    </fmp-rating-stars-component>
+
+  </div>
+</div>

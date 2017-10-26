@@ -1,0 +1,40 @@
+@import 'variables';
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    background: $blue-light;
+    vertical-align: middle;
+
+    td {
+      padding: 10px 10px 10px 22px;
+      vertical-align: middle;
+    }
+  }
+
+  td {
+    line-height: 1;
+    vertical-align: middle;
+    padding: 5px 5px 5px 22px;
+
+    span {
+      @extend .text-overflow;
+    }
+
+    &:not(:last-of-type) {
+      border-right: 1px solid #cce6ee;
+    }
+  }
+
+  tbody {
+    tr:first-of-type {
+      border-top: 20px solid transparent;
+    }
+  }
+
+  .custom-dropdown {
+    margin-bottom: 0;
+  }
+}

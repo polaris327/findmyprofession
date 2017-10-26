@@ -1,0 +1,68 @@
+@import "../../../../../styles/custom/variables";
+
+.burger {
+  position: relative;
+  width: 34px;
+  height: 40px;
+  text-indent: -9999px;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  display: block;
+
+  &:focus {
+    outline: none;
+  }
+
+  span {
+    $height-line: 2px;
+
+    display: block;
+    position: absolute;
+    top: 18px;
+    left: 5px;
+    right: 5px;
+    height: $height-line;
+    background: $light;
+
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+      left: 0;
+      width: 100%;
+      height: $height-line;
+      background-color: $light;
+      content: "";
+      transition-duration: 0.2s, 0.2s;
+      transition-delay: 0.2s, 0s;
+    }
+    &::before {
+      top: -10px;
+      transition-property: top, transform;
+    }
+    &::after {
+      bottom: -10px;
+      transition-property: bottom, transform;
+    }
+  }
+
+  &.active {
+    span {
+      background: none;
+      &::before,
+      &::after {
+        transition-delay: 0s, 0.2s;
+      }
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+      &::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

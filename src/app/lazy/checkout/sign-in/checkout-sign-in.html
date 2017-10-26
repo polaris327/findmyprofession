@@ -1,0 +1,39 @@
+<form [formGroup]="signInFormGroup">
+
+  <p [ngClass]="{ 'error-show' : fm.email}">
+
+    <fmp-error class="error-field" [text]="fm.email" (click)="closeError('email')"></fmp-error>
+
+    <input type="text"
+      formControlName="email"
+      class="form-control-border-light"
+      placeholder="Enter your account email.">
+
+  </p>
+
+  <p [ngClass]="{ 'error-show' : fm.password}">
+
+    <fmp-error class="error-field" [text]="fm.password" (click)="closeError('password')"></fmp-error>
+
+    <input type="password"
+      formControlName="password"
+      class="form-control-border-light"
+      placeholder="Password*">
+
+  </p>
+
+  <div class="head-error-center" [ngClass]="{'error-show': errorMessage}">
+
+    <fmp-error class="error-center" [text]="errorMessage"></fmp-error>
+
+  </div>
+
+  <p class="forgot">
+    <fmp-custom-link
+      [linkArray]="['/password-reset']"
+      [title]="'Forgot Password?'"
+      [linkClass]="['link']">
+    </fmp-custom-link>
+  </p>
+
+</form>

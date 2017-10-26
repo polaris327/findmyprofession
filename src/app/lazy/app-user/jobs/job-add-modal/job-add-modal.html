@@ -1,0 +1,56 @@
+<div class="custom-modal">
+  <div class="circle-icon-line-holder">
+    <fmp-circle-icon-line class="circle-icon-line-modal" [icon]="'add-job'"></fmp-circle-icon-line>
+  </div>
+  <h3 class="title">Add job</h3>
+  <p class="message-text">Please add details for the specific job of interest</p>
+
+  <form [formGroup]="modelForm" (submit)="saveJob()" class="form-holder">
+    <p class="form-group" [ngClass]="{ 'error-show' : fm.isExistJob}">
+        <fmp-error class="error-field" [text]="'Job link is already existed'" (onErrorClick)="closeError('isExistJob')"></fmp-error>
+    </p>
+    <p class="form-group" [ngClass]="{ 'error-show' : fm.link}">
+
+      <fmp-error class="error-field" [text]="fm.link" (onErrorClick)="closeError('link')"></fmp-error>
+
+      <label class="form-group-content">
+        <span>Job Link:</span>
+        <input type="text"
+          class="form-control-border-light"
+          formControlName="link"
+          placeholder="Add link to the original job position">
+      </label>
+    </p>
+
+    <p class="form-group" [ngClass]="{ 'error-show' : fm.company}">
+
+      <fmp-error class="error-field" [text]="fm.company" (onErrorClick)="closeError('company')"></fmp-error>
+
+      <label class="form-group-content">
+        <span>Company:</span>
+        <input type="text"
+          class="form-control-border-light"
+          formControlName="company"
+          placeholder="Add the name of the company">
+      </label>
+    </p>
+
+    <p class="form-group" [ngClass]="{ 'error-show' : fm.position}">
+
+      <fmp-error class="error-field" [text]="fm.position" (onErrorClick)="closeError('position')"></fmp-error>
+
+      <label class="form-group-content">
+        <span>Position:</span>
+        <input type="text"
+          class="form-control-border-light"
+          formControlName="position"
+          placeholder="Add the title of this position">
+      </label>
+    </p>
+
+    <button type="submit" class="btn btn-md btn-center btn-border-anim">Save</button>
+
+  </form>
+
+  <fmp-modal-close-icon (onModalClose)="cancel()"></fmp-modal-close-icon>
+</div>

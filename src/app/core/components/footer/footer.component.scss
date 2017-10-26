@@ -1,0 +1,148 @@
+@import '../../../styles/custom/variables';
+@import '../../../styles/custom/type';
+
+.main-footer {
+  background: $brand-secondary;
+  color: $light;
+  border-bottom: {
+    width: 23px;
+    style: solid;
+    color: $brand-secondary-dark;
+  }
+
+  fmp-footer-component {
+    background: $brand-secondary;
+  }
+
+  @media (min-width: $point) {
+    border-bottom-width: 15px;
+  }
+}
+
+.footer-content {
+  padding: 32px 0 49px;
+  text-align: center;
+
+  @media (min-width: $point) {
+    text-align: left;
+    padding: 47px 10px 42px;
+
+    .logo-lists {
+      display: flex;
+      margin-bottom: 68px;
+    }
+  }
+
+  @media (min-width: $point-lg) {
+    padding: 47px 0 42px;
+  }
+
+  .list-info {
+    font-size: 0.889rem;
+    margin-bottom: 27px;
+
+    > li {
+      margin-bottom: 50px;
+      line-height: 28px;
+
+      &:last-of-type {
+        padding-top: 6px;
+        margin-bottom: 20px;
+      }
+
+      > ul {
+        a {
+          @extend .link, .link-left, .link-left-light;
+        }
+      }
+    }
+
+    h6 {
+      margin-bottom: 19px;
+    }
+
+    .list-info-contacts li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        opacity: 0.4;
+        transition: .2s;
+        position: absolute;
+        left: -30px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      a {
+        position: relative;
+
+        @media (min-width: $point) {
+          transform: translateX(31px);
+        }
+
+        &:hover,
+        &:active {
+          svg {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    @media (min-width: $point) {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+      font-size: 1rem;
+      padding: 14px 30px 0 0;
+      margin-bottom: 0;
+
+      > li {
+        line-height: 32px;
+        margin-bottom: 0;
+
+        &:last-of-type {
+          padding-top: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      .list-info-contacts li {
+        justify-content: flex-start;
+
+        svg {
+          margin-right: 15px;
+        }
+      }
+
+      h6 {
+        font-size: 1.222rem;
+        margin-bottom: 19px;
+      }
+    }
+  }
+
+  .list-rights {
+    opacity: 0.21;
+    font: 700 0.778rem 'Enriqueta';
+    font-size: 0.778rem;
+
+    @media (min-width: $point) {
+      font-size: 0.889rem;
+    }
+
+    li {
+      display: inline-block;
+
+      &:not(:last-of-type) {
+
+        &:after {
+          content: '|';
+          padding: 0 3px 0 6px;
+        }
+      }
+    }
+  }
+}

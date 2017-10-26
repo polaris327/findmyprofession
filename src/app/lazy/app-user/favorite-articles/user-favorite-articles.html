@@ -1,0 +1,29 @@
+<div class="favorite-articles-holder">
+
+  <header class="title-description">
+    <h2>Favorite Articles</h2>
+    <p>Here you can see your liked articles.</p>
+  </header>
+
+  <div class="container-md">
+    <articles-cards-component
+      [articles]="articles"
+      [isAuth]="isAuth"
+      (onArticleLike)="likedStatusChanged($event)"
+      (onArticleOpen)="openArticle($event)">
+    </articles-cards-component>
+    <p *ngIf="articles?.length === 0" class="empty-text">
+      <span>Your favorite articles list is empty, please add something <a [routerLink]="['/career-advice']">Career Advice</a></span>
+    </p>
+  </div>
+
+  <ngb-pagination
+    *ngIf="collectionSize > defaultLimit"
+    class="pagination-custom"
+    [collectionSize]="collectionSize"
+    [(page)]="currentPage"
+    [pageSize]="defaultLimit"
+    (pageChange)="pageSelected()">
+  </ngb-pagination>
+
+</div>

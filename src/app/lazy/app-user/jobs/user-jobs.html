@@ -1,0 +1,68 @@
+<div class="container box-light-reg">
+  <div class="box-light-content">
+
+    <div class="title-description">
+      <h1 class="text-center">My Jobs</h1>
+      <p>Your jobs section allows you to add jobs to your profile from any website.</p>
+      <p>Simply check the "FMP Apply" box and your account manager will get to work.</p>
+    </div>
+
+    <ngb-tabset #jobsTabSet="ngbTabset" class="tabs-holder" [destroyOnHide]="false" (tabChange)="onTabChanged($event)">
+
+      <ngb-tab id="liked">
+        <ng-template ngbTabTitle>Liked</ng-template>
+        <ng-template ngbTabContent>
+
+          <fmp-jobs-list-component
+            [type]="'liked'"
+            [statuses]="statuses?.liked"
+            [jobs]="jobs?.liked"
+            [jobsCount]="jobsCount?.liked"
+            [sortList]="likedSortList"
+            [currentPage]="jobsCurrentPage.liked"
+            [filterByOption]="filterOption.liked"
+            (onFilterOptionSelected)="onFilterOptionChanged('liked', $event)"
+            (onFileDownload)="downloadFile($event)"
+            (onJobChanged)="jobStatusChanged($event, 'liked')"
+            (onJobAdd)="createNewJob()"
+            (onJobRemove)="removeJobEntity($event)"
+            (onPageChange)="currentPageChanged($event)"
+            (onApplyStateChanged)="applyStatusChanged($event)"
+            (onCoverLetterUpload)="uploadCoverLetter($event, 'liked')"
+            (onCoverLetterRemove)="removeCoverLetter($event, 'liked')">
+          </fmp-jobs-list-component>
+
+        </ng-template>
+      </ngb-tab>
+
+      <ngb-tab id="applied">
+        <ng-template ngbTabTitle>Applied</ng-template>
+        <ng-template ngbTabContent>
+
+          <fmp-jobs-list-component
+            [type]="'applied'"
+            [statuses]="statuses?.applied"
+            [jobs]="jobs?.applied"
+            [jobsCount]="jobsCount?.applied"
+            [sortList]="appliedSortList"
+            [currentPage]="jobsCurrentPage.applied"
+            [filterByOption]="filterOption.applied"
+            [isCareerFinderBought]="isCareerFinderBought"
+            (onFilterOptionSelected)="onFilterOptionChanged('applied', $event)"
+            (onFileDownload)="downloadFile($event)"
+            (onJobRemove)="removeJobEntity($event)"
+            (onJobChanged)="jobStatusChanged($event, 'applied')"
+            (onPageChange)="currentPageChanged($event)"
+            (onApplyStateChanged)="applyStatusChanged($event)"
+            (onCoverLetterUpload)="uploadCoverLetter($event, 'applied')"
+            (onCoverLetterRemove)="removeCoverLetter($event, 'applied')"
+            (onCareerFinderClicked)="openCareerFinderModal(false)">
+          </fmp-jobs-list-component>
+
+        </ng-template>
+      </ngb-tab>
+
+    </ngb-tabset>
+
+  </div>
+</div>

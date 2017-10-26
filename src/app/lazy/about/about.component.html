@@ -1,0 +1,9 @@
+<div class="container bg-box-holder">
+  <div class="bg-box" [ngStyle]="{'background-image': 'url(src/assets/images/blue-bg/about-us.jpg)'}"></div>
+  <article class="box-light-holder about-content">
+    <header *ngIf="pageData.header" [innerHTML]="pageData.header"></header>
+    <div class="text-content container-sm" *ngIf="pageData.body" [innerHTML]="pageData.body"></div>
+    <img class="stuff" src="../../../assets/images/stuff.jpg" alt="stuff">
+    <img class="stuff-lg" src="../../../assets/images/stuff-lg.jpg" alt="stuff">
+  </article>
+</div>

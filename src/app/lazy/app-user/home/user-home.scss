@@ -1,0 +1,65 @@
+@import '../../../styles/custom/variables';
+
+.user-home-holder {
+  padding: 50px 10px 0;
+
+  @media (min-width: $point) {
+    padding: $header-height-desk + 66px 10px 0;
+  }
+  @media (min-width: $point-mlg + 20px) {
+    padding: $header-height-desk + 66px 0 0;
+  }
+
+  h1 {
+    margin-top: -7px;
+    margin-bottom: 32px;
+
+    @media (min-width: $point) {
+      margin-top: 0;
+      margin-bottom: 71px;
+    }
+
+    span {
+      display: block;
+
+      @media (min-width: $point) {
+        display: inline;
+      }
+    }
+  }
+
+  .updates-chat {
+
+    @media (min-width: 800px) {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    h2 {
+      background: $brand-secondary;
+      color: $light;
+      text-align: center;
+      font-size: 1.333rem;
+      line-height: 60px;
+
+      @media (min-width: $point) {
+        font-size: 2rem;
+        line-height: 80px;
+      }
+      @media (min-width: $point-lg) {
+        font-size: 2.667rem;
+        line-height: 100px;
+      }
+    }
+
+    > li {
+      background: $light;
+      margin-bottom: 30px;
+
+      @media (min-width: 800px) {
+        width: 49.4%;
+        margin-bottom: 53px;
+      }
+    }
+  }
+}

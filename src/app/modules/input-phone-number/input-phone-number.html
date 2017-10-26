@@ -1,0 +1,7 @@
+<input type="text"
+  #phoneNumber
+  [ngClass]="fieldClass"
+  [(ngModel)]="value"
+  [placeholder]="placeholder"
+  (input)="fieldInput($event.target.value)"
+  [textMask]="phoneNumberConfig">

@@ -1,0 +1,44 @@
+<div class="container bg-box-holder terms-privacy-holder">
+  <div class="bg-box" [ngStyle]="{'background-image': 'url(src/assets/images/blue-bg/privacy.jpg)'}"></div>
+  <nav class="sub-nav-mobile sub-nav-fixed" [ngClass]="{'show-nav': subNavState}">
+    <ul>
+      <li>
+        <span [ngClass]="{ 'active': currentTab === 'Terms of Use' }" (click)="switchTab('Terms of Use')">Terms of Use</span>
+      </li>
+      <li>
+        <span [ngClass]="{ 'active': currentTab === 'Privacy Policy' }" (click)="switchTab('Privacy Policy')">Privacy Policy</span>
+      </li>
+    </ul>
+    <p class="selected-item"
+       [ngClass]="{'hide-selected-item': subNavState}"
+       (click)="toggleSubNav()">
+      {{currentTab}}
+    </p>
+  </nav>
+  <nav class="sub-nav-desktop sub-nav-center">
+    <ul>
+      <li>
+        <span [ngClass]="{ 'active': currentTab === 'Terms of Use' }" (click)="switchTab('Terms of Use')">Terms of Use</span>
+      </li>
+      <li>
+        <span [ngClass]="{ 'active': currentTab === 'Privacy Policy' }" (click)="switchTab('Privacy Policy')">Privacy Policy</span>
+      </li>
+    </ul>
+  </nav>
+  <div class="box-light-holder terms-privacy" [ngClass]="{'move-down': subNavState}">
+    <div *ngIf="currentTab === 'Terms of Use'; else privacyPolicy">
+      <div *ngIf="pageContent?.terms_of_use">
+        <h1 class="head-main" *ngIf="pageContent?.terms_of_use?.title" [innerHTML]="pageContent?.terms_of_use?.title"></h1>
+        <div class="text-content" *ngIf="pageContent?.terms_of_use?.content" [innerHTML]="pageContent?.terms_of_use?.content"></div>
+      </div>
+    </div>
+
+    <ng-template #privacyPolicy>
+      <div *ngIf="pageContent?.privacy_policy?.content">
+        <h1 *ngIf="pageContent?.privacy_policy?.title" [innerHTML]="pageContent?.privacy_policy?.title"></h1>
+        <div class="text-content" *ngIf="pageContent?.privacy_policy?.content" [innerHTML]="pageContent?.privacy_policy?.content"></div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>

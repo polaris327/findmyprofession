@@ -1,0 +1,51 @@
+<form [formGroup]="paymentForm" class="payment-info-holder">
+
+  <p class="title">Payment Information</p>
+
+  <div class="form-group card-number">
+    <span class="input-label left-title">Card Number*</span>
+    <p [ngClass]="{ 'error-show' : fm.number}">
+
+      <fmp-error class="error-field" [text]="fm.number" (click)="closeError('number')"></fmp-error>
+
+      <input *ngIf="cardNumberShow" [textMask]="cardNumberConfig"
+             formControlName="number"
+             class="form-control-border-light"
+             placeholder="Card Number*" (blur)="cardNumberBlur()">
+    </p>
+  </div>
+
+  <div class="expire-date-holder">
+
+    <div class="month-year-holder">
+     <span class="input-label left-title">Exp. Date*</span>
+     <p>
+       <input [ngClass]="{ 'error-input': fm.exp_month }"
+              [textMask]="monthConfig"
+              formControlName="exp_month"
+              class="form-control-border-light"
+              placeholder="MM">
+     </p>
+     <p>
+       <input [ngClass]="{ 'error-input': fm.exp_year }"
+              [textMask]="yearMask"
+              formControlName="exp_year"
+              class="form-control-border-light"
+              placeholder="YY">
+     </p>
+    </div>
+
+    <div class="expire-holder">
+     <span class="input-label">CVC/CVV*</span>
+     <p>
+       <input [ngClass]="{ 'error-input': fm.cvc }"
+              [textMask]="cvcMask"
+              formControlName="cvc"
+              class="form-control-border-light cvc"
+              placeholder="CVC/CVV*">
+     </p>
+    </div>
+
+  </div>
+
+</form>

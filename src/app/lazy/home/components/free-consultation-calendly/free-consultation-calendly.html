@@ -1,0 +1,13 @@
+<div class="container circle-icon-line-holder">
+
+  <fmp-circle-icon-line class="circle-icon-line-home" [icon]="'testimonials'"></fmp-circle-icon-line>
+
+  <fmp-template-carousel-component
+    *ngIf="content?.testimonials"
+    class="container-md carousel-component"
+    [type]="'home'"
+    [title]="content.testimonials_title"
+    [subTitle]="content.testimonials_description"
+    [sliderItems]="content.testimonials">
+  </fmp-template-carousel-component>
+</div>

@@ -1,0 +1,23 @@
+<div #point class="profile-documents-tab">
+
+  <fmp-custom-file-drop-component
+    [acceptFormats]="fileAcceptFormats"
+    (onFileUpload)="onFileUpload($event)">
+  </fmp-custom-file-drop-component>
+
+  <fmp-document-table-component
+    *ngIf="documents?.length > 0"
+    [documents]="documents"
+    [documentTypes]="documentTypes"
+    (onDocumentRemove)="removeDocument($event)"
+    (onDocumentUpdate)="updateDocument($event)"
+    (onDocumentDownload)="downloadDocument($event)">
+  </fmp-document-table-component>
+
+  <fmp-document-templates-component
+    [templates]="templates"
+    (onTemplateSelect)="selectDocumentTemplate($event)"
+    (onTemplatePreview)="openPreview($event)">
+  </fmp-document-templates-component>
+
+</div>

@@ -1,0 +1,31 @@
+<h2>Messages</h2>
+
+<div class="chat">
+  <ul #chatHolder class="chat-list">
+    <li *ngFor="let message of messages; trackBy: message?.id"
+      [ngClass]="{ 'incoming': message.author !== userId, 'outgoing': message.author === userId}">
+
+      <span class="day-time day" *ngIf="message?.showDay">{{message?.date | date: 'fullDate'}}</span>
+
+      <div class="message">
+        <p class="text-overflow" *ngIf="!message.attachment; else attachmentA" [innerHTML]="message.message || 'No message text.'"></p>
+
+        <ng-template #attachmentA>
+          <div class="icon-doc">
+            <svg width="23" height="23">
+              <use xlink:href="../../../../../assets/images/sprite.svg#attachment"></use>
+            </svg>
+            <a class="text-overflow" [href]="message.attachment" (click)="downloadFile(message, $event)">{{message.message}}</a>
+          </div>
+        </ng-template>
+      </div>
+      <span class="day-time time">{{message?.date | date: 'shortTime'}}</span>
+    </li>
+  </ul>
+
+  <fmp-send-box-component
+    [isMessageSending]="isSending"
+    (onMessageSend)="sendMessage($event)">
+  </fmp-send-box-component>
+
+</div>

@@ -1,0 +1,73 @@
+<section class="coaching-service box-light-holder">
+
+  <div class="content">
+    <div class="icon-title-description">
+      <svg>
+        <use [attr.xlink:href]="'src/assets/images/sprite2.svg#' + page?.link"></use>
+      </svg>
+      <div class="title-description">
+        <h1 *ngIf="page?.title" [innerHTML]="page?.title"></h1>
+        <p *ngIf="content?.sub_title" [innerHTML]="content?.sub_title"></p>
+      </div>
+    </div>
+
+    <ul class="steps">
+      <li *ngFor="let step of content?.steps" class="item">
+        <span>{{step.step}}</span>
+        <p *ngIf="step.description" [innerHTML]="step.description"></p>
+      </li>
+    </ul>
+
+    <div class="article-more">
+      <article #article *ngIf="content?.body" class="text-content container-sm" [innerHTML]="content?.body | truncate: currentTruncateLimit"></article>
+      <button *ngIf="isMobileMode" type="button" class="btn-link link link-line-remove-center" (click)="toggleTruncate()">
+        <span *ngIf="isTruncateOpen">hide</span>
+        <span *ngIf="!isTruncateOpen">...more</span>
+      </button>
+    </div>
+
+    <div class="career-finder-slider-holder container-md">
+      <career-finder-slider-component
+        [title]="content?.slider?.slider_header_title"
+        [description]="'Schedule a call and learn how we find your next job'"
+        class="career-finder-slider-component"
+        *ngIf="content?.slider"
+        [packagesTitle]="content?.slider?.packages_title"
+        [packages]="content?.slider?.packages_list"
+        [serviceData]="content?.slider"
+        [percent]="content.slider.slider_cost"
+        (onGetStarted)="openCalendly()">
+        [percent]="bought.price || content.slider.slider_cost">
+      </career-finder-slider-component>
+    </div>
+
+    <fmp-price-box-component
+      class="price-box-component container-sm"
+      *ngIf="content?.packages"
+      [prices]="content?.packages"
+      [inBasket]="basket"
+      (onBuy)="packageBuy($event)">
+    </fmp-price-box-component>
+  </div>
+
+  <div class="container-md">
+    <fmp-template-carousel-component
+      class="carousel-component carousel-arrows-gray"
+      *ngIf="content?.testimonials"
+      [type]="'service'"
+      [title]="content?.testimonials_title"
+      [sliderItems]="content?.testimonials"
+      [slidesNumber]="content?.testimonials?.length / 2"
+      (onTestimonialOpen)="openTestimonialModal($event)">
+    </fmp-template-carousel-component>
+  </div>
+
+</section>
+
+<fmp-plans-component
+  class="plans-component container-md"
+  [title]="content?.other_services_title"
+  [currentPlanTitle]="page?.title"
+  [plans]="content?.services"
+  [isOpen]="true">
+</fmp-plans-component>

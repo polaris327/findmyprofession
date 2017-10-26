@@ -1,0 +1,159 @@
+<form class="form-error-center"
+  [ngClass]="{'error-show': errorMessage, 'form-sending': isRequestSending}"
+  [formGroup]="modelForm"
+  *ngIf="modelForm && componentInited">
+
+  <fmp-error class="error-center" [text]="errorMessage"></fmp-error>
+
+  <p class="form-group" [ngClass]="{ 'error-show' : fm.full_name}">
+
+    <fmp-error class="error-field" [text]="fm.full_name" (onErrorClick)="closeError('full_name')"></fmp-error>
+
+    <label>
+      <span>Full Name:</span>
+      <input class="form-control-border-light"
+             formControlName="full_name"
+             placeholder="Full Name">
+    </label>
+  </p>
+
+  <p class="form-group" [ngClass]="{ 'error-show' : fm.email}">
+
+    <fmp-error class="error-field" [text]="fm.email" (onErrorClick)="closeError('email')"></fmp-error>
+
+    <label>
+      <span>Email Address:</span>
+      <input class="form-control-border-light"
+             formControlName="email"
+             placeholder="Email Address">
+    </label>
+  </p>
+
+  <p class="form-group" [ngClass]="{ 'error-show' : fm.phone_number}">
+
+    <fmp-error class="error-field" [text]="fm.phone_number" (onErrorClick)="closeError('phone_number')"></fmp-error>
+
+    <label>
+      <span>Phone Number:</span>
+      <fmp-input-phone-number-component
+        class="form-control-holder"
+        [focusTime]="phoneNumberFocus"
+        [value]="modelForm.controls['phone_number'].value"
+        [placeholder]="'Phone Number'"
+        [fieldClass]="'form-control-border-light'"
+        (onNumberInput)="onPhoneNumberInput($event)">
+      </fmp-input-phone-number-component>
+    </label>
+
+  </p>
+
+  <p class="form-group" [ngClass]="{ 'error-show' : fm.street_address}">
+
+    <fmp-error class="error-field" [text]="fm.street_address" (onErrorClick)="closeError('street_address')"></fmp-error>
+
+    <label>
+      <span>Street Address:</span>
+      <input placeholder="Street Address"
+             [options]="fieldsSettings.address"
+             (setAddress)="setFieldValue('street_address',$event)"
+             (postal_code)="setFieldValue('postal_code', $event)"
+             (city)="setFieldValue('city', $event)"
+             (state)="setFieldValue('state', $event)"
+             (blur)="setFieldValue('street_address' , $event.target.value)"
+             class="form-control-border-light"
+             [value]="modelForm.controls['street_address'].value"
+             ng2-google-place-autocomplete>
+    </label>
+
+  </p>
+
+  <p class="form-group" [ngClass]="{ 'error-show' : fm.city}">
+
+    <fmp-error class="error-field" [text]="fm.city" (onErrorClick)="closeError('city')"></fmp-error>
+
+    <label>
+      <span>City:</span>
+      <input placeholder="City"
+             [options]="fieldsSettings.city"
+             (city)="setFieldValue('city',$event)"
+             (state)="setFieldValue('state', $event)"
+             class="form-control-border-light"
+             [value]="modelForm.controls['city'].value"
+             (blur)="setFieldValue('city' , $event.target.value)"
+             ng2-google-place-autocomplete>
+    </label>
+  </p>
+
+  <p class="form-group" [ngClass]="{ 'error-show' : fm.state}">
+
+    <fmp-error class="error-field" [text]="fm.state" (onErrorClick)="closeError('state')"></fmp-error>
+
+    <label>
+      <span>State:</span>
+      <input placeholder="State"
+             [options]="fieldsSettings.state"
+             (state)="setFieldValue('state', $event)"
+             class="form-control-border-light"
+             formControlName="state"
+             (blur)="setFieldValue('state' , $event.target.value)"
+             ng2-google-place-autocomplete/>
+    </label>
+  </p>
+
+  <p class="form-group" [ngClass]="{ 'error-show' : fm.postal_code}">
+
+    <fmp-error class="error-field" [text]="fm.postal_code" (onErrorClick)="closeError('postal_code')"></fmp-error>
+
+    <label>
+      <span>Zip/Postal:</span>
+      <input placeholder="Zip/Postal"
+             [options]="fieldsSettings.postal_code"
+             (postal_code)="setFieldValue('postal_code', $event)"
+             class="form-control-border-light"
+             [value]="modelForm.controls['postal_code'].value"
+             (blur)="setFieldValue('postal_code' , $event.target.value)"
+             ng2-google-place-autocomplete>
+    </label>
+  </p>
+
+  <p class="form-group" [ngClass]="{ 'error-show' : fm.birth_date}">
+
+    <fmp-error class="error-field" [text]="fm.full_name" (onErrorClick)="closeError('birth_date')"></fmp-error>
+
+    <span class="date-picker-custom">
+      <span>Birth Date:</span>
+      <p-calendar
+        #birthDate
+        [styleClass]="'form-control-border-light'"
+        formControlName="birth_date"
+        [dateFormat]="'mm/dd/yy'"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        [yearRange]="birthDateYearsRange"
+        [defaultDate]="defaultDate">
+      </p-calendar>
+      <button type="button"
+        class="btn btn-primary"
+        (click)="toggleDatePicker($event)">
+        <span>
+          <svg width="30" height="30">
+            <use xlink:href="../../../../../../assets/images/sprite.svg#calendar"></use>
+          </svg>
+        </span>
+      </button>
+    </span>
+  </p>
+
+  <p class="form-group" [ngClass]="{ 'error-show' : fm.linkedin_url}">
+
+    <fmp-error class="error-field" [text]="fm.linkedin_url" (onErrorClick)="closeError('linkedin_url')"></fmp-error>
+
+    <label>
+      <span>LinkedIn URL:</span>
+      <input class="form-control-border-light"
+             formControlName="linkedin_url"
+             placeholder="LinkedIn URL">
+    </label>
+  </p>
+
+</form>

@@ -1,0 +1,175 @@
+@import '../../styles/custom/variables';
+
+.carousel-component {
+  display: block;
+
+  .title-description {
+    padding: 0 10px;
+
+    @media (min-width: $point) {
+      padding: 0;
+    }
+  }
+
+  .carousel-holder {
+    position: relative;
+
+    .wrap {
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .carousel-list {
+      display: flex;
+      justify-content: flex-start;
+      list-style: none;
+      width: 10000px;
+      transform: translateX(0);
+
+      li {
+        padding: 0 10px;
+        position: relative;
+        width: 100vw;
+        text-align: center;
+      }
+    }
+  }
+}
+
+/* - - - - - - - - - - - - Custom arrows - - - - - - - - - - - - */
+// Mixins for arrows
+@mixin arrow-custom($border-color, $border-width: 10px) {
+  border-width: $border-width;
+  border-color:  transparent $border-color transparent transparent;
+}
+
+@mixin btn-arrow($btn-size, $left-right, $top, $border-color, $bg-hover, $border-width: 10px) {
+  width: $btn-size;
+  height: $btn-size;
+  left: $left-right;
+  top: $top;
+
+  &:active:not(:disabled) {
+    background: $bg-hover;
+  }
+
+  @media (min-width: $point) {
+    &:hover:not(:disabled) {
+      background: $bg-hover;
+    }
+  }
+
+  &::before {
+    @include arrow-custom($border-color);
+    transform: translate(-17px, -50%);
+  }
+
+  &:disabled::before {
+    @include arrow-custom($gray-light);
+  }
+
+  &.btn-arrow-next {
+    left: auto;
+    right: $left-right;
+    transform: scale(-1, 1);
+  }
+}
+
+// Arrows
+.btn-arrow {
+  padding: 0;
+  position: absolute;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transition: .3s;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-style: solid;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  @include btn-arrow(68px, 10px, 20px, $brand-primary, $light);
+
+  @media (min-width: $point) {
+    top: 60px;
+  }
+}
+
+.carousel-component {
+  &.carousel-arrows-gray {
+
+    .carousel-holder .carousel-list li {
+      padding: 0;
+    }
+
+    .btn-arrow {
+      @include btn-arrow(68px, 10px, -4px, $brand-primary, $gray-light);
+
+      @media (min-width: $point) {
+        top: 20px;
+      }
+    }
+  }
+}
+
+.carousel-arrows {
+
+  &.arrows-down {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 300px;
+    transform: translateX(-50%);
+
+    .btn-arrow {
+      width: 40px;
+      height: 40px;
+      border: 1px solid $brand-primary;
+
+      @media (min-width: $point) {
+        top: 20px;
+      }
+    }
+
+    .page-number {
+      position: absolute;
+      left: 50%;
+      top: 27px;
+      transform: translateX(-50%);
+      font-weight: 500;
+      display: block;
+    }
+
+    @media (min-width: 1440px) {
+      width: 100%;
+      max-width: 1520px;
+      bottom: auto;
+      top: 155px;
+
+      .btn-arrow {
+        width: 50px;
+        height: 50px;
+        top: -20px;
+      }
+
+      .page-number {
+        display: none;
+      }
+    }
+  }
+}

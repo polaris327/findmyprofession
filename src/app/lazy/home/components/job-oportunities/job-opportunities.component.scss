@@ -1,0 +1,54 @@
+@import '../../../../styles/custom/variables';
+
+.job-opportunities-component {
+  padding: 0 10px;
+  margin-bottom: 90px;
+
+  @media (min-width: $point) {
+    margin-bottom: 160px;
+  }
+
+  .list-opportunities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    li {
+      width: 46%;
+      min-height: 68px;
+      height: 14vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $light;
+      margin: 0 0 10px;
+      overflow: hidden;
+
+      @media (min-width: 343px) {
+        height: 18vw;
+        max-height: 154px;
+        width: 47%;
+      }
+      @media (min-width: 600px) {
+        height: 15vw;
+        width: 32%;
+      }
+      @media (min-width: $point) {
+        width: 24%;
+      }
+
+      img {
+        transition: .5s;
+        width: 95%;
+        height: auto;
+      }
+
+      &:hover,
+      &:active {
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}

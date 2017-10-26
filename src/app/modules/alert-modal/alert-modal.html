@@ -1,0 +1,21 @@
+<div class="custom-modal alert-modal">
+  <div class="circle-icon-line-holder">
+    <fmp-circle-icon-line class="circle-icon-line-modal" [icon]="'cover-letter-service'"></fmp-circle-icon-line>
+  </div>
+  <h3 class="title">{{title}}</h3>
+  <p *ngIf="type === 'common'; else likeContainer" class="message-text" [innerHTML]="message || defaultMessage"></p>
+  <div class="btn-group-inline" *ngIf="showButtons">
+    <button type="button" class="btn btn-md btn-primary btn-border-anim" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-md btn-primary btn-border-anim" (click)="confirm()">Confirm</button>
+  </div>
+
+  <fmp-modal-close-icon (onModalClose)="cancel()"></fmp-modal-close-icon>
+
+</div>
+
+<ng-template #likeContainer>
+  <div class="modal-text-oops">
+    <p>To save this article to your favorites:</p>
+    <a class="link" [routerLink]="['/login']" (click)="goToLoginPage($event)" (touchstart)="linkTaped($event)">Please login</a>
+  </div>
+</ng-template>

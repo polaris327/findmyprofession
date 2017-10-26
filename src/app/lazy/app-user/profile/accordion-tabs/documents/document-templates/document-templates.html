@@ -1,0 +1,12 @@
+<div class="document-templates-holder">
+  <h5 *ngIf="templates?.length">Select a template <span>for your resume makeover</span></h5>
+  <ul class="document-templates">
+    <li *ngFor="let template of templates">
+      <img src="../../../../../../../assets/images/document-template.png" alt="template" [attr.alt]="template.name">
+      <div class="btn-holder">
+        <button type="button" class="btn btn-xs btn-primary btn-center" (click)="seeTemplatePreview(template)">View</button>
+        <button type="button" class="btn btn-xs btn-primary btn-center" (click)="selectTemplate(template)">Select</button>
+      </div>
+    </li>
+  </ul>
+</div>

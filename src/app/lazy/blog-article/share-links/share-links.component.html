@@ -1,0 +1,30 @@
+<ul class="share-links">
+  <li>
+    <span class="link-circle" (click)="shareToFacebook()">
+      <svg class="icon-fb">
+        <use xlink:href="../../../../assets/images/sprite.svg#facebook"></use>
+      </svg>
+    </span>
+  </li>
+  <li>
+    <span class="link-circle" (click)="shareToTwitter()">
+      <svg class="icon-tw">
+        <use xlink:href="../../../../assets/images/sprite.svg#twitter"></use>
+      </svg>
+    </span>
+  </li>
+  <li>
+    <span class="link-circle" (click)="shareToLinkedIn()">
+      <svg class="icon-in">
+        <use xlink:href="../../../../assets/images/sprite.svg#linkedin"></use>
+      </svg>
+    </span>
+  </li>
+  <li>
+    <a class="link-circle" [href]="mailBodyLink">
+      <svg class="icon-mail">
+        <use xlink:href="../../../../assets/images/sprite.svg#mail"></use>
+      </svg>
+    </a>
+  </li>
+</ul>

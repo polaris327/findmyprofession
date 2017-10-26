@@ -1,0 +1,29 @@
+{
+  "plugins": [
+    {
+      "removeTitle": true
+    },
+    {
+      "removeRasterImages": true
+    },
+    {
+      "sortAttrs": true
+    },
+    {
+      "transformsWithOnePath": false
+    },
+    {
+      "removeDimensions": true
+    },
+    {
+      "removeAttrs": {
+        "attrs": [
+          "class"
+        ]
+      }
+    },
+    {
+      "removeStyleElement": true
+    }
+  ]
+}

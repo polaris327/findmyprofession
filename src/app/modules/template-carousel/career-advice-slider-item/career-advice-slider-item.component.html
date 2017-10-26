@@ -1,0 +1,16 @@
+<div class="slider-item">
+  <div class="slider-item-img" (mouseover)="toggleBox(true)" (mouseout)="toggleBox(false)">
+    <img [src]="item.image | uploads" [alt]="item.image_alt || item.title || 'Image alt'" (click)="openArticle($event, item.url)">
+  </div>
+  <fmp-like-icon-component
+    [isLiked]="item.liked"
+    (onToggle)="toggleLike($event)"
+    (mouseover)="toggleBox(true)">
+  </fmp-like-icon-component>
+  <div class="title-link" [ngStyle]="{ opacity: showBox ? '1': '0' }" (mouseover)="toggleBox(true)" (mouseout)="toggleBox(false)">
+    <span (click)="openArticle($event, item.url)">{{item.title}}</span>
+    <a class="btn btn-primary"
+      [routerLink]="['/career-advice', item.url]"
+      (click)="handleRouterClick($event, item.url)">Read On</a>
+  </div>
+</div>

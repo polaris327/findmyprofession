@@ -1,0 +1,18 @@
+<p>Add more information to stand out from the crowd! (optional)</p>
+
+<div class="progress-holder">
+  <div class="progress">
+    <div class="progress-bar"
+         [ngStyle]="{ width: (progress?.value || 0) + '%' }">
+    </div>
+  </div>
+  <p>{{(progress.value || 0) + '%'}}</p>
+</div>
+
+<div class="tasks-list-holder">
+  <ul class="tasks-list">
+    <li *ngFor="let task of tasks">
+    <a class="link link-line-remove" (click)="openTask(task.field)">{{task.title}}</a>
+    </li>
+  </ul>
+</div>

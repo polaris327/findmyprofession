@@ -1,0 +1,131 @@
+@import '../../styles/custom/variables';
+
+.testimonials-page {
+  padding: 43px 10px 0;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  @media (min-width: $point) {
+    padding: 157px 10px 0;
+  }
+  @media (min-width: 1120px) {
+    padding: 157px 0 0;
+  }
+
+  .title-description {
+    margin-bottom: 35px;
+
+    @media (min-width: $point) {
+      margin-bottom: 67px;
+    }
+  }
+
+  .chat {
+    li {
+      margin-bottom: 30px;
+
+      @media (min-width: $point) {
+        margin-bottom: 50px;
+        display: flex;
+      }
+
+      &:nth-child(even) {
+        .photo-name {
+          order: 1;
+          @media (min-width: $point) {
+            margin: 0 25px 0 39px;
+          }
+        }
+      }
+    }
+
+    .photo-name {
+      text-align: center;
+      height: auto;
+      width: 30%;
+      max-width: 160px;
+      margin-bottom: 9px;
+
+      @media (min-width: $point) {
+        width: 100%;
+      }
+
+      @media (min-width: $point) {
+        margin: 0 39px 0 25px;
+      }
+
+      p {
+        font-size: 0.889rem;
+        font-weight: 500;
+
+        @media (min-width: $point) {
+          font-size: 1.222rem;
+        }
+      }
+    }
+
+    .feedback {
+      background: $light;
+      padding: 25px 15px;
+      font-size: 0.889rem;
+      position: relative;
+      flex: 1;
+
+      @media (min-width: $point) {
+        font-size: 1rem;
+        padding: 35px 30px;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: {
+          style: solid;
+          width: 13px;
+          color: transparent transparent $light transparent;
+        }
+
+        @media (min-width: $point) {
+          border-width: 0;
+        }
+      }
+
+      p {
+        font-size: 0.889rem;
+        font-weight: 500;
+
+        @media (min-width: $point) {
+          font-size: 1.222rem;
+        }
+      }
+
+      .help-with {
+        font-weight: 500;
+        margin-bottom: 8px;
+
+        @media (min-width: $point) {
+          margin-bottom: 27px;
+        }
+
+        span {
+          color: $brand-primary;
+        }
+      }
+
+      .text-content {
+        margin-bottom: 7px;
+        padding: 0;
+
+        @media (min-width: $point) {
+          margin-bottom: 35px;
+        }
+      }
+    }
+  }
+}

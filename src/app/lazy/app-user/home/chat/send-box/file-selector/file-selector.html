@@ -1,0 +1,17 @@
+<button type="button"
+        class="btn btn-secondary btn-icon-square"
+        (click)="attachFile()"
+        [disabled]="isDisabled">
+  <span>
+    <svg width="26" height="26" *ngIf="!isSelected">
+      <use xlink:href="../../../../../../../assets/images/sprite.svg#attachment"></use>
+    </svg>
+    <svg width="26" height="26" *ngIf="isSelected">
+      <use xlink:href="../../../../../../../assets/images/sprite.svg#trash"></use>
+    </svg>
+  </span>
+</button>
+<input #fileSelector type="file"
+       [attr.accept]="acceptFormats"
+       (change)="fileSelected($event)"
+       style="visibility: hidden">

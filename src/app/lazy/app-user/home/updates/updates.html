@@ -1,0 +1,65 @@
+<h2>Updates</h2>
+<div class="tally-added-day">
+  <span *ngIf="added_days != 0" [ngClass]="{'green-title': added_days >=1 && added_days <= 3,'yg-title': added_days >=4 && added_days <= 6, 'red-title': added_days >= 7}">{{added_days}} days since you added jobs</span>
+</div>
+<ul class="updates" *ngIf="updates">
+  <li *ngIf="!updates.profile_complete">
+    <svg  width="22" height="22" class="updates-icon">
+      <use xlink:href="../../../../../assets/images/sprite.svg#account"></use>
+    </svg>
+    <span>
+      <a class="link link-line-remove"
+        [routerLink]="['/my-profile']"
+        [queryParams]="{tab: 'profile-accordion-1'}">
+        Update Your Profile
+      </a>
+    </span>
+  </li>
+
+  <li *ngIf="!updates.resume_uploaded">
+    <svg  width="17" height="25" class="updates-icon">
+      <use xlink:href="../../../../../assets/images/sprite.svg#updates-profile"></use>
+    </svg>
+    <span>
+      <a class="link link-line-remove"
+        [routerLink]="['/my-profile']"
+        [queryParams]="{tab: 'profile-accordion-5'}">
+        Upload Your Resume
+      </a>
+    </span>
+  </li>
+
+  <li *ngIf="!updates.schedule_call">
+    <svg  width="21" height="21" class="updates-icon">
+      <use xlink:href="../../../../../assets/images/sprite.svg#updates-call"></use>
+    </svg>
+    <a class="link link-line-remove" [routerLink]="['/my-schedule']">Schedule a Call</a>
+  </li>
+
+  <li *ngIf="updates.jobs">
+    <svg  width="27" height="21" class="updates-icon">
+      <use xlink:href="../../../../../assets/images/sprite.svg#updates-jobs"></use>
+    </svg>
+    <a class="link link-line-remove" [routerLink]="['/my-jobs']" [queryParams]="{category: 'liked',  page: 1, filter: 'pending'}">
+      {{updates.jobs.pending}} Job<span *ngIf="updates.jobs.pending !== 1">s</span> Pending Approval
+    </a>
+  </li>
+
+  <li *ngIf="updates.jobs">
+    <svg  width="27" height="21" class="updates-icon">
+      <use xlink:href="../../../../../assets/images/sprite.svg#updates-submit"></use>
+    </svg>
+    <a class="link link-line-remove" [routerLink]="['/my-jobs']" [queryParams]="{category: 'applied',  page: 1, filter: 'applied'}">
+      {{updates.jobs.applied}} Job Application<span *ngIf="updates.jobs.applied !== 1">s</span> Submitted
+    </a>
+  </li>
+
+  <li *ngIf="updates.jobs">
+    <svg  width="25" height="25" class="updates-icon">
+      <use xlink:href="../../../../../assets/images/sprite.svg#clock"></use>
+    </svg>
+    <a class="link link-line-remove" [routerLink]="['/my-jobs']" [queryParams]="{category: 'liked',  page: 1, filter: 'need-info'}">
+      {{updates.jobs.info}} Job<span *ngIf="updates.jobs.info !== 1">s</span> Need<span *ngIf="updates.jobs.info === 1">s</span> Info
+    </a>
+  </li>
+</ul>

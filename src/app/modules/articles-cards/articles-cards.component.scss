@@ -1,0 +1,35 @@
+@import '../../styles/custom/variables';
+
+.articles-card-holder {
+  padding: 0 10px;
+
+  .articles-card-list {
+    margin-bottom: 30px;
+
+    @media (min-width: 620px) {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -6px 30px;
+    }
+
+    li {
+      margin-bottom: 20px;
+
+      @media (min-width: 620px) {
+        width: 50%;
+        padding: 0 6px;
+
+        &:last-of-type {
+          display: none;
+        }
+      }
+      @media (min-width: 920px) {
+        width: 33.33%;
+
+        &:last-of-type {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,223 @@
+@import '../../styles/custom/variables';
+
+.blog-article {
+  @media (min-width: $point) {
+    margin-bottom: 80px;
+  }
+
+  .box-light-content {
+    padding: 0;
+  }
+
+  .article-bg-content {
+    position: relative;
+    @media (min-width: $point) {
+      padding-top: 44px;
+      min-width: 700px !important;
+      max-width: 875px ;
+      margin-left: 155px;
+      width: 51%;
+    }
+    @media (min-width: 1070px) {
+      width: 53%;
+    }
+    @media (min-width: 1110px) {
+      width: 55%;
+    }
+    @media (min-width: 1170px) {
+      width: 57%;
+    }
+    @media (min-width: 1230px) {
+      width: 59%;
+    }
+    @media (min-width: 1300px) {
+      width: 61%;
+    }
+    @media (min-width: 1370px) {
+      width: 63%;
+    }
+    @media (min-width: 1430px) {
+      margin-left: 200px;
+    }
+    @media (min-width: 1470px) {
+      margin-left: 220px;
+    }
+    @media (min-width: 1515px) {
+      margin-left: 240px;
+    }
+    @media (min-width: 1550px) {
+      margin-left: 270px;
+    }
+    @media (min-width: 1600px) {
+      margin-left: 300px;
+    }
+    @media (min-width: $point-lg) {
+      margin: 0 auto;
+    }
+    @media (max-height: 768px) {
+      padding-top: 5px;
+    }
+  }
+
+  .article-img {
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    img {
+      position: absolute;
+      //width: 100%;
+      left: 0;
+      top: 0;
+      @media (min-width: $point) {
+        width: 725px !important;       
+        margin-bottom: 46px;
+      }
+      @media (max-width: $point) {
+        width: 95vw;
+      }
+      @media (min-height: $point-md) {
+        width: 95vw;       
+      }
+      @media (max-height: 768px) {
+        width: 95vw;       
+      }  
+    }
+    
+    @media (min-width: $point) {
+      width: 725px;
+      height: 375px !important;
+      margin: 0 auto;
+      margin-bottom: 46px;
+    }
+    @media (max-width: $point) {
+      width: 95vw;
+      height: 450px !important;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+    @media (min-height: $point-md) {
+      width: 95vw;
+      height: 450px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+    @media (max-height: 768px) {
+      //width: 95vw;
+      height: 200px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+    @media (max-width: 420px) {
+      width: 95vw;
+      height: 200px !important;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+    @media (min-height: 768px) { 
+      margin-top: 5px;
+    }
+  }
+
+  .article-content {
+    padding: 0 10px;
+
+    @media (min-width: $point) {
+      padding: 0 10px;
+      margin-bottom: 80px;
+    }
+
+    .head-main {
+      text-align: center !important;
+      margin-bottom: 40px !important;
+      @media (min-width: $point) {
+        width: 700px !important;
+        margin: 0 auto;
+        padding: 0;
+      }
+    }
+
+    .text-content {
+      @media (min-width: $point) {
+        width: 650px;
+        margin: 0 auto;
+        padding: 0;
+      }
+      h2 {
+        font-size: 1.111rem;
+        @media (min-width: $point) {
+          font-size: 1.444rem;
+        }
+      }
+      h3 {
+        font-size: .995rem;
+        @media (min-width: $point) {
+          font-size: 1.222rem;
+        }
+      }
+      h4, h5, h5, h6 {
+        font-size: .889rem;
+        @media (min-width: $point) {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .author-top-articles {
+
+    @media (min-width: $point) {
+      width: 309px;
+      position: absolute;
+      left: calc(100% + 25px);
+      top: 44px;
+      right: 0;
+    }
+  }
+
+  .author-top-articles-aside {
+    width: 309px;
+    margin: 0 auto;
+
+    @media (max-width: $point - 1px) {
+      position: static !important;
+    }
+  }
+
+  .author {
+    width: 180px;
+    height: auto;
+    text-align: center;
+
+    .info {
+      font-size: 16px;
+    }
+
+    img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+    }
+  }
+
+  .like-sharing {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+
+    @media (min-width: $point) {
+      width: 80px;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      right: calc(100% + 35px) !important;
+      top: 44px;
+    }
+  }
+
+  .like-sharing-items {
+    @media (max-width: $point - 1px) {
+      position: static !important;
+      display: flex;
+    }
+  }
+}

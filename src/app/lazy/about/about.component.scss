@@ -1,0 +1,33 @@
+@import '../../styles/custom/variables';
+
+.about-content {
+  padding-bottom: 0;
+
+  .text-content {
+    margin-bottom: 20px;
+    @media (min-width: $point) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .stuff,
+  .stuff-lg {
+    height: auto;
+    width: 100%;
+  }
+
+  .stuff {
+    @media (min-width: $point) {
+      display: none;
+    }
+  }
+
+  .stuff-lg {
+    max-width: 1290px;
+    display: none;
+
+    @media (min-width: $point) {
+      display: block;
+    }
+  }
+}

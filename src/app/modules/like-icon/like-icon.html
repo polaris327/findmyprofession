@@ -1,0 +1,10 @@
+<div class="like-container" [ngClass]="{'link-circle': isArticle}" (click)="toggleLike($event)">
+  <span>
+    <svg class="dislike" [ngStyle]="{ 'opacity': isLiked ? '0' : '1' }">
+      <use xlink:href="../../../assets/images/sprite.svg#dislike"></use>
+    </svg>
+    <svg class="like" [ngStyle]="{ 'opacity': isLiked ? '1' : '0' }">
+      <use xlink:href="../../../assets/images/sprite.svg#like"></use>
+    </svg>
+  </span>
+</div>

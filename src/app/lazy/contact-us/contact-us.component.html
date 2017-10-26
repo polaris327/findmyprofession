@@ -1,0 +1,88 @@
+<div class="container bg-box-holder">
+  <div class="bg-box" [ngStyle]="{'background-image': 'url(src/assets/images/blue-bg/contact-us.jpg)'}"></div>
+  <article class="box-light-holder contact-content">
+    <div class="block block-left">
+      <div class="title-description">
+        <h2 *ngIf="content?.form_title" [innerHTML]="content?.form_title"></h2>
+        <div class="text-content" *ngIf="content?.form_content" [innerHTML]="content?.form_content"></div>
+      </div>
+      <form [formGroup]="modelForm" (submit)="sendForm()">
+        <div class="input-group">
+          <p [ngClass]="{'error-show': fm.name}">
+
+            <fmp-error *ngIf="fm.name" class="error-field" [text]="fm.name" (onErrorClick)="closeError('name')"></fmp-error>
+
+            <input type="text"
+                   class="form-control-border-light"
+                   formControlName="name"
+                   placeholder="Name">
+          </p>
+          <p [ngClass]="{'error-show': fm.email}">
+
+            <fmp-error *ngIf="fm.email" class="error-field" [text]="fm.email" (onErrorClick)="closeError('email')"></fmp-error>
+
+            <input type="text"
+                   class="form-control-border-light"
+                   formControlName="email"
+                   placeholder="Email">
+          </p>
+        </div>
+        <p [ngClass]="{'error-show': fm.message}">
+
+          <fmp-error *ngIf="fm.message" class="error-field" [text]="fm.message" (onErrorClick)="closeError('message')"></fmp-error>
+
+          <textarea rows="4"
+                    formControlName="message"
+                    class="form-control-border-light"
+                    placeholder="Message">
+          </textarea>
+        </p>
+
+        <p class="captcha" [ngClass]="{'error-show': fm.captcha}" (onErrorClick)="closeError('captcha')">
+
+          <fmp-error *ngIf="fm.captcha" class="error-field" [text]="fm.captcha"></fmp-error>
+
+          <span #recaptcha></span>
+
+        </p>
+
+        <button type="submit"
+                class="btn btn-full btn-primary btn-border-anim"
+                [disabled]="isRequestSending">
+          <span *ngIf="!isRequestSending">Submit</span>
+          <span *ngIf="isRequestSending">Sending</span>
+        </button>
+      </form>
+    </div>
+    <div class="block block-right">
+      <div class="contact-title">
+        <h2>LET’S GET SOCIAL</h2>
+      </div>
+    
+      <ul class="contact-social-links">
+        <li>
+          <a [href]="facebook" target="_blank">
+            <svg width="30" height="40">
+              <use xlink:href="../../../assets/images/sprite.svg#facebook"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a [href]="twitter" target="_blank">
+            <svg width="30" height="30">
+              <use xlink:href="../../../assets/images/sprite.svg#twitter"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a [href]="likedIn" target="_blank">
+            <svg width="30" height="30">
+              <use xlink:href="../../../assets/images/sprite.svg#linkedin"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </article>
+</div>

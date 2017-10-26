@@ -1,0 +1,8 @@
+{
+  "watch": [
+    "dist/*server.js",
+    "src/index.html",
+    "src/"
+  ],
+  "ext": "js html"
+}

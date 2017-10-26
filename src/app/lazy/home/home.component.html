@@ -1,0 +1,69 @@
+<div class="home-container">
+
+  <div class="box-blue-holder" *ngIf="content">
+    <div class="box-blue-bg"></div>
+    <div class="container-md">
+      <div class="box-blue-text" *ngIf="componentLoaded">
+        <h2 class="h1" *ngIf="content?.page_header_title" [innerHTML]="content?.page_header_title"></h2>
+        <p *ngIf="content?.page_header_description" [innerHTML]="content?.page_header_description"></p>
+        <button type="button"
+          class="btn btn-md btn-border-anim"
+          (click)="openCareerFinder()">
+          <span>Get Started</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container circle-icon-line-holder" *ngIf="content">
+
+    <fmp-circle-icon-line class="circle-icon-line-home" [icon]="'career-finder-main'"></fmp-circle-icon-line>
+
+    <div class="career-finder-slider-holder">
+      <career-finder-slider-component
+        class="career-finder-slider-component container-md"
+        *ngIf="content"
+        [title]="content.slider_header_title"
+        [description]="content.slider_header_description"
+        [percent]="content.slider_cost"
+        [footer]="content.slider_footer_text"
+        [packagesTitle]="content?.packages_title"
+        [packages]="content?.packages_list"
+        [serviceData]="content"
+        (onGetStarted)="openCalendly()">
+      </career-finder-slider-component>
+    </div>
+  </div>
+  <fmp-home-description-component
+    *ngIf="content"
+    class="home-description-component container"
+    [componentData]="content">
+  </fmp-home-description-component>
+
+  <fmp-job-opportunities-component
+    *ngIf="content"
+    [title]="content.opportunities_title"
+    [description]="content.opportunities_description"
+    class="job-opportunities-component container-md">
+  </fmp-job-opportunities-component>
+
+  <fmp-free-consultation-calendly-component
+    *ngIf="content"
+    [content]="content"
+    class="calendly-free-consultation">
+  </fmp-free-consultation-calendly-component>
+
+  <div class="container-md">
+
+    <fmp-plans-component
+      *ngIf="content?.other_services"
+      class="plans-component"
+      [title]="content.other_services_title"
+      [description]="content.other_services_description"
+      [plans]="content.other_services"
+      [currentPlanTitle]="''"
+      [isOpen]="false">
+    </fmp-plans-component>
+
+  </div>
+</div>

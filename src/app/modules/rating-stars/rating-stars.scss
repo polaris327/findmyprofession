@@ -1,0 +1,8 @@
+@import '../../styles/custom/variables';
+
+.rating {
+  color: $brand-secondary;
+  svg {
+    margin-left: 2px;
+  }
+}

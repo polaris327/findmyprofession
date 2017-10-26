@@ -1,0 +1,12 @@
+@import '../../styles/custom/variables';
+
+.custom-modal {
+  &.alert-modal {
+    max-width: 640px;
+    min-height: 400px;
+
+    @media (min-width: $point) {
+      max-width: 850px;
+    }
+  }
+}

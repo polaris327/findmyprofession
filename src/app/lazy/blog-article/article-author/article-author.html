@@ -1,0 +1,8 @@
+<div class="article-author">
+  <img [src]="author?.avatar | uploads" [alt]="author?.avatar_alt || author?.name || 'Author alt name'" (error)="authorAvatarNotLoaded($event)">
+  <div class="author-text">
+    <p class="name" [innerHTML]="author?.name || ''"></p>
+    <p class="info" [innerHTML]="author?.description || ''"></p>
+    <a [href]="author?.link" target="_blank">More from this author</a>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="top-articles">
+  <h3>Top Articles</h3>
+  <ul class="top-list">
+    <li *ngFor="let article of articles;let i=index" (click)="openArticle($event, article.url)">
+      <span>{{i+1}}</span>
+      <span [innerHTML]="article.title || ''"></span>
+    </li>
+  </ul>
+</div>

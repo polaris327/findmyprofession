@@ -1,0 +1,115 @@
+<div class="container box-light-reg checkout-page">
+  <div class="box-light-content">
+    <h1 [ngClass]="{ 'log-in': isAuth }">Checkout Page</h1>
+
+    <div class="checkout-content">
+
+      <div class="payment-container">
+
+        <div class="checkout">
+
+          <div *ngIf="isAuth; else isUnAuth">
+            <p class="user-title">
+              <span>Dear, {{user.full_name}}</span>
+              <span>Please fill the information below</span>
+            </p>
+          </div>
+
+          <ng-template #isUnAuth>
+
+            <div class="sign-in-holder" *ngIf="signInState; else signUpState">
+
+              <h2 class="title">Sign In</h2>
+
+              <fmp-checkout-sign-in-component
+                [isGlobalValidate]="isGlobalValidate"
+                (onModelStateChanged)="authModelStateChanged($event)"
+                (onModelChanged)="authModelChanged($event)">
+              </fmp-checkout-sign-in-component>
+
+              <p class="left">
+                Not a Member Yet?
+                <a (click)="changeState(false)" (touchstart)="changeState(false)" class="link">Sign Up</a>
+              </p>
+
+            </div>
+
+            <ng-template #signUpState>
+
+              <div class="sign-up-holder">
+                <h2 class="title">Sign Up</h2>
+
+                <fmp-sign-up-component
+                  [getModel]="getModelTime"
+                  [isGlobalValidate]="isGlobalValidate"
+                  (onStatusChanged)="authModelStateChanged($event)"
+                  (onModelChanged)="authModelChanged($event)">
+                </fmp-sign-up-component>
+
+                <p class="left">
+                  Already a Member?
+                  <a (click)="changeState(true)" (touchstart)="changeState(true)" class="link">Sign In</a>
+                </p>
+              </div>
+
+            </ng-template>
+
+          </ng-template>
+
+        </div>
+
+        <fmp-payment-info-component
+          [isGlobalValidate]="isGlobalValidate"
+          [resetTime]="paymentFormReset"
+          (onModelStateChanged)="paymentModelStateChanged($event)"
+          (onModelChanged)="paymentModelChanged($event)">
+        </fmp-payment-info-component>
+
+        <fmp-promo-code-component class="promo-holder"></fmp-promo-code-component>
+
+      </div>
+
+      <fmp-checkout-additional-packages
+        class="packages-container"
+        [packages]="basket"
+        [price]="basketPrice"
+        (onPackageRemove)="removeItem($event)">
+      </fmp-checkout-additional-packages>
+
+      <div class="confirm-container">
+
+        <form [formGroup]="modelForm">
+          <p class="form-group-choice">
+            <label class="custom-choice custom-choice-blue choice-serif">
+              <input type="checkbox" formControlName="agreement">
+              <span class="indicator">
+                <svg>
+                  <use xlink:href="../../../assets/images/sprite-anim.svg#checkbox"></use>
+                </svg>
+              </span>
+              <span>
+                I agree to the FMP <fmp-custom-link [linkArray]="['/terms-of-use']" [title]="'Terms and Privacy Policy'"></fmp-custom-link>
+              </span>
+            </label>
+          </p>
+        </form>
+
+        <div class="form-error-center" [ngClass]="{'error-show': errorMessage}">
+
+          <fmp-error class="error-center" [text]="errorMessage" (onErrorClick)="closeError()"></fmp-error>
+
+        </div>
+
+        <button type="button"
+                class="btn btn-primary btn-border-anim"
+                (click)="sendRequest()"
+                [disabled]="isSendBtnDisabled()">
+          <span *ngIf="!isRequestSending">Submit Payment</span>
+          <span *ngIf="isRequestSending">Sending</span>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>

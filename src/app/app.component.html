@@ -1,0 +1,31 @@
+<header class="main-header"
+  *ngIf="isHeaderShow"
+  [ngClass]="{
+  'main-header-reg' : authState,
+  'main-header-unreg' : !authState ,
+  'main-header-unreg-lightest': isScrolled || headerClasses['main-header-unreg-lightest'],
+  'main-header-unreg-blue': headerClasses['main-header-unreg-blue']
+  }">
+
+  <fmp-header-component
+    [isAppLoading]="!isComponentInited"
+    [isScrolled]="isScrolled"
+    [scrolledStop]="scrolledToTop"
+    [isHomeUrl]="isHomeUrl">
+  </fmp-header-component>
+
+</header>
+<h1 *ngIf="pageH1Title" class="sr-only" [innerHTML]="pageH1Title"></h1>
+<main
+  [ngClass]="{
+  'main-p0': mainClasses['main-p0'],
+  'main-pb0': mainClasses['main-pb0'],
+  'main-blue': mainClasses['main-blue']
+  }">
+  <router-outlet></router-outlet>
+</main>
+<footer class="main-footer" *ngIf="isFooterShow">
+  <fmp-footer-component class="container-md"></fmp-footer-component>
+</footer>
+
+<fmp-basket-cart-component *ngIf="showBasket"></fmp-basket-cart-component>

@@ -1,0 +1,132 @@
+<form class="box-outline-blue" [formGroup]="modelForm" *ngIf="modelForm && componentInited">
+
+  <fmp-profile-tab-settings-component
+    [isEditShow]="mode === 1"
+    (onEdit)="onEdit()"
+    (onClose)="removeItem()">
+  </fmp-profile-tab-settings-component>
+
+  <p class="form-group">
+    <label>
+      <span>Employer:</span>
+      <input class="form-control-border-light"
+             formControlName="employer"
+             placeholder="Employer">
+    </label>
+  </p>
+
+  <p class="form-group">
+    <label>
+      <span>Job Title:</span>
+      <input class="form-control-border-light"
+             formControlName="job_title"
+             placeholder="Job Title">
+    </label>
+  </p>
+
+  <p class="form-group">
+    <label class="date-picker-custom">
+      <span>Start Date:</span>
+      <p-calendar
+        #startDatePicker
+        [styleClass]="'form-control-border-light'"
+        formControlName="start_date"
+        [dateFormat]="'mm/dd/yy'"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        [yearRange]="birthDateYearsRange"
+        [defaultDate]="defaultDate"
+        [maxDate]="maxDate">
+      </p-calendar>
+      <button type="button"
+        class="btn btn-primary"
+        (click)="toggleDatePicker($event, 'start')"
+        [disabled]="modelForm.get('start_date').disabled">
+        <span>
+          <svg width="30" height="30">
+            <use xlink:href="../../../../../../../assets/images/sprite.svg#calendar"></use>
+          </svg>
+        </span>
+      </button>
+    </label>
+  </p>
+
+  <p class="form-group">
+    <label class="date-picker-custom">
+      <span>End Date:</span>
+      <p-calendar
+        #endDatePicker
+        [styleClass]="'form-control-border-light'"
+        formControlName="end_date"
+        [dateFormat]="'mm/dd/yy'"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        [yearRange]="birthDateYearsRange"
+        [placeholder]="endDatePlaceholder"
+        [defaultDate]="defaultDate"
+        [maxDate]="maxDate">
+      </p-calendar>
+      <button type="button"
+        class="btn btn-primary"
+        (click)="toggleDatePicker($event, 'end')"
+        [disabled]="modelForm.get('end_date').disabled">
+        <span>
+          <svg width="30" height="30">
+            <use xlink:href="../../../../../../../assets/images/sprite.svg#calendar"></use>
+          </svg>
+        </span>
+      </button>
+    </label>
+  </p>
+
+  <div class="form-group form-group-content choices-holder">
+    <span class="title-fixed title-fixed-choice"></span>
+    <div class="form-group-inline form-group-quarter">
+      <p class="form-group-choice">
+        <label class="custom-choice custom-choice-blue" [ngStyle]="{ 'cursor': modelForm.get('start_date').disabled ? 'not-allowed': 'pointer' }">
+          <input type="checkbox" formControlName="currentlyWorkHere" (change)="currentlyWorkHereChanged($event.target.checked)">
+          <span class="indicator" [ngStyle]="{ 'pointer-events': modelForm.get('start_date').disabled ? 'none': '' }">
+            <svg>
+              <use xlink:href="../../../../../../../assets/images/sprite-anim.svg#checkbox"></use>
+            </svg>
+          </span>
+          I currently work here
+        </label>
+      </p>
+    </div>
+  </div>
+
+  <p class="form-group">
+    <label>
+      <span>Salary Earned:</span>
+      <input type="number"
+             min="0"
+             class="form-control-border-light"
+             formControlName="salary_earned"
+             placeholder="Salary Earned">
+    </label>
+  </p>
+
+  <p class="form-group">
+    <label>
+      <span>Reason for Leaving:</span>
+      <input class="form-control-border-light"
+             formControlName="reason_for_leaving"
+             placeholder="Reason for Leaving">
+    </label>
+  </p>
+
+  <div *ngIf="mode !== 1" class="form-error-center" [ngClass]="{'error-show': errorMessage}">
+    <fmp-error
+      *ngIf="errorMessage"
+      class="error-center"
+      [text]="errorMessage" (onErrorClick)="closeError()">
+    </fmp-error>
+  </div>
+
+  <div class="btn-holder" *ngIf="mode !== 1">
+    <button type="button" class="btn btn-outline-primary" (click)="submitItem()">
+      <span>Save</span>
+    </button>
+  </div>
+</form>

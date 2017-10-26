@@ -1,0 +1,21 @@
+<div class="price-box-content">
+  <div class="price-value">
+    <img width="55" height="70" src="../../../../../../assets/images/logo-icon-comp.png" alt="logo">
+    <p class="price">
+      <span *ngIf="!isInBasket">$ {{tabData?.price || 0}}</span>
+      <span *ngIf="isInBasket">Already in basket</span>
+    </p>
+    <button type="button" class="btn btn-md btn-border-anim" (click)="buttonClicked()">
+      <span *ngIf="!isInBasket">Buy</span>
+      <span *ngIf="isInBasket">Checkout</span>
+    </button>
+  </div>
+  <div class="price-text">
+    <p class="prices" *ngIf="tabData?.description" [innerHTML]="tabData?.description"></p>
+    <ul class="list-disc">
+      <li *ngFor="let item of tabData?.list">
+        <span *ngIf="item" [innerHTML]="item"></span>
+      </li>
+    </ul>
+  </div>
+</div>

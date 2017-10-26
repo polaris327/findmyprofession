@@ -1,0 +1,14 @@
+<div class="articles-card-holder">
+  <ul class="articles-card-list">
+    <li *ngFor="let article of articles;let i=index">
+
+      <fmp-article-preview-component
+        [articleCard]="article"
+        [isAuth]="isAuth"
+        (onArticleLike)="articleLiked($event, article?.id, i)"
+        (onArticleOpen)="openArticle($event)">
+      </fmp-article-preview-component>
+
+    </li>
+  </ul>
+</div>

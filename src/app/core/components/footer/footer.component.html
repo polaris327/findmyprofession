@@ -1,0 +1,74 @@
+<div class="footer-content">
+  <div class="logo-lists">
+    <a class="logo logo-footer" [routerLink]="['/']"></a>
+    <ul class="list-info">
+      <li>
+        <h6>Jobseekers</h6>
+        <ul>
+          <li>
+            <fmp-custom-link
+              [title]="'Services'"
+              [linkArray]="['career-finder']">
+            </fmp-custom-link>
+          </li>
+          <li>
+            <a [routerLink]="['/career-advice']" (click)="openCareerAdvice($event)" (touchstart)="openCareerAdvice($event)">Career Advice</a>
+          </li>
+          <li>
+            <fmp-custom-link
+              [title]="'FAQs'"
+              [linkArray]="['/faq']">
+            </fmp-custom-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h6>Company</h6>
+        <ul>
+          <li>
+            <fmp-custom-link
+              [title]="'About Us'"
+              [linkArray]="['/about-us']">
+            </fmp-custom-link>
+          </li>
+          <li>
+            <fmp-custom-link
+              [title]="'Testimonials'"
+              [linkArray]="['/testimonials']">
+            </fmp-custom-link>
+          </li>
+          <li>
+            <fmp-custom-link
+              [title]="'Contact Us'"
+              [linkArray]="['/contact-us']">
+            </fmp-custom-link>
+          </li>
+          <li>
+            <fmp-custom-link
+              [title]="'Terms of Use'"
+              [linkArray]="['/terms-of-use']">
+            </fmp-custom-link>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h6>Contact us</h6>
+        <ul class="list-info-contacts">
+          <li>
+            <a [href]="'mailto:help@findmyprofession.com'">
+              <svg width="15" height="10">
+                <use xlink:href="../../../../assets/images/sprite.svg#mail"></use>
+              </svg>
+              Email Us
+            </a>
+          </li>
+        </ul>
+        <fmp-social-links-component></fmp-social-links-component>
+      </li>
+    </ul>
+  </div>
+  <ul class="list-rights">
+    <li>Copyright 2016-2017</li>
+    <li>All Rights Reserved</li>
+  </ul>
+</div>

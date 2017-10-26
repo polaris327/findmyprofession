@@ -1,0 +1,62 @@
+@import '../../../styles/custom/variables';
+
+.top-articles {
+  display: none;
+
+  @media (min-width: $point) {
+    display: block;
+  }
+
+  h3 {
+    margin-bottom: 44px;
+    text-align: center;
+
+    @media (min-width: $point) {
+      margin-bottom: 21px;
+    }
+
+    @media (max-height: 768px) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .top-list {
+    li {
+      padding: 20px 32px 17px 83px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      transition: .3s;
+
+      span {
+        &:first-of-type {
+          position: absolute;
+          left: 25px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 2rem;
+          color: $brand-secondary;
+        }
+        &:last-of-type {
+          font-size: 0.889rem;
+          font-weight: 500;
+        }
+      }
+
+      &:hover,
+      &:active {
+        background: $brand-secondary;
+
+        span {
+          color: $light;
+        }
+      }
+
+      @media (max-height: 768px) {
+        padding-top: 7px;
+        padding-bottom: 7px;
+      }
+    }
+  }
+}

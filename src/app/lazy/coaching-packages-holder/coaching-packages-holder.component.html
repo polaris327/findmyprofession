@@ -1,0 +1,26 @@
+<div class="container bg-box-holder coaching-service-holder">
+  <div class="bg-box" [ngStyle]="{'background-image': 'url(src/assets/images/blue-bg/' + backImage + '.jpg)'}"></div>
+  <nav class="sub-nav-mobile sub-nav-fixed" [ngClass]="{'show-nav': subNavState}">
+    <ul>
+      <li *ngFor="let link of coachingServices" (click)="packageSelected(link)">
+        <a routerLinkActive="active"
+          [routerLink]="['/'+link.link]"
+          (click)="clickLink($event, link)"
+          (touchstart)="touchLink($event, link)">{{link.name}}</a>
+      </li>
+    </ul>
+    <p class="selected-item"
+       [ngClass]="{'hide-selected-item': !selectedPackage}"
+       (click)="toggleSubNav()">
+      {{selectedPackage}}
+    </p>
+  </nav>
+  <nav class="sub-nav-desktop">
+    <ul>
+      <li *ngFor="let link of coachingServices" (click)="selectBackImage(link.link, i)">
+        <a routerLinkActive="active" [routerLink]="['/'+link.link]">{{link.name}}</a>
+      </li>
+    </ul>
+  </nav>
+  <router-outlet class="service-content" [ngClass]="{'move-down': subNavState}"></router-outlet>
+</div>

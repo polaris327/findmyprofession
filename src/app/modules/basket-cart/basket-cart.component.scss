@@ -1,0 +1,68 @@
+@import '../../styles/custom/variables';
+
+.basket-cart {
+  position: fixed;
+  top: 200px;
+  right: 0;
+  z-index: 10000;
+  cursor: pointer;
+  background: $brand-primary;
+  border-radius: 40px 0 0 40px;
+  width: 90px;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 15px;
+  border: {
+    style: solid;
+    color: #14a4d0;
+    width: 0;
+    bottom-width: 5px;
+  }
+
+  svg {
+    pointer-events: none;
+  }
+
+  @media (min-width: $point) {
+    top: 44%;
+    background: transparent;
+    border: none;
+    right: 50px;
+  }
+  @media (min-width: $point-lg) {
+    right: 10%;
+  }
+
+  .basket-mob {
+    @media (min-width: $point) {
+      display: none;
+    }
+  }
+
+  .basket-desk {
+    display: none;
+
+    @media (min-width: $point) {
+      display: block;
+    }
+
+    svg {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      &:last-of-type {
+        opacity: 0;
+        transition: .4s;
+      }
+    }
+
+    &:hover {
+      svg:last-of-type {
+        opacity: 1;
+      }
+    }
+  }
+}

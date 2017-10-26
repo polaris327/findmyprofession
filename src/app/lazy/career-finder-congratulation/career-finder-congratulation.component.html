@@ -1,0 +1,43 @@
+<article class="congratulation-page">
+  <div class="container-md" *ngIf="isComponentInited">
+    <header class="congratulations-header">
+      <div class="circle-icon">
+        <svg>
+          <use xlink:href="../../../assets/images/sprite2.svg#career-finder"></use>
+        </svg>
+      </div>
+      <div class="description">
+        <h2>Congratulations!</h2>
+        <p>You have been approved for our Career Finder Service</p>
+      </div>
+    </header>
+
+    <fmp-custom-range-component
+      [percent]="sliderPercent"
+      [currentValue]="careerFinderPrice"
+      (onCostChange)="careerFinderCostChanged($event)">
+    </fmp-custom-range-component>
+
+    <div class="packages-list-holder">
+      <h3 class="text-bold-sf">Add Additional Services <span>to Your Career Finder</span></h3>
+      <ul class="packages-list">
+        <li *ngFor="let service of packages">
+
+          <fmp-package-selector-component
+            [fmpPlan]="service"
+            [isSelected]="service.isSelected"
+            (onPackageSelect)="packageSelected($event)"
+            (onPackageTypeChanged)="packageTypeChanged($event)">
+          </fmp-package-selector-component>
+
+        </li>
+      </ul>
+      <button type="button"
+              class="btn btn-md btn-border-anim btn-center"
+              (click)="goToCheckout()">
+        <span>Checkout</span>
+      </button>
+    </div>
+
+  </div>
+</article>

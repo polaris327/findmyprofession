@@ -1,0 +1,84 @@
+@import '../../../../styles/custom/variables';
+
+.profile-progress {
+  font-size: 0.889rem;
+
+  @media (min-width: $point) {
+    font-size: 1rem;
+    margin-left: 5%;
+    max-width: 367px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  > p:first-of-type {
+    text-align: center;
+    margin-bottom: 23px;
+
+    @media (min-width: $point) {
+      margin-bottom: 24px;
+    }
+  }
+
+  .tasks-list-holder {
+    position: relative;
+  }
+
+  .tasks-list {
+    color: $brand-secondary-light;
+
+    @media (min-width: $point) {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    li {
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 12px;
+
+      &::before {
+        content: '';
+        border: {
+          style: solid;
+          color: transparent transparent transparent $brand-secondary-light;
+          width: 6px 12px;
+        }
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      a:not([href]):not([tabindex]) {
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.progress-holder {
+  display: block;
+  text-align: center;
+  margin-bottom: 16px;
+
+  @media (min-width: $point) {
+    margin-bottom: 50px;
+  }
+
+  .progress {
+    background-color: $blue-light;
+    border-radius: 10px;
+    height: 21px;
+
+    .progress-bar {
+      height: 21px;
+      background: $brand-secondary;
+    }
+  }
+
+  p {
+    font: 400 1.333rem $font-family-serif;
+  }
+}

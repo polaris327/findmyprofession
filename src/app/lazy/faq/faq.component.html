@@ -1,0 +1,16 @@
+<div class="container bg-box-holder">
+  <div class="bg-box" [ngStyle]="{'background-image': 'url(src/assets/images/blue-bg/faq.jpg)'}"></div>
+  <article class="box-light-holder faq-page">
+    <h1 *ngIf="pageData?.page_title" [innerHTML]="pageData?.page_title"></h1>
+    <ngb-accordion class="container-sm accordion" #acc="ngbAccordion" activeIds="ngb-panel-0">
+      <ngb-panel *ngFor="let question of pageData?.page_content;let i=index" [id]="'ngb-panel-'+i">
+        <ng-template ngbPanelTitle>
+          <span *ngIf="question.question" [innerHTML]="question.question"></span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <span *ngIf="question.answer" [innerHTML]="question.answer || 'Np answer'"></span>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  </article>
+</div>

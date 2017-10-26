@@ -1,0 +1,251 @@
+@import 'variables';
+
+.date-picker-custom {
+  position: relative;
+
+  .bg-faded {
+    background: $blue-light;
+  }
+
+  .pt-1 {
+    padding-top: 9px !important;
+  }
+
+  .text-info {
+    color: $brand-secondary !important;
+
+    &.font-italic {
+      font-style: normal;
+    }
+  }
+
+  .justify-content-between {
+    justify-content: space-around !important;
+    align-items: center;
+  }
+
+  ngb-datepicker-navigation-select {
+    display: flex !important;
+    justify-content: space-between;
+    width: 180px !important;
+    height: 35px;
+
+    select {
+      font-size: 1rem !important;
+      padding: 0 0 0 12px;
+      cursor: pointer;
+      width: 48%;
+    }
+  }
+
+  .ngb-dp-header {
+    height: 80px !important;
+    border-bottom: 1px solid $brand-secondary !important;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% - 1px) !important;
+    left: auto !important;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    float: none;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    width: 260px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid $brand-secondary;
+    border-radius: 0;
+  }
+
+  button[type="button"] {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 0.889rem;
+    cursor: pointer;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  select:not([size]):not([multiple]),
+  select[size="0"],
+  select[size="1"] {
+    background: $light;
+    border: 1px solid $brand-secondary;
+  }
+
+  .btn-link {
+    border: none;
+    background: none;
+
+    span {
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: relative;
+
+      &.ngb-dp-navigation-chevron {
+        &::before {
+          content: "";
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          border: {
+            style: solid;
+            width: 0 0 3px 3px !important;
+            color: $brand-secondary;
+          }
+          transition: .3s;
+          left: 50%;
+          top: 50%;
+          transform: translate(-25%, -50%) rotateZ(45deg);
+          margin: 0;
+        }
+
+        &.right::before {
+          transform: translate(-75%, -50%) rotateZ(45deg) scale(-1,-1);
+        }
+      }
+
+      &:hover,
+      &:active {
+        &::before {
+          border-color: $brand-primary;
+        }
+      }
+    }
+  }
+
+  .ngb-dp-day {
+    transition: .3s;
+
+    .bg-primary {
+      border-radius: 0;
+      transition: .3s;
+      background: $brand-secondary !important;
+    }
+
+    &:hover,
+    &:active {
+      color: $light;
+      background: $brand-primary !important;
+
+      .bg-primary {
+        background: $brand-primary !important;
+      }
+    }
+  }
+
+  .form-control-border-light:not(textarea) {
+    padding-right: 54px;
+  }
+
+  .btn.btn-primary {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 55px;
+    width: 55px;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+.ui-datepicker-title {
+  background-color: #edf6f9;
+  text-align: center;
+}
+
+.ui-datepicker-calendar {
+  text-align: center;
+  font-weight: 300;
+  font-size: 18px;
+
+  thead {
+
+    span {
+      display: block;
+      width: 36px;
+      height: 36px;
+      color: #08618d;
+      text-align: center;
+      line-height: 36px;
+      font-weight: normal;
+    }
+  }
+
+  tbody tr:first-of-type {
+    border-top: 1px solid #08618d;
+  }
+
+  td, th {
+    padding: 0;
+    border: none !important;
+  }
+
+}
+
+a.ui-state-default {
+  display: block;
+  height: 36px;
+  line-height: 36px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s, color .2s;
+
+  &:hover {
+    background-color: #1dbff0;
+    color: #fff;
+  }
+}
+
+.ui-datepicker-other-month {
+  a {
+    color: #e1e1e1;
+  }
+}
+
+.ui-datepicker-today {
+  a {
+    background-color: #08618d;
+    color: #fff;
+  }
+}
+
+.ui-calendar {
+  position: relative;
+  display: block;
+  height: 55px;
+
+  &.form-control-border-light {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
+    &:focus {
+      border: none;
+    }
+  }
+
+  input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
+    background-color: #edf6f9;
+    padding: 0 20px;
+    transition: border-color .3s;
+
+    &:focus {
+      border-color: #08618d;
+    }
+  }
+}

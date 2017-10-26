@@ -1,0 +1,137 @@
+<div class="header-mobile">
+  <div class="logo-burger">
+    <a class="logo logo-header" (click)="openHome()"></a>
+    <button type="button" class="burger" [ngClass]="{'active': menuState}" (click)="toggleMenu()">
+      <span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile" [ngClass]="{'nav-show': menuState}">
+    <div class="nav-user-unreg" *ngIf="!isUserAuth" (click)="toggleMenu()">
+      <ul class="nav-menu">
+        <li (click)="closeMenu($event)"><a [routerLink]="['/']" [ngClass]="{ 'active': isHomeUrl }">Home</a></li>
+        <li (click)="closeMenu($event)"><a [routerLink]="['/career-finder']" routerLinkActive="active">Services</a></li>
+        <li (click)="closeMenu($event)"><a [routerLink]="['/career-advice']" routerLinkActive="active">Career Advice</a></li>
+        <li (click)="closeMenu($event)"><a [routerLink]="['/#']" routerLinkActive="active"><img class="search-img" src="../../../../assets/images/search.png"></a></li>
+      </ul>
+      
+          
+      
+      <a class="btn btn-primary btn-center" [routerLink]="['/login']">Sign In</a>
+    </div>
+    <div class="nav-user-reg" *ngIf="isUserAuth">
+      <ul class="nav-menu" (click)="toggleMenu()">
+        <li><a [routerLink]="['/home']" routerLinkActive="active">Home</a></li>
+        <li><a [routerLink]="['/my-jobs']" routerLinkActive="active">My Jobs</a></li>
+      </ul>
+      <div class="account-user-mobile">
+        <div class="photo-info-holder">
+          <svg class="user-photo" width="52" height="52">
+            <use xlink:href="../../../../assets/images/sprite2.svg#photo-blue"></use>
+          </svg>
+          <div class="user-info">
+            <p class="user-info-name">{{user?.full_name}}</p>
+            <p class="user-info-email">{{user?.email}}</p>
+          </div>
+        </div>
+        <ul class="account-menu" (click)="toggleMenu()">
+          <li><a [routerLink]="['/my-profile']" routerLinkActive="active">My Profile</a></li>
+          <li><a [routerLink]="['/my-schedule']" routerLinkActive="active">My Schedule</a></li>
+          <li><a [routerLink]="['/my-favorite-articles']" routerLinkActive="active">Favorite Articles</a></li>
+          <li><a (click)="logOut()">Log Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div *ngIf="isAppLoading" class="header-desktop header-unreg">
+  <div class="container">
+    <div class="logo-nav">
+      <div class="logo-holder container-md">
+        <a class="logo logo-desk" (click)="openHome()" [ngClass]="{ 'logo-home': isHome , 'logo-anim' : isScrolled, 'logo-transition': scrolledStop}">
+          <img width="1304" height="400" [src]="'src/assets/images/logo-light.png'" alt="FMP">
+          <img width="1304" height="400" class="logo-blue" [src]="'src/assets/images/logo-blue.png'" alt="FMP">
+        </a>
+      </div>
+      <nav class="nav-desktop">
+        <ul class="nav-menu">
+          <li class="link-home"><a [routerLink]="['/']"  [ngClass]="{ 'active': isHomeUrl }">Home</a></li>
+          <li><a [routerLink]="['career-finder']" routerLinkActive="active">Services</a></li>
+          <li><a [routerLink]="['career-advice']" routerLinkActive="active">Career Advice</a></li>
+        </ul>         
+        
+        <img class="search-img" (click)="searchBar()" src="../../../../assets/images/search.png">
+        <a class="btn btn-primary btn-primary-transparent btn-entrance" style="visibility: hidden" [routerLink]="['/login']"> Sign In</a>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="search-box" *ngIf="isSearch">
+    <input type="text" class="search-field" placeholder="Search &hellip;" title="Search for:" [(ngModel)]="searchStr"/>
+    <input type="button" class="search-submit" value="Search" (click)="searchBlog()" />
+</div>
+
+<div *ngIf="!isAppLoading && !isUserAuth" class="header-desktop header-unreg">
+  <div class="container">
+    <div class="logo-nav">
+      <div class="logo-holder container-md">
+        <a class="logo logo-desk" (click)="openHome()" [ngClass]="{ 'logo-home': isHome , 'logo-anim' : isScrolled, 'logo-transition': scrolledStop}">
+          <img width="1304" height="400" [src]="'src/assets/images/logo-light.png'" alt="FMP">
+          <img width="1304" height="400" class="logo-blue" [src]="'src/assets/images/logo-blue.png'" alt="FMP">
+        </a>
+      </div>
+      <nav class="nav-desktop">
+        <ul class="nav-menu">
+          <li class="link-home"><a [routerLink]="['/']"  [ngClass]="{ 'active': isHomeUrl }">Home</a></li>
+          <li><a [routerLink]="['career-finder']" routerLinkActive="active">Services</a></li>
+          <li><a [routerLink]="['career-advice']" routerLinkActive="active">Career Advice</a></li>
+        </ul>
+        <img class="search-img" (click)="searchBar()" src="../../../../assets/images/search.png">
+        <a class="btn btn-primary btn-primary-transparent btn-entrance" [routerLink]="['/login']"> Sign In</a>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!isAppLoading && isUserAuth" class="header-desktop header-reg">
+  <div class="container">
+    <div class="logo-nav">
+      <a class="logo logo-desk" (click)="openHome()"></a>
+      <nav class="nav-desktop">
+        <ul class="nav-menu">
+          <li><a [routerLink]="['/my-jobs']" routerLinkActive="active">My Jobs</a></li>
+          <li class="account-item" ngbDropdown #authDropDown="ngbDropdown" (mouseover)="openDropDown(authDropDown)"  (mouseout)="closeDropDown(authDropDown)">
+            <button type="button" class="btn btn-outline-primary" ngbDropdownToggle>
+              <span class="btn-align">
+                <svg width="31" height="31">
+                  <use xlink:href="../../../../assets/images/sprite2.svg#photo-light"></use>
+                </svg>
+                <span>Account</span>
+              </span>
+            </button>
+            <div class="dropdown-menu account-user-desktop">
+              <div class="photo-info-holder">
+                <svg class="user-photo" width="52" height="52">
+                  <use xlink:href="../../../../assets/images/sprite.svg#photo"></use>
+                </svg>
+                <div class="user-info">
+                  <p class="user-info-name">{{user?.full_name}}</p>
+                  <p class="user-info-email">{{user?.email}}</p>
+                </div>
+              </div>
+              <ul class="account-menu">
+                <li><a [routerLink]="['/home']" routerLinkActive="active">Home</a></li>
+                <li><a [routerLink]="['/my-profile']" routerLinkActive="active">My Profile</a></li>
+                <li><a [routerLink]="['/my-schedule']" routerLinkActive="active">My Schedule</a></li>
+                <li><a [routerLink]="['/my-favorite-articles']" routerLinkActive="active">Favorite Articles</a></li>
+                <li><a routerLinkActive="active">Resources</a></li>
+                <li><a (click)="logOut()">Log Out</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

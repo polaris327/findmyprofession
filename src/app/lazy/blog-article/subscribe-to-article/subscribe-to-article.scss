@@ -1,0 +1,74 @@
+@import '../../../styles/custom/variables';
+
+.subscribe-holder {
+  text-align: center;
+  padding-bottom: 50px;
+
+  @media (min-width: $point) {
+    .circle-icon-line-subscribe .circle-icon-line {
+      margin-bottom: 65px;
+    }
+  }
+  @media (min-width: $point-lg) {
+    padding-bottom: 55px;
+    text-align: left;
+
+    .text-form {
+      display: flex;
+    }
+  }
+
+  .question {
+    font-size: 1.111rem;
+    font-weight: 500;
+    margin-bottom: 3px;
+
+    @media (min-width: $point) {
+      font-size: 1.667rem;
+      margin-bottom: 6px;
+    }
+  }
+
+  .text-content {
+    width: 80%;
+    margin: 0 auto 24px;
+
+    @media (min-width: $point-lg) {
+      padding: 0;
+      line-height: 1.7;
+      margin: 0 0 24px 0;
+    }
+  }
+
+  .subscribe-text {
+    flex: 1;
+  }
+
+  .form-xs {
+    padding: 0 10px;
+
+    @media (min-width: $point-lg) {
+      max-width: 100%;
+      padding: 62px 0 0;
+      width: 495px;
+      display: flex;
+
+      p {
+        flex: 1;
+      }
+    }
+  }
+
+  .btn {
+    margin-top: 20px;
+    width: 175px;
+    height: 55px;
+    font-size: 1rem;
+    border-radius: 32px;
+
+    @media (min-width: $point-lg) {
+      margin-top: 0;
+      margin-left: 18px;
+    }
+  }
+}

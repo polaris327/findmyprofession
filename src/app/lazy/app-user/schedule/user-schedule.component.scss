@@ -1,0 +1,157 @@
+@import "../../../styles/custom/variables";
+
+.schedule-holder {
+
+  section {
+    &:not(:last-of-type) {
+      margin-bottom: 38px;
+
+      @media (min-width: $point) {
+        margin-bottom: 76px;
+      }
+    }
+
+    > h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+
+      @media (min-width: $point) {
+        font-size: 1.333rem;
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+  .calls-list {
+    margin: 0 -8px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (min-width: 500px) {
+      justify-content: flex-start;
+    }
+
+    li {
+      width: 100%;
+      padding: 0 8px;
+      margin-bottom: 15px;
+
+      @media (min-width: 360px) {
+        width: 85%;
+      }
+      @media (min-width: 500px) {
+        width: 50%;
+      }
+      @media (min-width: 800px) {
+        width: 33.33%;
+      }
+      @media (min-width: 1500px) {
+        width: 25%;
+        margin-bottom: 31px;
+      }
+    }
+
+    .call-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-around;
+      background-color: #edf6f9;
+      border-left: 5px solid #08618d;
+      padding: 20px 5%;
+      min-height: 190px;
+
+      @media (min-width: 500px) {
+        padding: 20px 5%;
+      }
+      @media (min-width: $point-md) {
+        padding: 26px 27px 38px;
+      }
+
+      .title {
+        font-size: 1.1rem;
+        line-height: 1.3;
+        font-weight: 500;
+
+        @media (min-width: $point) {
+          font-size: 1.21rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        @media (max-width: $point-sm) and (min-width: $point) {
+          font-size: 1.15rem;
+        }
+      }
+
+      .info {
+        font-size: 1.111rem;
+        font-weight: 300;
+        margin-bottom: 20px;
+      }
+
+      .calls-time {
+        font-size: 1.3rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+
+        @media (min-width: $point) {
+          font-size: 1.55rem;
+        }
+      }
+
+      .discuss-requirements {
+        line-height: 1.3;
+        margin-bottom: 20px;
+
+        @media (min-width: $point) {
+          margin-bottom: 43px;
+          font-size: 1.111rem;
+        }
+
+        span {
+          font-weight: 500;
+        }
+      }
+
+      .link {
+        white-space: nowrap;
+        color: $brand-secondary;
+        font: 700 1rem/1.5 $font-family-serif;
+      }
+
+      .btn-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media (min-width: 500px) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        @media (min-width: $point) {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .link {
+          @media (min-width: 500px) {
+            margin-bottom: 15px;
+          }
+          @media (min-width: $point) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .call-item-content {
+    width: 100%;
+  }
+}

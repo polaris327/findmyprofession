@@ -1,0 +1,24 @@
+@import '../../styles/custom/variables';
+
+.custom-modal {
+  &.alert-modal {
+    max-width: 640px;
+    min-height: 400px;
+
+    @media (min-width: $point) {
+      max-width: 850px;
+    }
+
+    .modal-text-oops {
+      text-align: center;
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      .link {
+        display: inline-block;
+      }
+    }
+  }
+}

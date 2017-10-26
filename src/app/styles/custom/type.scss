@@ -1,0 +1,249 @@
+@import "variables";
+@import "mixins";
+
+h1, h2, h3, h4, h5, h6 {
+  color: inherit;
+  font-family: $font-family-serif;
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+h1, .h1 {font-size: 4rem; font-weight: 700;}
+h2, .h2 {font-size: 2.667rem;}
+h3, .h3 {font-size: 2rem;}
+h4, .h4 {font-size: 1.667rem;}
+h5, .h5 {font-size: 1.222rem;}
+h6, .h6 {font-size: 1rem;}
+
+.head-main {
+  text-align: center;
+  font-size: 1.778rem;
+  font-weight: 400;
+  margin-bottom: 17px;
+
+  @media (min-width: 700px) {
+    font-size: 2rem;
+  }
+  @media (min-width: $point) {
+    font-size: 2.667rem;
+    margin-bottom: 35px;
+  }
+  @media (min-width: 1100px) {
+    margin-bottom: 50px;
+  }
+  @media (min-width: $point-md) {
+    margin-bottom: 70px;
+  }
+
+  &.head-bold {
+    @media (min-width: $point) {
+      font-weight: 700;
+    }
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &.list-disc {
+    li {
+      position: relative;
+      padding-left: 10px;
+
+      &:not(:last-of-type) {
+        margin-bottom: 10px;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 5px;
+        height: 5px;
+        background: $dark;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+p {
+  margin: 0;
+}
+
+svg {
+  fill: currentColor;
+}
+
+a {
+  color: $brand-primary;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.btn {
+    text-decoration: none;
+  }
+}
+
+.link {
+  font-size: 1.222rem;
+  font-weight: 700;
+  color: $brand-secondary;
+  position: relative;
+  transition: .3s;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: .3s;
+  }
+
+  &:hover,
+  &:active {
+    color: $brand-secondary;
+  }
+
+  &:hover,
+  &:active,
+  &.disabled {
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &-line-remove {
+    font-size: inherit;
+    font-weight: 500;
+    &::after {
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      background: currentColor;
+      height: 1px;
+    }
+
+    &-center {
+      @extend .link-line-remove;
+
+      &::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    &:hover,
+    &:active,
+    &.disabled {
+      &::after {
+        width: 0;
+      }
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: $gray-light;
+  }
+
+  &.link-light {
+    color: $light;
+    font: 1.111rem $font-family-serif;
+    &::after {
+      bottom: -3px;
+    }
+  }
+
+  &.link-left {
+    font-size: inherit;
+    font-weight: inherit;
+
+    &::after {
+      height: 1px;
+      left: 0;
+      transform: translateX(0);
+    }
+
+    &.link-left-dark {
+      @include link-style($brand-secondary, $brand-primary, transparentize($brand-primary, .5));
+    }
+
+    &.link-left-light {
+      @include link-style($light, $light, $light);
+    }
+  }
+
+  &-dark-bold {
+    @include link-style($brand-secondary, $brand-secondary, transparentize($brand-secondary, .5), 2px);
+    font-weight: bold;
+  }
+}
+
+.link-circle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparentize($light, .6);
+  border-radius: 50%;
+  color: $brand-secondary;
+  border: 1px solid $brand-primary;
+  transition: .3s;
+
+  &:hover,
+  &:active {
+    color: $light;
+    background: $brand-secondary;
+    border-color: $brand-secondary;
+  }
+
+  &, &.like-container {
+    width: 60px;
+    height: 60px;
+
+    @media (min-width: $point) {
+      width: 80px;
+      height: 80px;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+
+      @media (min-width: $point) {
+        width: 40px;
+        height: 35px;
+        left: calc(50% - 20px);
+        top: calc(50% - 17px);
+      }
+    }
+
+    @media (max-width: $point-xs) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-overflow {
+  @include text-overflow();
+}

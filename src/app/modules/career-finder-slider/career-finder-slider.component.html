@@ -1,0 +1,22 @@
+<div class="title-description">
+  <h2 *ngIf="title" [innerHTML]="title"></h2>
+  <p *ngIf="description" [innerHTML]="description"></p>
+</div>
+
+<div *ngIf="type === 'jobs'" class="title-description">
+  <h2>Career Finder</h2>
+  <p>
+    <a [routerLink]="['/career-finder']" (click)="openCareerFinderDetails($event, '/career-finder')">View Plan Details</a>
+  </p>
+</div>
+
+<button type="button" (click)="getStartedClicked()" class="btn btn-md btn-border-anim btn-center schedule-button" [disabled]="isBought">
+  <span>Schedule a Call</span>
+</button>
+
+<h3 class="text-bold-sf" *ngIf="packagesTitle" [innerHTML]="packagesTitle"></h3>
+<ul class="list-package">
+  <li *ngFor="let packageName of packages">
+    <span *ngIf="packageName" [innerHTML]="packageName"></span>
+  </li>
+</ul>

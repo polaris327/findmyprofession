@@ -1,0 +1,36 @@
+<div class="custom-modal modal-high">
+  <div class="content">
+    <div class="circle-icon-line-holder">
+
+      <fmp-circle-icon-line
+        class="circle-icon-line-modal"
+        [icon]="'career-finder'">
+      </fmp-circle-icon-line>
+
+    </div>
+
+    <div class="step-holder">
+
+      <fmp-career-finder-steps-component
+        *ngIf="step == 0"
+        [type]="'jobs'"
+        [buttonText]="'Continue'"
+        (onButtonClicked)="goToStep(1)">
+      </fmp-career-finder-steps-component>
+
+      <div *ngIf="step == 1">
+        <career-finder-slider-component
+          [type]="'jobs'"
+          [percent]="price"
+          class="career-finder-slider-component container-md"
+          (onGetStarted)="openCalendly()"
+          (onCareerFinderDetailsOpen)="openCareerFinderDetails($event)">
+        </career-finder-slider-component>
+      </div>
+
+    </div>
+
+    <fmp-modal-close-icon (onModalClose)="cancel()"></fmp-modal-close-icon>
+
+  </div>
+</div>

@@ -1,0 +1,238 @@
+@import "../../styles/custom/variables";
+
+.checkout-page {
+
+  h1 {
+    text-align: left;
+  }
+
+  .box-light-content {
+    @media (min-width: $point) {
+      padding: 49px 50px 150px;
+    }
+    @media (min-width: 1250px) {
+      padding: 49px 75px 75px;
+    }
+    @media (min-width: 1500px) {
+      padding: 49px 146px 75px;
+    }
+  }
+}
+
+.checkout-content {
+  @media (min-width: $point) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .payment-container {
+    margin-bottom: 54px;
+
+    @media (min-width: $point) {
+      width: 50%;
+    }
+  }
+
+  .packages-container {
+    margin-bottom: 42px;
+    display: block;
+
+    @media (min-width: $point) {
+      width: auto;
+      padding-right: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  .confirm-container {
+    text-align: center;
+    font-size: 0.889rem;
+    margin: 0 auto 26px;
+
+    form {
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      height: 85px;
+      border-radius: 2.333rem;
+      font-size: 1.556rem;
+      font-weight: 700;
+      width: 100%;
+    }
+
+    .error-center {
+      min-width: 250px;
+    }
+
+    @media (min-width: $point) {
+      width: 49%;
+      margin: 0;
+
+      .btn {
+        width: 365px;
+        height: 85px;
+      }
+
+      form {
+        margin-bottom: 47px;
+      }
+    }
+  }
+
+  .left {
+    text-align: left;
+  }
+
+  .input-label {
+    text-align: left;
+    font-size: 0.889rem;
+    font-weight: 300;
+  }
+
+  form > p {
+    margin-bottom: 10px;
+  }
+
+  .left-title {
+    @media (min-width: $point) {
+      width: 138px;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .promo-holder {
+    text-align: center;
+
+    button {
+      height: 55px;
+      border-radius: 27px;
+      line-height: 53px;
+    }
+
+    .title {
+      display: none;
+    }
+
+    p:first-of-type {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      text-align: left;
+    }
+
+    @media (min-width: 1300px) {
+      .title {
+        display: block;
+        font-size: 1.111rem;
+        font-weight: 500;
+        margin-bottom: 27px;
+        text-align: left;
+      }
+
+      form {
+        padding-right: 10px;
+        display: flex;
+        justify-content: space-between;
+
+        p:first-of-type {
+          display: flex;
+          align-content: center;
+          align-items: center;
+          padding-bottom: 7px;
+          font-size: 1.111rem;
+          font-weight: 300;
+          line-height: 1.444rem;
+        }
+
+        .btn {
+          width: 210px;
+          height: 55px;
+          border-radius: 1.5rem;
+        }
+
+        p:nth-of-type(2) {
+          flex: 1;
+          padding-left: 22px;
+          padding-right: 12px;
+        }
+      }
+    }
+  }
+
+  .checkout {
+
+    .form-control-border-light {
+      padding-left: 13px;
+    }
+
+    .log-in {
+      margin-bottom: 51px;
+
+      @media (min-width: $point) {
+        margin-bottom: 75px;
+      }
+    }
+
+    .user-title {
+      font-size: 1.111rem;
+      line-height: 1.444rem;
+      margin-bottom: 45px;
+
+      @media (min-width: $point) {
+        padding-top: 43px;
+        margin-bottom: 94px;
+      }
+
+      span {
+        display: block;
+      }
+    }
+
+    .sign-in-holder {
+      margin-bottom: 40px;
+
+      .title {
+        margin-bottom: 30px;
+
+        @media (min-width: $point) {
+          font-size: 1.889rem;
+          font-weight: 500;
+        }
+      }
+
+      .forgot {
+        text-align: left;
+        padding-top: 14px;
+        margin-bottom: 20px;
+
+        @media (min-width: $point) {
+          padding-top: 6px;
+          margin-bottom: 25px;
+        }
+      }
+
+      @media (min-width: $point) {
+        margin-bottom: 81px;
+      }
+    }
+
+    .sign-up-holder {
+      margin-bottom: 40px;
+
+      .title {
+        margin-bottom: 30px;
+
+        @media (min-width: $point) {
+          font-size: 1.889rem;
+          font-weight: 500;
+        }
+      }
+
+      form {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

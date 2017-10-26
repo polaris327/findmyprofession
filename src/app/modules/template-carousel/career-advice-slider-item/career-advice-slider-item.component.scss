@@ -1,0 +1,96 @@
+@import '../../../styles/custom/variables';
+
+.blog-carousel-content {
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: $point) {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .carousel-min-content {
+    display: block;
+    width: 100%;
+    height: 46vw;
+    position: relative;
+
+    @media (min-width: $point) {
+      height: 22.5vw;
+      max-height: 310px;
+    }
+
+    .slider-item {
+      height: 100%;
+
+      &-img {
+        position: relative;
+        overflow: hidden;
+        padding-top: 49%;
+        cursor: pointer;
+
+        img {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+        }
+      }
+    }
+
+    .title-link {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      text-align: left;
+      padding: 5px 10px;
+      background-color: transparentize($brand-secondary , 0.2);
+      height: 50px;
+
+      @media (min-width: 550px) {
+        padding: 20px 15px;
+        height: 90px;
+      }
+      @media (min-width: $point-lg) {
+        height: 110px;
+      }
+
+      span {
+        color: $light;
+        font-weight: 700;
+        font-family: $font-family-sans-serif;
+        flex: 1;
+        display: block;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @media (min-width: 550px) {
+          overflow: inherit;
+          white-space: inherit;
+        }
+        @media (min-width: $point-lg) {
+          font-size: 1.333rem;
+        }
+      }
+
+      a {
+        display: none;
+
+        @media (min-width: 700px) {
+          display: block;
+          width: 175px;
+          margin-left: 15px;
+        }
+      }
+    }
+
+    @media (min-width: $point) {
+      width: 48%;
+    }
+  }
+}

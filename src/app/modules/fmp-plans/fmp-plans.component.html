@@ -1,0 +1,22 @@
+<div class="title-description">
+  <h2 *ngIf="title" [innerHTML]="title"></h2>
+  <p *ngIf="description" [innerHTML]="description"></p>
+</div>
+<ul class="list-plans">
+  <li class="plan-card" *ngFor="let service of plans">
+    <div class="circle-icon">
+      <svg>
+        <use [attr.xlink:href]="'src/assets/images/sprite2.svg#'+service.icon"></use>
+      </svg>
+    </div>
+    <h3 *ngIf="service.name" [innerHTML]="service.name"></h3>
+    <p class="description" *ngIf="isOpen && service.description" [innerHTML]="service.description"></p>
+
+    <fmp-custom-link
+      [title]="'View'"
+      [linkArray]="[service.link || defaultLink]"
+      [linkClass]="['btn','btn-outline-primary']">
+    </fmp-custom-link>
+
+  </li>
+</ul>

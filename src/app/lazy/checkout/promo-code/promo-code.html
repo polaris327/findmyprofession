@@ -1,0 +1,21 @@
+<form class="promo-code-form">
+  <p>Promo Code</p>
+
+  <p [ngClass]="{ 'error-show' : !!errorMessage}">
+
+    <fmp-error *ngIf="errorMessage" class="error-field" [text]="errorMessage" (click)="closeError()"></fmp-error>
+
+    <input type="text"
+      name="Promo Code"
+      class="form-control-border-light"
+      [placeholder]="placeholder"
+      [(ngModel)]="promo_code"
+      [disabled]="payment?.promo_code"
+      placeholder="Email">
+  </p>
+
+  <button type="button" class="btn btn-primary" [disabled]="payment?.promo_code || !promo_code" (click)="checkPromoCode()">
+    <span>Apply Coupon</span>
+  </button>
+
+</form>

@@ -1,0 +1,468 @@
+@import '../../styles/custom/variables';
+@import '../../styles/custom/mixins';
+
+label {
+  margin-bottom: 0;
+}
+
+form {
+  width: 100%;
+  margin: 0 auto;
+
+  &.form-xs {
+    max-width: $form-width;
+  }
+
+  > p,
+  .form-group {
+    position: relative;
+    margin-bottom: 18px;
+
+    .custom-dropdown {
+      margin-bottom: 0;
+    }
+  }
+}
+
+input,
+textarea,
+select {
+  box-shadow: none;
+  outline: none;
+  font-family: $font-family-sans-serif;
+  font-weight: 300;
+
+  &:-webkit-autofill {
+    -webkit-text-fill-color: $gray-dark;
+    transition: background-color 99999s !important;
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    color: transparentize($gray-dark, .5);
+  }
+}
+
+textarea {
+  resize: none;
+  padding: 13px 20px;
+}
+
+input[type="file"] {
+  visibility: hidden;
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+}
+
+.input-group {
+
+  @media (min-width: 700px) {
+    display: flex;
+    justify-content: space-between;
+
+    > p {
+      width: 49%;
+    }
+  }
+}
+
+.form-control {
+  width: 100%;
+  font-size: 1.111rem;
+  transition: .3s;
+  border: {
+    style: solid;
+    width: 1px;
+    radius: 0;
+  }
+  -webkit-appearance: none;
+  @include placeholderCustom(opacity, .5);
+
+  &:not(textarea) {
+    padding: 0 20px;
+    height: $form-control-height;
+  }
+
+  &:focus {
+    @include placeholderCustom(opacity, 0);
+  }
+
+  &-border-blue {
+    @extend .form-control;
+    border-color: $brand-secondary;
+    background: #d3edf5;
+
+    &:focus {
+      background: $light;
+    }
+  }
+  &-border-light {
+    @extend .form-control;
+    border-color: $blue-light;
+    background: $blue-light;
+
+    &:focus {
+      border-color: $brand-secondary;
+    }
+  }
+}
+
+.form-group {
+
+  > span > span,
+  > label > span,
+  > span {
+    display: block;
+    margin-bottom: 11px;
+  }
+
+  > span,
+  > label,
+  &.form-group-content {
+    display: block;
+
+    @media (min-width: 540px) {
+      display: flex;
+      align-items: center;
+
+      .form-control-holder {
+        display: block;
+        flex: 1;
+      }
+
+      .custom-choice {
+        margin-right: 25px;
+      }
+
+      input:not([type="checkbox"], [type="radio"]) {
+        flex: 1;
+        width: 100%;
+      }
+    }
+
+    > h5,
+    > span {
+      @media (min-width: 540px) {
+        width: 30%;
+
+        + * {
+          flex: 1;
+        }
+      }
+      @media (min-width: 650px) {
+        width: 25%;
+      }
+      @media (min-width: 750px) {
+        width: 20%;
+      }
+      @media (min-width: $point) {
+        width: 31%;
+      }
+    }
+
+    > span {
+      font-size: 0.889rem;
+      line-height: 1.1;
+      padding-right: 10px;
+
+      @media (min-width: 540px) {
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+
+        &.title-fixed {
+          align-self: flex-start;
+          display: block;
+          padding-top: 18px;
+        }
+
+        &.title-fixed-choice {
+          padding-top: 6px;
+        }
+      }
+    }
+
+    @media (min-width: $point) {
+      .custom-choice {
+        margin-right: 30px;
+      }
+
+      > span {
+        font-size: 1.111rem;
+      }
+    }
+  }
+}
+
+.form-group-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+
+  p {
+    width: 50%;
+  }
+}
+
+.form-group-salary {
+  $dropdown-width: 145px;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .form-control-border-light,
+  fmp-custom-dropdown-component {
+    width: 48%;
+    
+    @media (min-width: 540px) {
+      width: 47%;
+    }
+  }
+
+  > span {
+    display: none;
+    font-weight: 700;
+    line-height: 55px;
+    text-align: center;
+
+    @media (min-width: 540px) {
+      display: block;
+      width: 6%;
+    }
+  }
+
+  fmp-custom-dropdown-component {
+    min-width: $dropdown-width;
+
+    .dropdown-toggle {
+      min-width: $dropdown-width;
+      width: 100%;
+    }
+
+    .dropdown-menu {
+      min-width: $dropdown-width;
+      width: 100%;
+    }
+  }
+}
+
+/* - - - - - - - - - - - - - - Checkboxes & radio-buttons - - - - - - - - - - - - - - - - */
+@mixin choice-indicator($border-color, $bg, $bg-hover) {
+  .indicator {
+    border-color: $border-color;
+    background: $bg;
+
+    &.indicator-radio {
+      &::before {
+        background: $border-color;
+      }
+    }
+
+    svg {
+      stroke: transparent;
+    }
+
+    &:active {
+      background: $bg-hover;
+    }
+
+    @media (min-width: $point) {
+      &:hover {
+        background: $bg-hover;
+      }
+    }
+  }
+
+  input:checked ~ .indicator {
+
+    &.indicator-radio {
+      &::before {
+        background: $border-color;
+        transform: translate(-50%, -50%) scale(1, 1);
+      }
+    }
+
+    svg {
+      stroke-dasharray: 46, 0;
+      stroke: $border-color;
+    }
+  }
+}
+
+[type='checkbox'],
+[type='radio'] {
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.custom-choice {
+  position: relative;
+  margin-right: 20px;
+  padding-left: 38px;
+  min-height: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-align: left;
+
+  &.choice-serif {
+    font-family: $font-family-serif;
+    font-weight: 400;
+  }
+
+  @media (min-width: $point) {
+    padding-left: 50px;
+    min-height: 38px;
+  }
+
+  .indicator {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    right: 100%;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: .3s;
+    border: {
+      width: 2px;
+      style: solid;
+      radius: 50%;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: $point) {
+      width: 38px;
+      height: 38px;
+    }
+
+    &.indicator-radio {
+      &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(0, 0);
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        transition: .3s;
+
+        @media (min-width: $point) {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+
+    svg {
+      fill: none;
+      stroke-dasharray: 0, 46;
+      transition: .2s ease-out;
+      width: 16px;
+      height: 13px;
+    }
+  }
+
+  &-light {
+    @include choice-indicator($light, $brand-secondary-light, $brand-secondary);
+  }
+  &-blue {
+    @include choice-indicator($brand-secondary, $light, $blue-light);
+  }
+}
+
+/* - - - - - - - - - - - - - - Multiple form-controls - - - - - - - - - - - - - - - - */
+rl-tag-input.form-control-multiple {
+  @extend .form-control-border-light;
+  font-family: inherit;
+  font-size: 1.111rem;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  height: auto !important;
+  padding: 10px 17.5px 0 !important;
+  overflow: hidden;
+
+  &.ng2-tag-input-focus {
+    box-shadow: none;
+    border: 1px solid $brand-secondary;
+  }
+
+  rl-tag-input-item {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 99%;
+    align-items: center;
+    font-family: inherit;
+    font-size: inherit;
+    height: 32px;
+    line-height: 32px;
+    background: $light;
+    padding: 0 25px 0 12px;
+    border-radius: 0;
+    transition: all 0.12s ease-out;
+    margin: 0 2.5px 11px;
+    position: relative;
+
+    span.ng2-tag-input-remove {
+      background: transparent !important;
+      color: $brand-secondary !important;
+      font-size: 25px !important;
+      line-height: 22px !important;
+      font-weight: 700;
+      transition: .3s;
+      width: auto !important;
+      margin: 0 !important;
+      position: absolute !important;
+      right: 7px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      &:hover,
+      &:active {
+        color: $brand-primary !important;
+      }
+    }
+  }
+
+  form.ng2-tag-input-form {
+    flex: 1;
+    margin: 0 2.5px 11px;
+
+    input.ng2-tag-input-field {
+      width: 100%;
+      background: $blue-light;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 32px;
+      line-height: 32px;
+
+      &:focus {
+        @include placeholderCustom(opacity, 0);
+      }
+    }
+  }
+}

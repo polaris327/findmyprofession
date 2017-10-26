@@ -1,0 +1,72 @@
+@import '../../styles/custom/variables';
+
+.career-advice-page {
+  $sub-nav-blue-height: 65px;
+
+  @media (min-width: $point) {
+    padding-top: $header-height-desk;
+  }
+
+  .sub-nav-desktop {
+    background-color: $brand-secondary;
+    height: $sub-nav-blue-height;
+    padding-top: 15px;
+
+    ul {
+      li {
+        &:nth-child(3) {
+          width: 104px;
+          margin-left: 22px;
+        }
+      }
+
+      a,
+      a:not([href]):not([tabindex]) {
+        white-space: nowrap;
+
+        &:after {
+          border-color: transparent transparent $blue-light;
+        }
+      }
+
+      @media (min-width: $point) {
+        justify-content: space-around;
+      }
+    }
+  }
+
+  .carousel-component {
+    margin-bottom: 110px;
+
+    .carousel-holder {
+      .carousel-list {
+        li {
+          padding: 0;
+        }
+      }
+    }
+
+    @media (min-width: $point-lg) {
+      margin-bottom: 75px;
+      justify-content: space-around;
+    }
+  }
+}
+
+.career-advice-holder {
+  transition: .3s;
+
+  padding-top: $nav-height + 44px;
+
+  @media (min-width: $point) {
+    padding-top: 70px;
+  }
+
+  .title-description {
+    padding: 0 10px;
+  }
+
+  &.move-down {
+    padding-top: 280px + 44px;
+  }
+}

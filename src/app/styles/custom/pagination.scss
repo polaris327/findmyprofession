@@ -1,0 +1,103 @@
+@import '../../styles/custom/variables';
+
+.pagination-custom {
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+
+    .page-link {
+      width: 34px;
+      height: 34px;
+      line-height: 33px;
+      text-align: center;
+      transition: .3s;
+      font-size: 1.111rem;
+      font-weight: 500;
+      padding: 0;
+      text-decoration: none;
+      border: {
+        radius: 50%;
+        color: transparentize($light, .6);
+      }
+      background-color: transparentize($light, .6);
+      color: $brand-secondary;
+
+      &:active {
+        border-color: $light,;
+        background-color: $light;
+      }
+
+      @media (min-width: $point-xs) {
+        width: 40px;
+        height: 40px;
+        line-height: 39px;
+      }
+
+      @media (min-width: $point) {
+        width: 50px;
+        height: 50px;
+        line-height: 49px;
+
+        &:hover {
+          background-color: $light;
+        }
+      }
+
+      span {
+        display: none;
+      }
+    }
+
+    .page-item {
+      margin: 0 5px;
+
+      &.active {
+        .page-link {
+          color: $brand-secondary;
+          background-color: $light;
+          border-color: $brand-primary;
+        }
+      }
+
+      &:first-of-type,
+      &:last-of-type {
+        .page-link {
+          border-color: $brand-primary;
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(calc(-50% + 6px), -50%);
+            border: {
+              style: solid;
+              width: 9px;
+              color: transparent transparent transparent $brand-primary;
+            }
+          }
+        }
+      }
+      &:first-of-type {
+        .page-link {
+          &::before {
+            transform: translate(calc(-50% - 6px), -50%) scale(-1, 1);
+          }
+        }
+      }
+
+      &.disabled {
+        .page-link {
+          border-color: $gray-light;
+          &::before {
+            border-color: transparent transparent transparent $gray-light;
+          }
+        }
+      }
+    }
+  }
+}

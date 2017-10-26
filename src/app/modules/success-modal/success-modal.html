@@ -1,0 +1,10 @@
+<div class="custom-modal alert-modal">
+  <div class="circle-icon-line-holder">
+    <fmp-circle-icon-line class="circle-icon-line-modal" [icon]="icon"></fmp-circle-icon-line>
+  </div>
+  <h3 class="title">Success!</h3>
+  <p class="message-text">{{message}}</p>
+
+  <fmp-modal-close-icon class="close close-modal" (onModalClose)="cancel()"></fmp-modal-close-icon>
+
+</div>

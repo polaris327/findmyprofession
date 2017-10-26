@@ -1,0 +1,26 @@
+<ngb-tabset type="pills" class="tabs-holder" [destroyOnHide]="false">
+  <ngb-tab>
+    <ng-template ngbTabTitle>{{prices?.senior?.title}}</ng-template>
+    <ng-template ngbTabContent>
+
+      <price-box-tab-component
+        [tabData]="prices?.senior"
+        [isInBasket]="inBasket?.senior"
+        (onBuy)="packageBuy(prices?.senior)">
+      </price-box-tab-component>
+
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>{{prices?.executive?.title}}</ng-template>
+    <ng-template ngbTabContent>
+
+      <price-box-tab-component
+        [tabData]="prices?.executive"
+        [isInBasket]="inBasket?.executive"
+        (onBuy)="packageBuy(prices?.executive)">
+      </price-box-tab-component>
+
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

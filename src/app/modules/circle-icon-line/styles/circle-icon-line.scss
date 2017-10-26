@@ -1,0 +1,134 @@
+@import '../../../styles/custom/variables';
+@import 'mixins';
+
+.circle-icon-line-holder {
+  position: relative;
+  background: $light;
+}
+
+.circle-icon-line {
+  border-top: {
+    style: solid;
+    color: $brand-secondary;
+  }
+
+  .title-circle {
+    margin: 0 auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+
+    &::before {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: $light;
+      border: {
+        style: solid;
+        color: $brand-secondary;
+      }
+    }
+
+    @media only screen
+    and (min-device-width: 320px)
+    and (max-device-width: 568px)
+    and (-webkit-min-device-pixel-ratio: 2) {
+      clip: rect(0, 150px, 44px, 0);
+    }
+  }
+
+  .title-icon {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+  }
+
+  &-home {
+    .circle-icon-line {
+      @include circle-icon-line(
+        /* $border-width, */              4px,
+        /* $border-width-media, */        3px,
+        /* $margin-bottom, */             67px,
+        /* $margin-bottom-media, */       125px,
+
+        /* $title-circle-width, */        150px,
+        /* $title-circle-height, */       44px,
+        /* $title-circle-width-media, */  244px,
+        /* $title-circle-height-media, */ 85px,
+        /* $title-circle-top, */          -40px,
+        /* $title-circle-top-media, */    -82px,
+
+        /* $circle-size, */               150px,
+        /* $circle-size-media, */         234px,
+
+        /* $icon-top, */                  -20px,
+        /* $icon-top-media, */            -33px,
+        /* $icon-width, */                64px,
+        /* $icon-height, */               60px,
+        /* $icon-width-desk, */           123px,
+        /* $icon-height-desk) */          114px
+      );
+    }
+  }
+
+  &-subscribe {
+    .circle-icon-line {
+      @include circle-icon-line(
+        /* $border-width, */              1px,
+        /* $border-width-media, */        1px,
+        /* $margin-bottom, */             36px,
+        /* $margin-bottom-media, */       32px,
+
+        /* $title-circle-width, */        80px,
+        /* $title-circle-height, */       33px,
+        /* $title-circle-width-media, */  244px,
+        /* $title-circle-height-media, */ 61px,
+        /* $title-circle-top, */          -32px,
+        /* $title-circle-top-media, */    -60px,
+
+        /* $circle-size, */               80px,
+        /* $circle-size-media, */         150px,
+
+        /* $icon-top, */                  -16px,
+        /* $icon-top-media, */            -29px,
+        /* $icon-width, */                30px,
+        /* $icon-height, */               30px,
+        /* $icon-width-desk, */           52px,
+        /* $icon-height-desk) */          53px
+      );
+    }
+  }
+
+  &-modal {
+    .circle-icon-line {
+      @include circle-icon-line(
+        /* $border-width, */              4px,
+        /* $border-width-media, */        3px,
+        /* $margin-bottom, */             0,
+        /* $margin-bottom-media, */       0,
+
+        /* $title-circle-width, */        150px,
+        /* $title-circle-height, */       44px,
+        /* $title-circle-width-media, */  244px,
+        /* $title-circle-height-media, */ 78px,
+        /* $title-circle-top, */          -40px,
+        /* $title-circle-top-media, */    -75px,
+
+        /* $circle-size, */               150px,
+        /* $circle-size-media, */         208px,
+
+        /* $icon-top, */                  -31px,
+        /* $icon-top-media, */            -52px,
+        /* $icon-width, */                73px,
+        /* $icon-height, */               88px,
+        /* $icon-width-desk, */           139px,
+        /* $icon-height-desk) */          123px
+      );
+    }
+  }
+}

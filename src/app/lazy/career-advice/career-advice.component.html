@@ -1,0 +1,50 @@
+<div class="career-advice-page tabs-carousel">
+
+  <fmp-career-advice-tabs
+    [articleCategories]="articleCategories"
+    [selectedPackage]="selectedPackage"
+    (onMenuOpen)="onMenuOpen($event)"
+    (onLinkClick)="openLink($event)">
+  </fmp-career-advice-tabs>
+
+  <article class="career-advice-holder" [ngClass]="{'move-down': subNavState}">
+
+    <header class="title-description">
+      <h2 *ngIf="content?.title" [innerHTML]="content?.title"></h2>
+      <p *ngIf="content?.description" [innerHTML]="content?.description"></p>
+    </header>
+
+    <fmp-template-carousel-component
+      class="carousel-component"
+      [type]="'career-advice'"
+      [slidesNumber]="topArticles?.length / 2"
+      [title]="pageContent?.title"
+      [subTitle]="pageContent?.subTitle"
+      [sliderItems]="topArticles"
+      (onLikeToggle)="likeSelectedArticle($event, true)"
+      (openArticle)="openArticle($event)">
+    </fmp-template-carousel-component>
+
+    <div class="container-md">
+      <articles-cards-component
+        [isAuth]="false"
+        [articles]="articles"
+        (onArticleLike)="likeSelectedArticle($event)"
+        (onArticleOpen)="openArticle($event)">
+      </articles-cards-component>
+    </div>
+
+    <ngb-pagination
+      *ngIf="collectionSize > defaultLimit"
+      class="pagination-custom"
+      [collectionSize]="collectionSize"
+      [(page)]="currentPage"
+      [pageSize]="defaultLimit"
+      [maxSize]="isMobileMode ? 1 : 5"
+      [rotate]="true"
+      (pageChange)="pageSelected()">
+    </ngb-pagination>
+
+  </article>
+
+</div>

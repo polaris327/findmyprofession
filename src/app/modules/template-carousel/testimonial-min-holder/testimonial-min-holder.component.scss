@@ -1,0 +1,96 @@
+@import '../../../styles/custom/variables';
+
+.reviews-carousel-content {
+  display: block;
+  padding: 0 10px;
+
+  @media (min-width: $point) {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .carousel-min-content {
+    display: block;
+
+    @media (min-width: $point) {
+      width: 48%;
+    }
+  }
+
+  .name-rating {
+    text-align: center;
+    margin-bottom: 15px;
+
+    @media (min-width: $point) {
+      text-align: left;
+      margin-bottom: 0;
+
+      .rating {
+        display: none;
+      }
+    }
+
+    .name {
+      font-weight: 500;
+      display: inline-block;
+      margin-bottom: 9px;
+
+      @media (min-width: $point) {
+        font-size: 1.222rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .age-industry {
+    display: none;
+
+    @media (min-width: $point) {
+      display: block;
+      font-weight: 500;
+      text-align: left;
+      margin-bottom: 5px;
+    }
+
+    .age {
+      padding-right: 20px;
+    }
+  }
+  .review {
+    line-height: 1.25;
+    margin-bottom: 7px;
+
+    @media (min-width: $point) {
+      margin-bottom: 29px;
+      text-align: left;
+      line-height: 1.4;
+      min-height: 55px;
+    }
+
+    .link {
+      font-weight: 400;
+      color: $brand-primary;
+      font-size: 1rem;
+      line-height: 30px;
+    }
+    .link::after {
+      color: $brand-primary;
+    }
+  }
+  .date-rating {
+    justify-content: center;
+
+    @media (min-width: $point) {
+      justify-content: space-between;
+    }
+
+    .rating-holder {
+      display: none;
+
+      @media (min-width: $point) {
+        display: flex;
+      }
+    }
+  }
+}

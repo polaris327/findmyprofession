@@ -1,0 +1,84 @@
+<form class="box-outline-blue" [formGroup]="modelForm">
+
+  <fmp-profile-tab-settings-component
+    [isEditShow]="mode === 1"
+    (onEdit)="switchEditMode()"
+    (onClose)="removeItem()">
+  </fmp-profile-tab-settings-component>
+
+  <p class="form-group">
+    <label>
+      <span>Name:</span>
+      <input type="text"
+             class="form-control-border-light"
+             formControlName="name"
+             placeholder="Name">
+    </label>
+  </p>
+
+  <p class="form-group">
+    <label>
+      <span>Job title:</span>
+      <input type="text"
+             class="form-control-border-light"
+             formControlName="job_title"
+             placeholder="Job title">
+    </label>
+  </p>
+
+  <p class="form-group">
+    <label>
+      <span>Company:</span>
+      <input type="text"
+             class="form-control-border-light"
+             formControlName="company"
+             placeholder="Company">
+    </label>
+  </p>
+
+  <p class="form-group">
+    <label>
+      <span>Email:</span>
+      <input type="text"
+             class="form-control-border-light"
+             formControlName="email"
+             placeholder="Email">
+    </label>
+  </p>
+
+  <p class="form-group form-group-content">
+    <span>Phone Number:</span>
+
+    <fmp-input-phone-number-component
+      [fieldClass]="'form-control-border-light'"
+      [placeholder]="'Phone number'"
+      [value]="modelForm.controls['phone_number'].value" (onNumberInput)="inputField('phone_number' , $event)">
+    </fmp-input-phone-number-component>
+
+  </p>
+
+  <p class="form-group">
+    <label>
+      <span>Relationship:</span>
+      <input type="text"
+             class="form-control-border-light"
+             formControlName="relationship"
+             placeholder="Relationship">
+    </label>
+  </p>
+
+  <div *ngIf="mode !== 1" class="form-error-center" [ngClass]="{'error-show': errorMessage}">
+    <fmp-error
+      *ngIf="errorMessage"
+      class="error-center"
+      [text]="errorMessage" (onErrorClick)="closeError()">
+    </fmp-error>
+  </div>
+
+  <div class="btn-holder" *ngIf="mode !== 1">
+    <button type="button" class="btn btn-outline-primary" (click)="submitItem()">
+      <span>Save</span>
+    </button>
+  </div>
+
+</form>

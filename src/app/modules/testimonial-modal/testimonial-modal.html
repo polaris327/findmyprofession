@@ -1,0 +1,33 @@
+<div class="custom-modal testimonial-modal">
+  <div class="circle-icon-line-holder">
+    <fmp-circle-icon-line class="circle-icon-line-modal" [icon]="'testimonials'"></fmp-circle-icon-line>
+  </div>
+  <h3 class="title" *ngIf="testimonial?.name" [innerHTML]="testimonial?.name"></h3>
+
+  <div class="feedback">
+    <div class="age-holder">
+      <div class="age-industry">
+        <span class="age">Age: {{testimonial.age}}</span>
+        <span class="text-overflow" *ngIf="testimonial.industry" [innerHTML]="'Industry: ' + testimonial.industry"></span>
+      </div>
+    </div>
+    <div class="text-content" *ngIf="testimonial.detail" [innerHTML]="testimonial.detail"></div>
+    <div class="date-rating">
+      <p class="date">
+        <span>Date:</span>
+        {{testimonial.date | date: 'mediumDate'}}
+      </p>
+      <p class="rating-holder">
+        <span>Rated:</span>
+
+        <fmp-rating-stars-component
+          [stars]="testimonial.rating">
+        </fmp-rating-stars-component>
+
+      </p>
+    </div>
+  </div>
+
+  <fmp-modal-close-icon (onModalClose)="close()"></fmp-modal-close-icon>
+
+</div>

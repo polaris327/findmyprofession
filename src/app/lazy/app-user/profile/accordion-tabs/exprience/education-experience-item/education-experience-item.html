@@ -1,0 +1,105 @@
+<form class="box-outline-blue" [formGroup]="modelForm" *ngIf="modelForm">
+
+  <fmp-profile-tab-settings-component
+    [isEditShow]="mode === 1"
+    (onEdit)="onEdit()"
+    (onClose)="removeItem()">
+  </fmp-profile-tab-settings-component>
+
+  <p class="form-group">
+    <label>
+      <span>Educational Institution:</span>
+      <input class="form-control-border-light"
+             formControlName="institution"
+             placeholder="Educational Institution">
+    </label>
+  </p>
+
+  <p class="form-group">
+    <label>
+      <span>Discipline/Major:</span>
+      <input class="form-control-border-light"
+             formControlName="discipline"
+             placeholder="Discipline/Major">
+    </label>
+  </p>
+
+  <p class="form-group">
+    <label>
+      <span>Education Level:</span>
+      <fmp-custom-dropdown-component
+        [selectedValue]="modelForm.get('level').value"
+        [values]="educationLevels"
+        [placeholder]="'Education Level'"
+        [isDisabled]="modelForm.get('level').disabled"
+        (valueSelected)="educationLevelChanged($event)">
+      </fmp-custom-dropdown-component>
+    </label>
+  </p>
+
+  <p class="form-group">
+    <label class="date-picker-custom">
+      <span>Start Date:</span>
+      <p-calendar
+        #startDatePicker
+        [styleClass]="'form-control-border-light'"
+        formControlName="start_date"
+        [dateFormat]="'mm/dd/yy'"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        [yearRange]="startDateYearsRange"
+        [defaultDate]="defaultDate">
+      </p-calendar>
+      <button type="button"
+        class="btn btn-primary"
+        (click)="toggleDatePicker($event, 'start')"
+        [disabled]="modelForm.get('start_date').disabled">
+        <span>
+          <svg width="30" height="30">
+            <use xlink:href="../../../../../../../assets/images/sprite.svg#calendar"></use>
+          </svg>
+        </span>
+      </button>
+    </label>
+  </p>
+
+  <p class="form-group">
+    <label class="date-picker-custom">
+      <span>End Date:</span>
+      <p-calendar
+        #endDatePicker
+        [styleClass]="'form-control-border-light'"
+        formControlName="end_date"
+        [dateFormat]="'mm/dd/yy'"
+        [monthNavigator]="true"
+        [yearNavigator]="true"
+        [yearRange]="endDateYearsRange"
+        [defaultDate]="defaultDate">
+      </p-calendar>
+      <button type="button"
+        class="btn btn-primary"
+        (click)="toggleDatePicker($event, 'end')"
+        [disabled]="modelForm.get('end_date').disabled">
+        <span>
+          <svg width="30" height="30">
+            <use xlink:href="../../../../../../../assets/images/sprite.svg#calendar"></use>
+          </svg>
+        </span>
+      </button>
+    </label>
+  </p>
+
+  <div *ngIf="mode !== 1" class="form-error-center" [ngClass]="{'error-show': errorMessage}">
+    <fmp-error
+      *ngIf="errorMessage"
+      class="error-center"
+      [text]="errorMessage" (onErrorClick)="closeError()">
+    </fmp-error>
+  </div>
+
+  <div class="btn-holder" *ngIf="mode !== 1">
+    <button type="button" class="btn btn-outline-primary" (click)="submitItem()">
+      <span>Save</span>
+    </button>
+  </div>
+</form>

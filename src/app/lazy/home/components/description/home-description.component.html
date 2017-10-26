@@ -1,0 +1,21 @@
+<div class="desc-bg"></div>
+<div class="title-description">
+  <h2 *ngIf="componentData?.image_header_title" [innerHTML]="componentData.image_header_title"></h2>
+  <p *ngIf="componentData?.image_header_description"
+     [innerHTML]="componentData.image_header_description"
+     class="description-short">
+  </p>
+</div>
+<ul class="list-description">
+  <li *ngFor="let item of componentData.image_list">
+    <div class="circle-icon" *ngIf="item?.image">
+      <svg>
+        <use [attr.xlink:href]="'src/assets/images/sprite2.svg#' + item.image"></use>
+      </svg>
+    </div>
+    <div class="desc-text">
+      <h3 class="h5" *ngIf="item?.title" [innerHTML]="item.title"></h3>
+      <p *ngIf="item?.description" [innerHTML]="item.description"></p>
+    </div>
+  </li>
+</ul>

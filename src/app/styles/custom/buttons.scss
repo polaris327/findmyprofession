@@ -1,0 +1,187 @@
+@import "variables";
+@import "mixins";
+
+.btn  {
+  display: inline-block;
+  font: {
+    family: $font-family-serif;
+    weight: 700;
+  }
+  background: $brand-primary;
+  color: $light;
+  border: none;
+  padding: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: background .3s, color .3s, border-color .3s, box-shadow .2s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.btn-center {
+    display: block;
+    margin: 0 auto;
+  }
+
+  &.btn-secondary {
+    color: $light;
+    border: 1px solid $brand-secondary;
+    background: $brand-secondary;
+
+    &:hover {
+      color: $brand-secondary;
+      background: $light;
+    }
+  }
+
+  &.btn-primary {
+    @include btn-size(280px, 45px, 1.222rem, 22px);
+    color: $light;
+    border: 1px solid $brand-primary;
+    background: $brand-primary;
+    padding: 0 35px;
+
+    &:not([disabled]):hover {
+      color: $brand-secondary;
+      background: $light;
+
+      svg {
+        color: $brand-primary;
+      }
+    }
+
+    &-transparent {
+      @extend .btn-primary;
+      &:hover {
+        color: $light;
+        background: transparent;
+      }
+    }
+  }
+
+  &-link {
+    background: none;
+    padding: 0;
+    border: none;
+  }
+
+  &.btn-icon-square {
+    min-width: 55px;
+    max-width: 83px;
+    width: 100%;
+    height: 55px;
+    padding: 0;
+    border-radius: 7px;
+  }
+
+  &.btn-outline {
+    @include btn-size(175, 45px, 1rem, 31px);
+    background: transparent;
+    color: $brand-secondary;
+
+    &-primary {
+      @extend .btn-outline;
+      @include btn-outline($brand-primary);
+
+      &-lg {
+        @extend .btn-outline-primary;
+        @include btn-size(280px, 45px, 1.222rem, 22px);
+        padding: 0 50px;
+      }
+    }
+
+    &-light {
+      @extend .btn-outline;
+      @include btn-outline($light);
+
+      &-lg {
+        @extend .btn-outline-light;
+        @include btn-size(280px, 45px, 1.222rem, 22px);
+        padding: 0 50px;
+      }
+    }
+
+    &:hover {
+      color: $light;
+      background: $brand-primary;
+      border: 1px solid $brand-primary;
+    }
+  }
+
+  &.btn-light-outline-blue {
+    @extend .btn-outline-primary;
+    @include btn-size(292, 45px, 1rem, 20px);
+    background: $light;
+  }
+
+  &.btn-xs {
+    @include btn-size(92, 36px, 1rem, 18px);
+    padding: 0 8px;
+  }
+
+  &.btn-md {
+    @include btn-size(265, 67px, 1.667rem, 31px);
+  }
+
+  &.btn-lg {
+    @include btn-size(365, 85px, 2rem, 42px);
+  }
+
+  &.btn-full {
+    @include btn-size(100%, 67px, 1.667rem, 31px);
+  }
+
+  &.btn-auto {
+    @include btn-size(auto, 45px, 1rem, 20px);
+  }
+
+  &.btn-border-anim {
+    border: {
+      style: solid;
+      width: 1px;
+      color: #14a4d0;
+      top-color: $brand-primary;
+    }
+    box-shadow: inset 0 -6px 0 -2px #14a4d0;
+
+    &:hover {
+      background: $light;
+      color: $brand-primary;
+      border-top-color: #14a4d0;
+    }
+
+    &:active {
+      outline: none;
+      box-shadow: inset 0 4px 0 0 #14a4d0;
+
+      &:not(:disabled) {
+        span {
+          transition: .3s;
+          display: inline-block;
+          transform: translateY(5px);
+        }
+      }
+    }
+  }
+
+  &.btn-browse {
+    @include btn-size(120px, 36px, 1rem, 18px);
+    padding: 0 10px;
+  }
+
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:active {
+    cursor: not-allowed;
+    color: $light;
+    border: 1px solid $gray-light;
+    background: $gray-light;
+    box-shadow: none;
+  }
+}
+
+.btn-group-inline {
+  display: flex;
+  justify-content: space-around;
+}

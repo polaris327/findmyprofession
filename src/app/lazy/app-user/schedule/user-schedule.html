@@ -1,0 +1,60 @@
+<div class="schedule-holder box-light-reg">
+  <div class="container box-light-content">
+
+    <h1>My Schedule</h1>
+
+    <section>
+      <h2 *ngIf="calls?.available?.length !== 0">Available Calls</h2>
+
+      <ul class="calls-list">
+        <li *ngFor="let event of calls?.available;trackBy: event?.id;let i = index">
+
+          <fmp-schedule-event-item
+            class="call-item"
+            [type]="'available'"
+            [event]="event"
+            (onEventSchedule)="scheduleEventCall($event, i)"
+            (onEventCancel)="cancelEvent(event, 'pending', i)"
+            (onEventComplete)="completeEvent($event, 'pending', i)">
+          </fmp-schedule-event-item>
+
+        </li>
+      </ul>
+    </section>
+
+
+    <section>
+      <h2 *ngIf="calls?.pending?.length !== 0">Scheduled Calls</h2>
+
+      <ul class="calls-list">
+        <li *ngFor="let event of calls?.pending;trackBy: event?.id;let i = index">
+
+          <fmp-schedule-event-item
+            class="call-item"
+            [event]="event"
+            (onEventCancel)="cancelEvent($event, 'pending', i)"
+            (onEventComplete)="completeEvent($event, 'pending', i)">
+          </fmp-schedule-event-item>
+
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 *ngIf="calls?.completed?.length !== 0">Completed Calls</h2>
+
+      <ul class="calls-list">
+        <li *ngFor="let event of calls?.completed;trackBy: event?.id;let i = index">
+
+          <fmp-schedule-event-item
+            class="call-item"
+            [type]="'completed'"
+            [event]="event">
+          </fmp-schedule-event-item>
+
+        </li>
+      </ul>
+    </section>
+
+  </div>
+</div>

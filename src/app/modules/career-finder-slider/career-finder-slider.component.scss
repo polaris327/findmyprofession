@@ -1,0 +1,85 @@
+@import '../../styles/custom/variables';
+@import '../../styles/custom/mixins';
+
+.career-finder-slider-component {
+  display: block;
+  text-align: center;
+
+  > p:last-of-type {
+    padding-top: 30px;
+  }
+
+  .schedule-button {
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: $point) {
+
+    h3.text-bold {
+      margin-bottom: 30px;
+    }
+
+    .btn.btn-md {
+      @include btn-size(300px, 80px, 1.7rem, 42px);
+    }
+
+    .schedule-button {
+      margin-bottom: 70px;
+    }
+  }
+
+  .list-package {
+    font-size: 0.889rem;
+    line-height: 22px;
+    margin-bottom: 46px;
+    text-align: left;
+
+    li {
+      background: $blue-light;
+      padding: 20px 15px 19px 25px;
+      margin: 0 0 10px;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 29px;
+        left: 17px;
+        width: 4px;
+        height: 4px;
+        background: $dark;
+        border-radius: 50%;
+      }
+    }
+
+    @media (min-width: 750px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+      li {
+        width: 48%;
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (min-width: $point) {
+      font-size: 1.111rem;
+      line-height: 30px;
+      margin-bottom: 32px;
+
+      li {
+        width: 32%;
+        padding: 28px 15px 25px 45px;
+        margin-bottom: 13px;
+
+        &::before {
+          top: 41px;
+          left: 36px;
+          width: 5px;
+          height: 5px;
+        }
+      }
+    }
+  }
+}

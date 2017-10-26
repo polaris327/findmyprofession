@@ -1,0 +1,9 @@
+@import '../../styles/custom/variables';
+
+.terms-privacy {
+  transition: .3s;
+
+  &.move-down {
+    padding-top: 162px;
+  }
+}

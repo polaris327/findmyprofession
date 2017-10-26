@@ -1,0 +1,27 @@
+<article class="congratulation-package-selector">
+  <header>
+    <label class="custom-choice custom-choice-blue">
+      <input type="checkbox" [(ngModel)]="isSelected" (change)="radioButtonChanged()">
+      <span class="indicator">
+        <svg>
+          <use xlink:href="../../../../assets/images/sprite-anim.svg#checkbox"></use>
+        </svg>
+      </span>
+      {{fmpPlan.title}}
+    </label>
+  </header>
+  <svg class="icon-package">
+    <use [attr.xlink:href]="'src/assets/images/sprite2.svg#' + fmpPlan.icon"></use>
+  </svg>
+  <p>Please select Your plan:</p>
+
+  <fmp-custom-dropdown-component
+    class="dropdown-package"
+    [type]="'congratulation'"
+    [values]="fmpPlan.types"
+    [isDisabled]="!isSelected"
+    [selectedValue]="fmpPlan?.selectedType"
+    (valueSelected)="valueSelected($event)">
+  </fmp-custom-dropdown-component>
+
+</article>

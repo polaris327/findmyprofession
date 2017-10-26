@@ -1,0 +1,43 @@
+<div class="additional-packages">
+
+  <p class="title">Services</p>
+
+  <div class="basket-void" *ngIf="packages?.length === 0">
+    <svg width="100" height="100">
+      <use xlink:href="../../../../assets/images/sprite2.svg#checkout-empty"></use>
+    </svg>
+    <p>Your Basket is empty</p>
+  </div>
+  <ul class="item-holder">
+    <li class="item" *ngFor="let item of packages">
+      <div class="icon">
+        <svg width="50" height="46">
+          <use [attr.xlink:href]="'src/assets/images/sprite2.svg#'+ item.icon"></use>
+        </svg>
+      </div>
+      <div class="description">
+        <p class="package-title">{{item.title}}</p>
+        <!--Detect career finder , it hasn't any plan-->
+        <p class="text-bottom">
+          <span *ngIf="item.id > 1">Plan: {{item.plan}}</span>
+          <span>Price: {{ (item.price || 0) | currency:'USD':true:'1.2-2'}}</span>
+        </p>
+      </div>
+      <svg class="close" width="15" height="15" (click)="removePackage(item)">
+        <use xlink:href="../../../../assets/images/sprite.svg#close"></use>
+      </svg>
+    </li>
+  </ul>
+
+  <p class="payment" *ngIf="packages?.length">{{payment?.sub_total | currency:'USD':true:'1.2-2'}}</p>
+  <p class="payment promo" *ngIf="payment?.promo_code">
+    <span *ngIf="payment?.promo_code?.type == 'fixed'">- {{payment.promo_code.value | currency:'USD':true:'1.2-2'}}</span>
+    <span *ngIf="payment?.promo_code?.type !== 'fixed'">- {{payment.promo_code.value}} %</span>
+    <span>Promo Code</span>
+  </p>
+  <p class="total">
+    <span *ngIf="packages?.length">Total:</span>
+    <span *ngIf="packages?.length">{{payment?.total | currency:'USD':true:'1.2-2'}}</span>
+  </p>
+
+</div>

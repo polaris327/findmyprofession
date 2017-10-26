@@ -1,0 +1,30 @@
+<div class="custom-modal">
+  <div class="circle-icon-line-holder">
+    <fmp-circle-icon-line class="circle-icon-line-modal" [icon]="'cover-letter-service'"></fmp-circle-icon-line>
+  </div>
+  <div class="calendly-inline-widget" [attr.data-url]="calendlyUrl + type | safe" data-processed="true">
+    <div class="spinner" *ngIf="!isFrameLoaded">
+      <span class="circle1"></span>
+      <span class="circle2"></span>
+      <span class="circle3"></span>
+      <span class="circle4"></span>
+      <span class="circle5"></span>
+      <span class="circle6"></span>
+      <span class="circle7"></span>
+      <span class="circle8"></span>
+      <span class="circle9"></span>
+      <span class="circle10"></span>
+      <span class="circle11"></span>
+      <span class="circle12"></span>
+    </div>
+
+    <iframe (load)="frameLoaded()"
+            [ngStyle]="{ 'opacity': isFrameLoaded ? '1': '0'}"
+            [attr.src]="calendlyUrl + type | safe"
+            width="100%"
+            height="100%"
+            frameborder="0">
+    </iframe>
+  </div>
+  <fmp-modal-close-icon (onModalClose)="cancel()"></fmp-modal-close-icon>
+</div>

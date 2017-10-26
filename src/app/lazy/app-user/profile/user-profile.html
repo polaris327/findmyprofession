@@ -1,0 +1,168 @@
+<div class="container user-profile-page box-light-reg">
+  <div class="box-light-content">
+    <h1>My Profile</h1>
+
+    <div class="accordion-progress-holder">
+
+      <ngb-accordion class="accordion accordion-profile"
+                     #profileAccordion="ngbAccordion"
+                     [closeOthers]="true"
+                     (panelChange)="panelStateChanged($event)">
+
+        <ngb-panel [id]="'profile-accordion-' + accordionData[0]?.id">
+
+          <ng-template ngbPanelTitle>
+
+            <fmp-accordion-title-component
+              class="accordion-icon-title"
+              [title]="accordionData[0]?.title"
+              [iconSrc]="accordionData[0]?.image_src">
+            </fmp-accordion-title-component>
+
+          </ng-template>
+
+          <ng-template ngbPanelContent>
+
+            <fmp-accordion-tab-profile
+              class="accordion-tab"
+              [profile]="profile?.profile"
+              [accordionId]="'profile-accordion-'+accordionData[0]?.id"
+              (onAccordionClose)="closeAccordion($event)">
+            </fmp-accordion-tab-profile>
+
+          </ng-template>
+
+        </ngb-panel>
+
+        <ngb-panel [id]="'profile-accordion-'+accordionData[1]?.id">
+
+          <ng-template ngbPanelTitle>
+
+            <fmp-accordion-title-component
+              class="accordion-icon-title"
+              [title]="accordionData[1]?.title"
+              [iconSrc]="accordionData[1]?.image_src">
+            </fmp-accordion-title-component>
+
+          </ng-template>
+
+          <ng-template ngbPanelContent>
+
+            <fmp-accordion-tab-career-preferences
+              [careerPreferences]="profile?.career_preferences">
+            </fmp-accordion-tab-career-preferences>
+
+          </ng-template>
+
+        </ngb-panel>
+
+        <ngb-panel [id]="'profile-accordion-'+accordionData[2]?.id">
+
+          <ng-template ngbPanelTitle>
+
+            <fmp-accordion-title-component
+              class="accordion-icon-title"
+              [title]="accordionData[2]?.title"
+              [iconSrc]="accordionData[2]?.image_src">
+            </fmp-accordion-title-component>
+
+          </ng-template>
+
+          <ng-template ngbPanelContent>
+
+            <fmp-accordion-tab-experience
+              class="accordion-tab"
+              [workExperience]="profile?.work_experience"
+              [educationExperience]="profile?.education"
+              (onProfileUpdate)="updateUserProfile($event, 'profile-accordion-3', false)">
+            </fmp-accordion-tab-experience>
+
+          </ng-template>
+
+        </ngb-panel>
+
+        <ngb-panel [id]="'profile-accordion-'+accordionData[3]?.id">
+
+          <ng-template ngbPanelTitle>
+
+            <fmp-accordion-title-component
+              class="accordion-icon-title"
+              [title]="accordionData[3]?.title"
+              [iconSrc]="accordionData[3]?.image_src">
+            </fmp-accordion-title-component>
+
+          </ng-template>
+
+          <ng-template ngbPanelContent>
+
+          <fmp-profile-reference-component
+            class="accordion-tab"
+            [references]="profile?.user_reference"
+            (onProfileUpdate)="updateUserProfile($event)">
+          </fmp-profile-reference-component>
+
+          </ng-template>
+
+        </ngb-panel>
+
+        <ngb-panel [id]="'profile-accordion-'+accordionData[4]?.id">
+
+          <ng-template ngbPanelTitle>
+
+            <fmp-accordion-title-component
+              class="accordion-icon-title"
+              [title]="accordionData[4]?.title"
+              [iconSrc]="accordionData[4]?.image_src">
+            </fmp-accordion-title-component>
+
+          </ng-template>
+
+          <ng-template ngbPanelContent>
+
+            <fmp-accordion-tab-documents
+              [documents]="profile?.documents"
+              [templates]="profile?.templates"
+              (onFileUploaded)="updateUserProfile($event, '', false)"
+              (onTemplateSelected)="documentTemplateSelected()">
+            </fmp-accordion-tab-documents>
+
+          </ng-template>
+
+        </ngb-panel>
+
+        <ngb-panel [id]="'profile-accordion-'+accordionData[5]?.id">
+
+          <ng-template ngbPanelTitle>
+
+            <fmp-accordion-title-component
+              class="accordion-icon-title"
+              [title]="accordionData[5]?.title"
+              [iconSrc]="accordionData[5]?.image_src">
+            </fmp-accordion-title-component>
+
+          </ng-template>
+
+          <ng-template ngbPanelContent>
+
+            <fmp-profile-tab-questions
+              [accordionId]="'profile-accordion-'+accordionData[5]?.id"
+              [profileQuestions]="profile?.questions">
+            </fmp-profile-tab-questions>
+
+          </ng-template>
+
+        </ngb-panel>
+
+      </ngb-accordion>
+
+      <fmp-profile-progress-component
+        *ngIf="!isMobileMode"
+        class="profile-progress"
+        [progress]="profile?.progress"
+        (onProgressTaskOpen)="openReference($event)">
+      </fmp-profile-progress-component>
+
+    </div>
+
+  </div>
+</div>

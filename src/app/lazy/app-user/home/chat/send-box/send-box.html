@@ -1,0 +1,54 @@
+<form class="send-box" [formGroup]="modelForm" (submit)="sendMessage()" *ngIf="modelForm">
+  <div class="message-holder">
+   
+    <textarea
+      #sendField
+      class="form-control-border-light"
+      formControlName="attachment_name"
+      placeholder="Attached file">
+    </textarea>
+   
+    <textarea
+      #sendField
+      class="form-control-border-light"
+      formControlName="message"
+      placeholder="Type your message here"
+      (keypress)="keyPressed($event)">
+    </textarea>
+    <div class="hints">
+      <span *ngIf="formError; else text" class="error-text">{{formError}}</span>
+
+      <ng-template #text>
+
+        <span *ngIf="modelForm.controls['attachment'].value; else symbolsCount">File selected</span>
+
+        <ng-template #symbolsCount>
+          <fmp-symbols-counter-component
+            [maxSymbols]="maxSymbols"
+            [value]="modelForm.controls['message'].value">
+          </fmp-symbols-counter-component>
+        </ng-template>
+
+      </ng-template>
+
+    </div>
+  </div>
+
+  <div class="btn-group-attach-send">
+    <fmp-file-selector-component
+      [isDisabled]="isMessageSending"
+      [fileName]="fileName"
+      [isSelected]="isFileSelected"
+      (onFileSelected)="fileSelected($event)"
+      (onFileRemoved)="fileRemoved()">
+    </fmp-file-selector-component>
+    <button #submitButton class="btn btn-primary btn-icon-square" type="submit" [disabled]="isMessageSending">
+      <span>
+        <svg width="31" height="31">
+          <use xlink:href="../../../../../../assets/images/sprite.svg#send"></use>
+        </svg>
+      </span>
+    </button>
+  </div>
+
+</form>

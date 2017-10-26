@@ -1,0 +1,23 @@
+<div class="home-career-advice">
+  <h2 class="head-main">Career Advice</h2>
+  <div class="tabs-carousel" [ngClass]="{'move-down': false}">
+
+    <div class="container-md">
+      <fmp-career-advice-tabs
+        [isTop]="true"
+        [selectedPackage]="selectedPackage"
+        (onLinkClick)="categoryChange($event)">
+      </fmp-career-advice-tabs>
+    </div>
+
+    <fmp-template-carousel-component
+      class="carousel-component"
+      [type]="'career-advice'"
+      [slidesNumber]="topArticles?.length / 2"
+      [sliderItems]="topArticles"
+      (onLikeToggle)="toggleArticleLike($event)"
+      (openArticle)="openSelectedArticle($event)">
+    </fmp-template-carousel-component>
+
+  </div>
+</div>

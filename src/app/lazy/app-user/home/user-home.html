@@ -1,0 +1,22 @@
+<div class="container-mlg user-home-holder">
+
+  <h1 class="head-main">Welcome to <span>Find My Profession</span></h1>
+
+  <ul class="updates-chat">
+    <li>
+      <fmp-home-updates-component
+        [updates]="updates">
+      </fmp-home-updates-component>
+    </li>
+    <li>
+      <fmp-chat-component
+        [messages]="chatMessages">
+      </fmp-chat-component>
+    </li>
+  </ul>
+</div>
+
+<fmp-home-career-advice-component
+  [topArticles]="articles"
+  (onArticleLikeToggle)="articleLikeToggle($event)">
+</fmp-home-career-advice-component>

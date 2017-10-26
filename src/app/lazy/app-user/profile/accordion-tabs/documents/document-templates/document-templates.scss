@@ -1,0 +1,66 @@
+@import "../../../../../../styles/custom/variables";
+
+.document-templates-holder {
+  h5 {
+    text-align: center;
+    font: 300 1.111rem $font-family-sans-serif;
+    margin-bottom: 15px;
+
+    @media (min-width: $point) {
+      font-size: 1.444rem;
+      margin-bottom: 30px;
+    }
+
+    span {
+      display: block;
+
+      @media (min-width: 700px) {
+        display: inline;
+      }
+    }
+
+  }
+}
+
+.document-templates {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -5px;
+
+  li {
+    position: relative;
+    width: 50%;
+    padding: 0 5px;
+    margin-bottom: 10px;
+
+    @media (min-width: 400px) {
+      width: 33.33%;
+    }
+    @media (min-width: 550px) {
+      width: 25%;
+    }
+    @media (min-width: 700px) {
+      width: 20%;
+    }
+    @media (min-width: 950px) {
+      width: 16.666%;
+      margin-bottom: 15px;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .btn-holder {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .btn:first-of-type {
+      margin-bottom: 5px;
+    }
+  }
+}

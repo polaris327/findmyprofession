@@ -1,0 +1,42 @@
+@import '../../../../../styles/custom/variables';
+
+.send-box {
+  display: flex;
+
+  .message-holder {
+    flex: 1;
+    position: relative;
+
+    textarea {
+      height: 65px;
+      font-size: 0.889rem;
+
+      @media (min-width: $point) {
+        font-size: 1.111rem;
+      }
+    }
+
+    .hints {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 1px);
+      font-size: 0.72rem;
+
+      @media (min-width: $point) {
+        top: calc(100% + 5px);
+      }
+    }
+  }
+
+  .btn-group-attach-send {
+    width: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 15px;
+
+    @media (min-width: $point-md) {
+      width: 83px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<nav class="sub-nav-mobile" [ngClass]="{'show-nav': subNavState, 'sub-nav-fixed': !isTop}">
+  <ul>
+    <li *ngFor="let link of articleCategories" (click)="packageSelected(link.title)">
+      <a [ngClass]="{ 'active': selectedPackage === link.link || selectedPackage === link.title }" (click)="openLink($event, link)">{{link.title}}</a>
+    </li>
+  </ul>
+  <p class="selected-item"
+    *ngIf="!subNavState"
+    (click)="toggleSubNav()">
+    {{selectedPackage}}
+  </p>
+</nav>
+<nav class="sub-nav-desktop" [ngClass]="{'text-dark': isTop}">
+  <ul>
+    <li *ngFor="let link of articleCategories">
+      <a [ngClass]="{ 'active': selectedPackage === link.link || selectedPackage === link.title }" (click)="openLink($event, link)">{{link.title}}</a>
+    </li>
+  </ul>
+</nav>

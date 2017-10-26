@@ -1,0 +1,111 @@
+@import '../../../../styles/custom/variables';
+
+.chat {
+  padding: 10px 10px 20px;
+
+  @media (min-width: $point) {
+    padding: 30px 20px;
+  }
+}
+
+.chat-list {
+  height: 320px;
+  overflow-y: scroll;
+  padding: 0 20px 13px 0;
+  margin-right: -15px;
+  margin-bottom: 8px;
+  font-size: 0.889rem;
+
+  @media (min-width: $point) {
+    height: 380px;
+    font-size: 1.111rem;
+  }
+
+  .day-time {
+    color: #ababae;
+    font-size: 0.7em;
+    font-weight: 400;
+  }
+
+  .day {
+    text-align: center;
+    align-self: center;
+    margin-bottom: 5px;
+  }
+
+  .time {
+    text-align: right;
+  }
+
+  .text-overflow {
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .icon-doc {
+    display: inline-flex;
+    align-items: center;
+    color: $brand-secondary;
+
+    svg, a {
+      color: inherit;
+    }
+
+    svg {
+      margin-right: 5px;
+    }
+
+    .text-overflow {
+      white-space: nowrap;
+      width: auto;
+      max-width: 195px;
+      @media (min-width: $point) {
+        max-width: 400px;
+      }
+    }
+  }
+
+  li {
+    &:not(:last-of-type) {
+      margin-bottom: 20px;
+      @media (min-width: $point) {
+        margin-bottom: 18px;
+      }
+    }
+    flex-direction: column;
+
+    .message {
+      padding: 10px 15px;
+      max-width: 250px;
+      border-radius: 25px 25px 25px 0;
+      border: 1px solid #08618d;
+
+      @media (min-width: $point) {
+        padding: 9px 21px;
+        max-width: 560px;
+        line-height: 26px;
+      }
+    }
+
+    &.outgoing {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+
+      .message {
+        border-radius: 22px 25px 0 22px;
+        background-color: #08618d;
+        color: #fff;
+      }
+
+      .icon-doc {
+        color: $light;
+      }
+    }
+
+    &.incoming {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+}

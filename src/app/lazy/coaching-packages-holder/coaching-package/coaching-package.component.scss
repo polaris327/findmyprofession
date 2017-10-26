@@ -1,0 +1,270 @@
+@import '../../../styles/custom/variables';
+
+.service-content {
+  & + * {
+    display: block;
+    transition: .3s;
+  }
+
+  &.move-down {
+    & + * {
+      padding-top: 224px;
+    }
+  }
+}
+
+.coaching-service {
+  margin-bottom: 100px;
+
+  .icon-title-description {
+    text-align: center;
+    margin-bottom: 70px;
+    overflow: hidden;
+
+    @media (min-width: $point) {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 90px;
+    }
+    @media (min-width: $point-md) {
+      margin-bottom: 112px;
+    }
+
+    svg {
+      height: 26vw;
+      max-height: 150px;
+      margin-bottom: 21px;
+
+      @media (min-width: $point) {
+        width: 221px;
+        min-width: 221px;
+        height: 225px;
+        max-height: 225px;
+        margin: 0 5% 0 0;
+      }
+    }
+
+    .title-description {
+      font-weight: 400;
+      text-align: center;
+
+      @media (min-width: $point) {
+        text-align: left;
+        margin-bottom: 0;
+      }
+      @media (min-width: $point-md) {
+        width: 56%;
+      }
+
+      h1 {
+        font-size: 1.778rem;
+        font-weight: 400;
+        margin-bottom: 19px;
+
+        @media (min-width: $point) {
+          text-align: left;
+          font-size: 3rem;
+          padding-top: 10px;
+          margin-bottom: 40px;
+          animation: moving-down .6s forwards;
+        }
+        @media (min-width: $point-md) {
+          font-size: 3.5rem;
+          margin-bottom: 50px;
+        }
+        @media (min-width: $point-lg) {
+          font-size: 4rem;
+          padding-top: 10px;
+          margin-bottom: 63px;
+        }
+      }
+
+      p {
+        line-height: 1.27;
+
+        &.description-short {
+          width: 475px;
+          margin: 0 auto;
+        }
+
+        @media (min-width: $point) {
+          padding-left: 10px;
+          font-size: 1.333rem;
+          animation: moving-down .6s .2s forwards;
+        }
+      }
+
+      @media (min-width: $point) {
+        h1, p {
+          will-change: transform, opacity;
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        @keyframes moving-down {
+          40% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+  }
+
+  .steps {
+    @media (min-width: $point) {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.333rem;
+      margin-bottom: 50px;
+    }
+    @media (min-width: $point-lg) {
+      margin-bottom: 100px;
+    }
+
+    li {
+      background-color: $blue-light;
+      text-align: center;
+      padding: 70px 8% 35px;
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 60px;
+
+      @media (min-width: 530px) {
+        padding: 70px 4% 35px;
+      }
+
+      @media (min-width: $point) {
+        padding: 70px 3% 35px;
+        max-width: 32%;
+        margin: 0;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        will-change: transform;
+        transform: translateX(-50%) scaleX(0);
+        height: 3px;
+        background: $brand-secondary;
+        width: 100%;
+        animation: {
+          name: border-top-width;
+          duration: .5s;
+          fill-mode: forwards;
+        }
+
+        @keyframes border-top-width {
+          to {
+            transform: translateX(-50%) scaleX(1);
+          }
+        }
+
+        @media only screen and (orientation: landscape) {
+          will-change: auto;
+          animation: {
+            name: none;
+            duration: 0s;
+            fill-mode: none;
+          }
+          transform: translateX(-50%) scaleX(1);
+        }
+      }
+
+      span {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: $brand-secondary;
+        border-radius: 50px;
+        font: {
+          weight: 400;
+          family: 'Enriqueta';
+        }
+        color: $light;
+        animation: {
+          name: circle-scale;
+          duration: .5s;
+          fill-mode: forwards;
+        }
+
+        @keyframes circle-scale {
+          to {
+            transform: translate(-50%, -50%) scale(1);
+          }
+        }
+      }
+
+      @mixin circle-size($size, $font-size) {
+        span {
+          width: $size;
+          height: $size;
+          font-size: $font-size;
+          line-height: $size - 10px;
+        }
+
+        &:last-of-type span {
+          line-height: $size - 15px;
+          font-size: $font-size - 0.122;
+
+          @media (min-width: $point) {
+            line-height: $size - 20px;
+            font-size: $font-size - 0.433;
+          }
+        }
+      }
+
+      @include circle-size(80px, 2.222rem);
+
+      @media (min-width: $point) {
+        @include circle-size(100px, 3.333rem);
+      }
+
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i})::before {
+          animation-delay: 0.2s * $i;
+        }
+
+        span {
+          animation-delay: 0.1s * $i;
+        }
+      }
+    }
+  }
+
+  .career-finder-slider-holder {
+    margin-bottom: 50px;
+
+    @media (min-width: $point) {
+      margin-bottom: 100px;
+    }
+  }
+
+  .text-content {
+    margin-bottom: 0;
+
+    p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .article-more {
+    position: relative;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+
+    .btn-link {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}

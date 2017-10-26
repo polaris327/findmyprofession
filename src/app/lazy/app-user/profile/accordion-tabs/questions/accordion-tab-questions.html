@@ -1,0 +1,65 @@
+<form class="accordion-tab-questions" *ngIf="modelForm" [formGroup]="modelForm" (submit)="saveForm()">
+
+  <div class="form-group form-group-content">
+    <h5 class="title-fixed">Work Authorization:</h5>
+    <ul>
+      <li class="form-group-choice" *ngFor="let question of questions?.work_authorization">
+        <label class="custom-choice custom-choice-blue">
+          <input type="radio" [name]="work_authorization" [value]="question" formControlName="work_authorization">
+          <span class="indicator indicator-radio"></span>
+          {{question}}
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-group form-group-content">
+    <h5 class="title-fixed">Gender:</h5>
+    <ul>
+      <li class="form-group-choice" *ngFor="let question of questions?.gender">
+        <label class="custom-choice custom-choice-blue">
+          <input type="radio" [name]="gender" [value]="question" formControlName="gender">
+          <span class="indicator indicator-radio"></span>
+          {{question}}
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-group form-group-content">
+    <h5 class="title-fixed">Veteran Status:</h5>
+    <ul>
+      <li class="form-group-choice" *ngFor="let question of questions?.veteran_status">
+        <label class="custom-choice custom-choice-blue">
+          <input type="radio" [name]="veteran_status" [value]="question" formControlName="veteran_status">
+          <span class="indicator indicator-radio"></span>
+          {{question}}
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-group form-group-content">
+    <h5 class="title-fixed">Disability Status:</h5>
+    <ul>
+      <li class="form-group-choice" *ngFor="let question of questions?.disability_status">
+        <label class="custom-choice custom-choice-blue">
+          <input type="radio" [value]="question" formControlName="disability_status">
+          <span class="indicator indicator-radio"></span>
+          {{question}}
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-group form-group-content">
+    <h5>Race/Ethnicity:</h5>
+    <fmp-custom-dropdown-component
+      [values]="questions?.race_ethnicity"
+      [placeholder]="'Select race/ethnicity'"
+      [selectedValue]="modelForm.controls['race_ethnicity'].value"
+      (valueSelected)="setField('race_ethnicity', $event)">
+    </fmp-custom-dropdown-component>
+  </div>
+
+</form>

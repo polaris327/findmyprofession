@@ -1,0 +1,45 @@
+@import '../../../styles/custom/variables';
+
+.congratulation-package-selector {
+  border: 1px solid $brand-secondary;
+  background-color: $light;
+  padding: 19px 2% 18px;
+  text-align: center;
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .custom-choice {
+    font: 500 1.222rem $font-family-sans-serif;
+    margin-right: 0;
+
+    @media (min-width: $point) {
+      font-size: 0.889rem;
+    }
+    @media (min-width: $point-md) {
+      font-size: 1.222rem;
+    }
+  }
+
+  .icon-package {
+    width: 78px;
+    height: 78px;
+    transform: translate(-5px,-11px);
+    margin-bottom: -17px;
+    color: $brand-secondary;
+  }
+
+  p {
+    font-size: 1.222rem;
+    margin-bottom: 8px;
+    @media (min-width: $point) {
+      font-size: 0.889rem;
+    }
+    @media (min-width: $point-md) {
+      font-size: 1.222rem;
+    }
+  }
+}

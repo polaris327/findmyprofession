@@ -1,0 +1,54 @@
+<table class="document-table">
+  <thead>
+    <tr>
+      <td>
+        <span class="doc-info">Document Info</span>
+        <span class="doc-name">Document Name</span>
+      </td>
+      <td class="doc-type">Document Type</td>
+      <td class="added-by">Added By</td>
+      <td class="date-added">Date Added</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doc of documents">
+      <td class="doc-info-content">
+        <div class="align-vert">
+          <svg class="icon-attachment">
+            <use xlink:href="../../../../../../../assets/images/sprite.svg#attachment"></use>
+          </svg>
+          <span>
+            <a class="link link-left link-left-dark" [href]="doc.document" (click)="downloadDocument($event, doc)">{{doc.name}}</a>
+          </span>
+        </div>
+        <span>{{doc.added_by}}</span>
+        <span>{{doc.date_added | date: 'd/M/yy'}}</span>
+      </td>
+      <td class="doc-type-content">
+        <div class="align-vert">
+          <fmp-custom-dropdown-component
+            [values]="documentTypes"
+            [selectedValue]="doc.type"
+            (valueSelected)="documentTypeChanged($event , doc)">
+          </fmp-custom-dropdown-component>
+          <span (click)="removeDocument(doc)">
+            <svg class="close" width="17" height="17">
+              <use xlink:href="../../../../../../../assets/images/sprite.svg#close"></use>
+            </svg>
+          </span>
+        </div>
+      </td>
+      <td class="added-by-content">{{doc.added_by}}</td>
+      <td class="date-added-content">
+        <span class="date-close align-vert">
+          {{doc.date_added | date: 'M/d/yy'}}
+          <span class="close" (click)="removeDocument(doc)">
+             <svg width="17" height="17">
+               <use xlink:href="../../../../../../../assets/images/sprite.svg#close"></use>
+             </svg>
+          </span>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

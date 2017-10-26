@@ -1,0 +1,53 @@
+<form [formGroup]="modelForm" (submit)="sendForm($event)">
+
+  <p [ngClass]="{ 'error-show' : fm.full_name}">
+
+    <fmp-error class="error-field" [text]="fm.full_name" (click)="closeError('full_name')"></fmp-error>
+
+    <input type="text"
+      class="form-control-border-light"
+      formControlName="full_name"
+      placeholder="Full Name">
+
+  </p>
+
+  <p [ngClass]="{ 'error-show' : fm.email}">
+
+    <fmp-error class="error-field" [text]="fm.email" (click)="closeError('email')"></fmp-error>
+
+    <input type="text"
+      class="form-control-border-light"
+      formControlName="email"
+      placeholder="Email">
+
+  </p>
+
+  <p [ngClass]="{ 'error-show' : fm.password}">
+
+    <fmp-error class="error-field" [text]="fm.password" (click)="closeError('password')"></fmp-error>
+
+    <input type="password"
+      class="form-control-border-light"
+      formControlName="password"
+      placeholder="Password*">
+
+  </p>
+
+  <p [ngClass]="{ 'error-show' : fm.confirm_password}">
+
+    <fmp-error class="error-field" [text]="fm.confirm_password" (click)="closeError('confirm_password')"></fmp-error>
+
+    <input type="password"
+      class="form-control-border-light"
+      formControlName="confirm_password"
+      placeholder="Confirm Password*">
+
+  </p>
+
+  <div class="head-error-center" [ngClass]="{'error-show': errorMessage}">
+
+    <fmp-error class="error-center" [text]="errorMessage"></fmp-error>
+
+  </div>
+
+</form>

@@ -1,0 +1,84 @@
+@import '../../../../../../styles/custom/variables';
+
+.file-drop-holder {
+  margin-bottom: 35px;
+}
+
+.file-drop {
+  position: relative;
+  padding-top: 5px;
+  text-align: center;
+  margin-bottom: 30px;
+
+  @media (min-width: $point) {
+    cursor: pointer;
+    transition: .3s;
+    padding: 38px 0 40px;
+    background: $blue-light;
+    margin-bottom: 54px;
+
+    &::before {
+      content: '';
+      z-index: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px dashed $brand-secondary;
+      transition: .3s;
+    }
+
+    &:hover {
+      background: transparentize($brand-primary, .8);
+    }
+
+    &.dropping-file {
+      background: transparentize($brand-primary, .8);
+
+      &::before {
+        border: 3px dashed $brand-secondary;
+      }
+    }
+  }
+
+  p {
+    font-size: 0.889rem;
+    margin-bottom: 13px;
+
+    @media (min-width: 450px) {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+  }
+
+  .file-icons {
+    display: flex;
+    justify-content: center;
+    color: $brand-secondary;
+    margin-bottom: 20px;
+
+    @media (min-width: $point) {
+      margin-bottom: 0;
+    }
+
+    svg {
+      width: 100%;
+      max-width: 10%;
+      height: 12vw;
+      max-height: 61px;
+      margin: 0 5px;
+
+      @media (min-width: 580px) {
+        max-width: 51px;
+        margin: 0 8px;
+      }
+    }
+  }
+
+  .btn-browse {
+    @media (min-width: $point) {
+      display: none;
+    }
+  }
+}

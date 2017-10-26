@@ -1,0 +1,22 @@
+<div #element class="subscribe-holder circle-icon-line-holder">
+
+  <fmp-circle-icon-line class="circle-icon-line-subscribe" [icon]="'subscribe'"></fmp-circle-icon-line>
+
+  <div class="text-form">
+    <div class="subscribe-text">
+      <p class="question">Did You Enjoy This Article?</p>
+      <p class="text-content">We can’t wait to send you a helpful email with the latest career advice. Thanks for reading!</p>
+    </div>
+    <form class="form-xs" [formGroup]="modelForm">
+      <p [ngClass]="{ 'error-show': fm.email}">
+        <fmp-error *ngIf="fm.email" class="error-field" [text]="fm.email" (onErrorClick)="closeError()"></fmp-error>
+        <input type="text"
+               class="form-control-border-light"
+               formControlName="email"
+               placeholder="Enter Your Email">
+      </p>
+      <button type="button" class="btn btn-primary" [disabled]="isRequestSending" (click)="subscribeToArticle()">Subscribe</button>
+    </form>
+  </div>
+
+</div>

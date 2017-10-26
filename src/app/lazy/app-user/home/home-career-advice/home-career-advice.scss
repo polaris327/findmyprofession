@@ -1,0 +1,42 @@
+@import "../../../../styles/custom/variables";
+
+.home-career-advice {
+  @media (min-width: $point) {
+    padding-top: 0;
+  }
+
+  h2.head-main {
+    @media (min-width: $point) {
+      margin-bottom: 61px;
+    }
+  }
+
+  .tabs-carousel {
+    padding-top: 85px;
+
+    &.move-down {
+      padding-top: 324px;
+    }
+
+    @media (min-width: $point) {
+      padding-top: 5px;
+    }
+  }
+
+  .carousel-component {
+    margin-bottom: 110px;
+
+    .carousel-holder {
+      .carousel-list {
+        li {
+          padding: 0;
+        }
+      }
+    }
+
+    @media (min-width: $point-lg) {
+      margin-bottom: 75px;
+      justify-content: space-around;
+    }
+  }
+}

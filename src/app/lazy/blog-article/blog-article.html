@@ -1,0 +1,61 @@
+<section class="blog-article box-light-reg">
+  <div #boxLight class="box-light-content container">
+    <div class="article-bg-content">
+      <div class="article-img">
+        <img [src]="article?.image | uploads" [alt]="article?.image_alt || article?.title">
+      </div>
+      <div class="article-content">
+        <h1 class="head-main" *ngIf="article?.title" [innerHTML]="article.title"></h1>
+        <div class="text-content clearfix" *ngIf="article?.content" [innerHTML]="article?.content | safeHtml"></div>
+
+        <div class="author-top-articles">
+          <div #articlesBlock class="author-top-articles-aside">
+            <article-author-component
+                [author]="article?.author">
+            </article-author-component>
+
+            <fmp-article-top-articles-component
+                [articles]="topArticles"
+                (onArticleOpen)="openArticle($event)">
+            </fmp-article-top-articles-component>
+          </div>
+        </div>
+
+        <div class="like-sharing">
+          <div #sharingBlock class="like-sharing-items">
+            <fmp-like-icon-component
+                [isArticle]="true"
+                [isLiked]="isArticleLike"
+                (onToggle)="toggleArticleLike($event)">
+            </fmp-like-icon-component>
+
+            <fmp-article-share-links-component
+                [articleUrl]="article?.url"
+                [articleDescription]="article?.description"
+                [articleImageUrl]="article?.image"
+                [articleTitle]="article?.title">
+            </fmp-article-share-links-component>
+          </div>
+        </div>
+
+      </div>
+
+      <subscribe-to-article-component #subscribeBlock></subscribe-to-article-component>
+
+    </div>
+  </div>
+</section>
+
+<div class="container-md">
+
+  <articles-cards-component
+    [articles]="cardArticles"
+    (onArticleOpen)="openArticle($event)"
+    (onArticleLike)="toggleListArticleLike($event)">
+  </articles-cards-component>
+
+  <a [routerLink]="['/career-advice']"
+     class="btn btn-light-outline-blue btn-center" (click)="openAllArticles($event)" (touchstart)="linkTapedHandler($event)">
+    See All Articles
+  </a>
+</div>

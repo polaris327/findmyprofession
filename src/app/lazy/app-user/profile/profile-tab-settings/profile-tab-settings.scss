@@ -1,0 +1,41 @@
+@import '../../../../styles/custom/variables';
+
+.managing-icons {
+  color: $brand-secondary;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 19px;
+  right: 15px;
+
+  svg {
+    pointer-events: none;
+  }
+
+  @media (min-width: 540px) {
+    top: 14px;
+    right: 15px;
+  }
+  @media (min-width: $point) {
+    top: 25px;
+    right: 21px;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  .close {
+    margin-left: 35px;
+
+    @media (min-width: $point) {
+      margin: 0 0 27px 0;
+    }
+  }
+  .edit {
+    @media (min-width: $point) {
+      width: 26px;
+      height: 26px;
+      margin-right: -3px;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<div class="login-page">
+  <div class="head-error-center" [ngClass]="{'error-show': errorMessage}">
+    <h1 class="head-main head-bold">Sign in</h1>
+
+    <fmp-error
+      *ngIf="errorMessage"
+      class="error-center"
+      [text]="errorMessage"
+      (onErrorClick)="closeError('main')">
+    </fmp-error>
+
+  </div>
+  <form *ngIf="isComponentInited" class="form-xs" [formGroup]="modelForm" (submit)="sendForm()">
+    <p [ngClass]="{ 'error-show' : fm.email}">
+
+      <fmp-error *ngIf="fm.email" class="error-field" [text]="fm.email" (onErrorClick)="closeError('email')"></fmp-error>
+
+      <input type="text"
+             class="form-control-border-blue"
+             formControlName="email"
+             [title]="'Enter your account email.'"
+             placeholder="Email">
+
+    </p>
+    <p [ngClass]="{ 'error-show' : fm.password}">
+
+      <fmp-error *ngIf="fm.password" class="error-field" [text]="fm.password" (onErrorClick)="closeError('password')"></fmp-error>
+
+      <input type="password"
+             class="form-control-border-blue"
+             formControlName="password"
+             [title]="'Enter your password.'"
+             placeholder="Password">
+    </p>
+    <p class="form-group-choice">
+      <label class="custom-choice custom-choice-light choice-serif">
+        <input type="checkbox" formControlName="rememberUser">
+        <span class="indicator">
+          <svg>
+            <use xlink:href="../../../assets/images/sprite-anim.svg#checkbox"></use>
+          </svg>
+        </span>
+        Keep me signed in
+      </label>
+    </p>
+    <button type="submit"
+            class="btn btn-md btn-primary btn-border-anim"
+            [disabled]="isRequestSending">
+      <span>Login</span>
+    </button>
+  </form>
+
+  <fmp-custom-link
+    [title]="'Forgot Your Password?'"
+    [linkArray]="['/password-reset']"
+    [linkClass]="['link', 'link-light']">
+  </fmp-custom-link>
+
+</div>

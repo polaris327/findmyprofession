@@ -1,0 +1,165 @@
+@import "../../../styles/custom/variables";
+
+.payment-info-holder {
+  $media-point: 550px;
+  $mob-input-padding: 13px;
+
+  @media (min-width: $point) {
+    .input-label {
+      display: block;
+      font-size: 1.111rem;
+    }
+  }
+
+  .card-number {
+
+    input {
+      padding-left: $mob-input-padding;
+    }
+
+    span {
+      display: none;
+    }
+
+    @media (min-width: $point) {
+      display: flex;
+      justify-content: space-between;
+
+      .input-label {
+        display: flex;
+        align-content: center;
+        align-items: center;
+      }
+
+      span {
+        line-height: 1.444rem;
+      }
+
+      p {
+        flex: 1;
+      }
+    }
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    text-align: left;
+
+    @media (min-width: $point) {
+      font-size: 1.889rem;
+      margin-bottom: 28px;
+    }
+  }
+
+  .expire-date-holder {
+
+    margin-bottom: 5px;
+    display: flex;
+
+    @media (min-width: $point) {
+      margin-bottom: 20px;
+
+      .input-label {
+        display: flex;
+        position: static;
+        align-items: center;
+      }
+    }
+
+    @media (min-width: 1300px) {
+      margin-bottom: 50px;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+    span {
+      margin-bottom: 2px;
+    }
+
+    .month-year-holder {
+      flex: 1;
+      margin-right: 5px;
+
+      @media (min-width: $media-point) {
+        display: flex;
+        align-items: center;
+      }
+      @media (min-width: $point) and (max-width: 1350px)  {
+        display: inline-block;
+
+        .input-label {
+          width: auto;
+        }
+      }
+
+      span {
+        display: block;
+      }
+
+      p {
+        display: inline-block;
+        width: 80px;
+
+        input {
+          text-align: center;
+        }
+
+        @media (min-width: $media-point) {
+          width: 99px;
+        }
+      }
+
+      p:first-of-type {
+        margin-right: 5px;
+
+        @media (min-width: $media-point) {
+          margin-right: 9px;
+        }
+      }
+
+      .input-label {
+        @media (min-width: $media-point) {
+          margin-right: 5px;
+        }
+        @media (min-width: 600px) {
+          margin-right: 15px;
+        }
+        @media (min-width: $point) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .expire-holder {
+      width: 110px;
+
+      p {
+        input {
+          padding-left: 20px;
+        }
+      }
+
+      @media (min-width: $media-point) {
+        display: flex;
+        align-items: center;
+        width: auto;
+
+        span {
+          padding-right: 5px;
+        }
+
+        p {
+          width: 143px;
+          text-align: right;
+        }
+      }
+
+      @media (min-width: $point) and (max-width: 1350px)  {
+        display: inline-block;
+      }
+    }
+  }
+}

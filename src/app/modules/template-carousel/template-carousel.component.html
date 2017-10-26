@@ -1,0 +1,64 @@
+<div class="title-description" *ngIf="title || subTitle">
+  <h2 *ngIf="title" [innerHTML]="title"></h2>
+  <p *ngIf="subTitle" [innerHTML]="subTitle"></p>
+</div>
+<div class="carousel-holder" *ngIf="sliderItems?.length > 0">
+  <div class="wrap" [ngStyle]="{ 'width': wrapWidth? wrapWidth+'px' : '100%' }">
+    <ul class="carousel-list" [ngStyle]="{'transform': 'translateX(' + marginLeft + 'px)'}" [class.transition]="needTransition">
+      <li *ngFor="let item of slides;trackBy: item?.id ;let i=index" [ngStyle]="{ 'width': wrapWidth+'px' }">
+
+        <fmp-home-carousel-component
+          *ngIf="type === 'home'"
+          class="home-carousel-content"
+          [item]="item" [currentShowIndex]="currentStart">
+        </fmp-home-carousel-component>
+
+        <!--If there are two testimonials need-->
+        <div *ngIf="type === 'service'" class="reviews-carousel-content" [ngStyle]="{ 'width': wrapWidth+'px'}">
+
+          <testimonial-min-holder-component
+            class="carousel-min-content"
+            *ngIf="mode === 'desk' ? slides[i*2] : item"
+            [currentSlide]="mode === 'desk' ? slides[i*2] : item"
+            (onTestimonialOpen)="openExistTestimonial($event)">
+          </testimonial-min-holder-component>
+
+          <testimonial-min-holder-component
+            class="carousel-min-content"
+            *ngIf="mode === 'desk' && slides[i*2 + 1]"
+            [currentSlide]="slides[i*2 + 1]"
+            (onTestimonialOpen)="openExistTestimonial($event)">
+          </testimonial-min-holder-component>
+
+        </div>
+
+        <div *ngIf="type === 'career-advice'" class="blog-carousel-content" [ngStyle]="{ 'width': wrapWidth+'px'}">
+
+          <career-advice-slider-item-component
+            class="carousel-min-content"
+            *ngIf="mode === 'desk' ? slides[i*2] : slides[i]"
+            [item]="mode === 'desk' ? slides[i*2] : slides[i]"
+            (onLikeToggle)="toggleLike($event, mode === 'desk' ? slides[i*2] : slides[i])"
+            (onArticleOpen)="openCareerAdviceArticle($event)">
+          </career-advice-slider-item-component>
+
+          <career-advice-slider-item-component
+            class="carousel-min-content"
+            *ngIf="slides[i*2 + 1] && mode === 'desk'"
+            [item]="slides[i*2 + 1]"
+            (onLikeToggle)="toggleLike($event, slides[i*2 + 1])"
+            (onArticleOpen)="openCareerAdviceArticle($event)">
+          </career-advice-slider-item-component>
+
+        </div>
+
+      </li>
+    </ul>
+  </div>
+
+  <div class="carousel-arrows" [ngClass]="{'arrows-down': type === 'career-advice'}">
+    <button class="btn-arrow" type="button" (click)="goLeft()" [disabled]="isNowTransition"></button>
+    <span *ngIf="type === 'career-advice' && mode === 'mob'" class="page-number">{{currentSlideNumber}}/{{slidesNumber}}</span>
+    <button class="btn-arrow btn-arrow-next" type="button" (click)="goRight()" [disabled]="isNowTransition"></button>
+  </div>
+</div>

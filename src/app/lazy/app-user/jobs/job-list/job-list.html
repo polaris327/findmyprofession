@@ -1,0 +1,75 @@
+<div class="job-list-holder">
+
+  <div class="sort-container">
+    <div class="text-holder">
+      <p *ngIf="type === 'liked' && jobs?.length">You have <span>{{jobsCount}} liked jobs</span></p>
+      <p *ngIf="type === 'applied' && jobs?.length">You have <span>{{jobsCount}} applied jobs</span></p>
+    </div>
+
+    <fmp-custom-dropdown-component
+      *ngIf="type === 'liked' || (jobs?.length || filterByOption)"
+      class="dropdown"
+      [values]="sortList"
+      [isDisabled]="!jobs?.length && !filterByOption"
+      [selectedValue]="filterByOption"
+      [placeholder]="'Sort by'"
+      (valueSelected)="filterBy($event)">
+    </fmp-custom-dropdown-component>
+
+    <div class="btn-holder">
+      <button type="button"
+              *ngIf="type === 'liked'"
+              class="btn btn-md btn-primary btn-border-anim"
+              (click)="addNewJob()">
+        + Add Job
+      </button>
+    </div>
+  </div>
+
+  <div class="job-list">
+    <ul class="job-list-filled" *ngIf="jobs?.length">
+      <li *ngFor="let job of jobs; let i=index">
+        <fmp-job-item-component
+          [item]="job"
+          [statuses]="statuses"
+          (onFileUpload)="downloadFile($event)"
+          (onStatusChanged)="itemStatusChanged($event, job, i)"
+          (onJobRemove)="removeJob($event)"
+          (onApplyStateChanged)="applyStateChanged($event)"
+          (onFileSelected)="uploadCoverLetter($event, job, i)"
+          (onCoverLetterRemove)="removeCoverLetter($event, i)">
+        </fmp-job-item-component>
+      </li>
+    </ul>
+
+    <div class="job-liked-empty" *ngIf="!jobs?.length && type === 'liked'">
+      <p>First you need to add a job</p>
+      <svg width="86" height="84">
+        <use xlink:href="../../../../../assets/images/sprite.svg#empty"></use>
+      </svg>
+    </div>
+
+    <div class="job-liked-empty" *ngIf="!jobs?.length && type === 'applied' && isCareerFinderBought">
+      <p>First you need to apply a job</p>
+      <svg width="86" height="84">
+        <use xlink:href="../../../../../assets/images/sprite.svg#empty"></use>
+      </svg>
+    </div>
+
+    <fmp-career-finder-steps-component
+      *ngIf="type === 'applied' && !jobs?.length && !isCareerFinderBought"
+      (onButtonClicked)="selectCareerFinder()">
+    </fmp-career-finder-steps-component>
+
+  </div>
+
+  <ngb-pagination
+    class="pagination-custom"
+    *ngIf="jobsCount > defaultLimit"
+    [pageSize]="defaultLimit"
+    [page]="currentPage"
+    [collectionSize]="jobsCount"
+    (pageChange)="pageChanged($event)">
+  </ngb-pagination>
+
+</div>

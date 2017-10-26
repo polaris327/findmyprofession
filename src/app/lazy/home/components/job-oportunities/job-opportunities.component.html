@@ -1,0 +1,10 @@
+<div class="title-description">
+  <h2 [innerHTML]="title || ''"></h2>
+  <p [innerHTML]="description || ''"></p>
+</div>
+<ul class="list-opportunities">
+  <li class="sr-only"><img [src]="'src/assets/images/logo-og.png'" alt=""></li>
+  <li *ngFor="let item of opportunities">
+    <img width="305" height="146" [src]="'src/assets/images/job-opportunities/' + item.src + '.jpg'" [alt]="item.alt">
+  </li>
+</ul>

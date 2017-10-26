@@ -1,0 +1,95 @@
+@import '../../../styles/custom/mixins';
+
+@mixin circle-icon-line(
+                        $border-width,
+                        $border-width-media,
+                        $margin-bottom,
+                        $margin-bottom-media,
+
+                        $title-circle-width,
+                        $title-circle-height,
+                        $title-circle-width-media,
+                        $title-circle-height-media,
+                        $title-circle-top,
+                        $title-circle-top-media,
+
+                        $circle-size,
+                        $circle-size-media,
+
+                        $icon-top,
+                        $icon-top-media,
+
+                        $icon-width,
+                        $icon-height,
+                        $icon-width-desk,
+                        $icon-height-desk) {
+
+  border-top-width: $border-width;
+  margin: 0 0 $margin-bottom;
+
+  @media (min-width: $point) {
+    border-top-width: $border-width-media;
+    margin: 0 0 $margin-bottom-media;
+  }
+
+  @media (max-height: 750px) {
+    border-top-width: $border-width;
+    margin: 0 0 $margin-bottom;
+  }
+
+  .title-circle {
+    width: $title-circle-width;
+    height: $title-circle-height;
+    top: $title-circle-top;
+
+    @media (min-width: $point) {
+      width: $title-circle-width-media;
+      height: $title-circle-height-media;
+      top: $title-circle-top-media;
+    }
+
+    @media (max-height: 750px) {
+      width: $title-circle-width;
+      height: $title-circle-height;
+      top: $title-circle-top;
+    }
+
+    &::before {
+      width: $circle-size;
+      height: $circle-size;
+      border-width: $border-width;
+
+      @media (min-width: $point) {
+        width: $circle-size-media;
+        height: $circle-size-media;
+        border-width: $border-width-media;
+      }
+      @media (max-height: 750px) {
+        width: $circle-size;
+        height: $circle-size;
+        border-width: $border-width;
+      }
+    }
+  }
+
+  .title-icon {
+    @include circle-icon-dif-sizes(
+                                    $icon-width,
+                                    $icon-height,
+                                    $icon-width-desk,
+                                    $icon-height-desk);
+    top: $icon-top;
+
+    @media (min-width: $point) {
+      top: $icon-top-media;
+    }
+    @media (max-height: 750px) {
+      top: $icon-top;
+      @include circle-icon-dif-sizes(
+                      $icon-width,
+                      $icon-height,
+                      $icon-width,
+                      $icon-height);
+    }
+  }
+}

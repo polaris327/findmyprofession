@@ -1,0 +1,29 @@
+<div>
+
+  <fmp-reference-item-component
+    *ngFor="let reference of referenceList?.existing;let i=index"
+    [item]="reference?.item"
+    [mode]="reference?.mode"
+    (onItemEditStart)="itemEditStart($event , reference)"
+    (onItemRemove)="removeReference($event, i, reference?.mode)"
+    (onItemUpdate)="updateReference($event, reference)">
+  </fmp-reference-item-component>
+
+  <fmp-reference-item-component
+    *ngFor="let reference of referenceList?.creating"
+    [item]="reference"
+    [mode]="0"
+    [serverError]="errorMessage"
+    (onItemUpdate)="updateReference($event)"
+    (onItemCreate)="createItem($event)"
+    (onItemRemove)="removeReference($event, i, 0)">
+  </fmp-reference-item-component>
+
+  <a class="link link-line-remove link-dark-bold"
+     (click)="addReference()"
+     *ngIf="!referenceList?.creating?.length > 0">
+    <span *ngIf="referenceList?.existing?.length === 0">Add reference</span>
+    <span *ngIf="referenceList?.existing?.length > 0">Add additional reference</span>
+  </a>
+
+</div>

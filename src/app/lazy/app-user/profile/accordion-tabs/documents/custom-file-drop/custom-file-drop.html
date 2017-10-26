@@ -1,0 +1,29 @@
+<div class="file-drop-holder">
+  <div fileDrop
+    class="file-drop"
+    (click)="selectFile()"
+    [ngClass]="{'dropping-file': fileIsOver}"
+    (fileOver)="fileOver($event)"
+    (onFileDrop)="onFileDrop($event)">
+    <p>Please upload files</p>
+    <div class="file-icons">
+      <svg>
+        <use xlink:href="../../../../../../../assets/images/sprite.svg#doc-doc"></use>
+      </svg>
+      <svg>
+        <use xlink:href="../../../../../../../assets/images/sprite.svg#doc-pdf"></use>
+      </svg>
+      <svg>
+        <use xlink:href="../../../../../../../assets/images/sprite.svg#doc-rtf"></use>
+      </svg>
+      <svg>
+        <use xlink:href="../../../../../../../assets/images/sprite.svg#doc-txt"></use>
+      </svg>
+    </div>
+  </div>
+
+  <label *ngIf="isMobileMode" class="btn btn-primary btn-browse btn-center" (click)="selectFile()">
+    Browse
+  </label>
+  <input #fileSelector type="file" [accept]="acceptFormats" (change)="inputFileSelect($event)">
+</div>

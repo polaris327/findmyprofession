@@ -1,0 +1,117 @@
+@import '../../styles/custom/variables';
+
+.error-input {
+  border: 1px solid $brand-danger;
+}
+
+.error-field {
+  display: block;
+  position: absolute;
+  right: 3px;
+  bottom: calc(100% + 7px);
+  cursor: pointer;
+  text-align: left;
+  z-index: 1;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 100%;
+    right: 30px;
+  }
+  &::before {
+    border: {
+      style: solid;
+      width: 7px;
+      color: $light transparent transparent transparent;
+    }
+  }
+  &::after {
+    box-shadow: -7px 5px 14px 6px rgba(0, 0, 0, 0.15);
+    z-index: -1;
+    transform: rotateZ(45deg);
+  }
+}
+
+.error {
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.15);
+  background: $light;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: $brand-danger;
+
+  svg {
+    margin-right: 18px;
+  }
+
+  p {
+    margin-bottom: 0;
+    max-width: 240px;
+  }
+}
+
+.error-center,
+.error-field {
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  width: 296px;
+}
+
+p,
+.head-error-center,
+.form-error-center {
+
+  .error-center {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  &.error-show {
+    > .error-center,
+    > .error-field {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.head-error-center {
+  position: relative;
+  > .error-center {
+    top: calc(100% + 15px);
+  }
+}
+
+.form-error-center {
+  position: relative;
+  transition: .3s;
+
+  &.error-show {
+    padding: 54px 0 0;
+
+    @media (min-width: $point) {
+      padding: 65px 0 0;
+    }
+  }
+  > .error-center {
+    top: 4px;
+  }
+}
+
+.form-group {
+  &.error-show {
+    > .error-field {
+      bottom: calc(100% - 7px);
+
+      @media (min-width: $point) {
+        bottom: calc(100% + 9px);
+      }
+    }
+  }
+}

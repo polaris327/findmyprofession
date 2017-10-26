@@ -1,0 +1,58 @@
+<div class="education-work-holder">
+  <section>
+    <h3>Work Experience</h3>
+
+    <fmp-work-experience-item
+      *ngFor="let entity of workExperienceList?.existing;let i = index"
+      [item]="entity?.item"
+      [mode]="entity?.mode"
+      (onItemUpdate)="updateExperience($event, entity)"
+      (onItemEditStart)="itemEditStart($event, entity)"
+      (onItemRemove)="removeExperience($event, i, entity?.mode)">
+    </fmp-work-experience-item>
+
+    <fmp-work-experience-item
+      *ngFor="let entity of workExperienceList?.creating"
+      [item]="entity"
+      [mode]="0"
+      [serverError]="errorMessage"
+      (onItemCreate)="createWorkExperienceItem($event)"
+      (onItemRemove)="removeExperience($event, 0, 0)">
+    </fmp-work-experience-item>
+
+    <a class="link link-line-remove link-dark-bold"
+       (click)="addWorkExperience()"
+       *ngIf="!workExperienceList?.creating?.length > 0">
+      Add Work Experience
+    </a>
+  </section>
+
+  <section>
+    <h3>Education</h3>
+
+    <fmp-education-experience-item
+      *ngFor="let entity of educationExperienceList?.existing;let i = index"
+      [item]="entity?.item"
+      [mode]="entity?.mode"
+      (onItemUpdate)="updateExperience($event, entity, true)"
+      (onItemEditStart)="itemEditStart($event, entity)"
+      (onItemRemove)="removeExperience($event, i, entity?.mode, true)">
+    </fmp-education-experience-item>
+
+    <fmp-education-experience-item
+      *ngFor="let entity of educationExperienceList?.creating"
+      [item]="entity"
+      [mode]="0"
+      [serverError]="errorMessage"
+      (onItemCreate)="createEducationExperienceItem($event)"
+      (onItemRemove)="removeExperience($event, 0, 0, true)">
+    </fmp-education-experience-item>
+
+    <a class="link link-line-remove link-dark-bold"
+       (click)="addEducationExperience()"
+       *ngIf="!educationExperienceList?.creating?.length > 0">
+      Add Education
+    </a>
+  </section>
+
+</div>

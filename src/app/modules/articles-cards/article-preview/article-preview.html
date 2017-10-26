@@ -1,0 +1,26 @@
+<article class="article-preview">
+  <div class="article-preview-img">
+    <img [src]="articleCard.image | uploads" (click)="openArticle($event)" [alt]="articleCard.image_alt || articleCard.title || 'Alt article text'">
+  </div>
+
+  <fmp-like-icon-component
+    [isLiked]="articleCard.liked"
+    (onToggle)="toggleLike($event)">
+  </fmp-like-icon-component>
+
+  <div class="article-preview-content">
+    <h3 (click)="openArticle($event)" [innerHTML]="articleCard.title || ''"></h3>
+    <div class="description">
+      <p #description [innerHTML]="articleCard.description || ''"></p>
+    </div>
+    <div class="author-holder">
+      <img class="circle-img" [src]="(articleCard?.author?.avatar | uploads )|| defaultAvatar" [alt]="articleCard?.author?.avatar_alt || articleCard?.author?.name" (error)="authorAvatarNotLoaded($event)">
+      <span class="author">
+        by <span [innerHTML]="articleCard.author.name || ''"></span>
+      </span>
+    </div>
+  </div>
+  <a class="btn btn-outline-primary btn-center"
+    (click)="openArticle($event)"
+    (touchstart)="articleLinkTaped($event)">Read On</a>
+</article>

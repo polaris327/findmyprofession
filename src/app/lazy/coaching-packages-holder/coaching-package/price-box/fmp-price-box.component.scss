@@ -1,0 +1,76 @@
+@import '../../../../styles/custom/variables';
+
+.price-box-component {
+  $tab-point: 800px;
+
+  background-color: $blue-light;
+  margin-bottom: 50px;
+
+  @media (min-width: $tab-point) {
+    padding: 38px 3% 0;
+    border-top: 3px solid $brand-secondary;
+  }
+
+  .price-box-content {
+    padding: 30px 10px 30px;
+
+    @media (min-width: $tab-point) {
+      display: flex;
+      padding: 30px 0 58px;
+
+      > * {
+        flex: 1;
+      }
+    }
+
+    .price-value {
+      text-align: center;
+      margin-bottom: 38px;
+
+      img {
+        margin-bottom: 10px;
+      }
+      .price {
+        font: {
+          size: 1.778rem;
+          family: 'Enriqueta';
+        }
+        color: $brand-secondary;
+        margin-bottom: 19px;
+      }
+
+      @media (min-width: $tab-point) {
+        margin-bottom: 0;
+
+        img {
+          margin-bottom: 15px;
+        }
+        .price {
+          font-size: 2rem;
+          margin-bottom: 25px;
+        }
+      }
+    }
+
+    .price-text {
+      line-height: 1.2;
+
+      @media (min-width: $tab-point) {
+        padding: 20px 5% 0;
+      }
+
+      .prices {
+        font-weight: 500;
+        margin-bottom: 21px;
+
+        @media (min-width: $tab-point) {
+          font-size: 1.2rem;
+        }
+        @media (min-width: $point) {
+          margin-bottom: 40px;
+          font-size: 1.333rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+@import '../../../styles/custom/mixins';
+@import "../../../styles/custom/variables";
+
+.additional-packages {
+  background-color: $blue-light;
+  padding: 30px 10px;
+
+  %block-width {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: $point) {
+    width: 432px;
+    padding: 20px 16px;
+  }
+
+  .basket-void {
+    position: relative;
+    transform: translateY(-25px);
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: -37px;
+
+    @media (min-width: $point) {
+      transform: translateY(-42px);
+      margin-bottom: -49px;
+      font-size: 1.8rem;
+    }
+  }
+
+  .title {
+    text-align: center;
+    font-size: 1.222rem;
+    font-weight: 500;
+    margin-bottom: 17px;
+
+    @media (min-width: $point) {
+      margin-bottom: 45px;
+    }
+
+  }
+
+  .item-holder {
+    @extend %block-width;
+    margin-bottom: 13px;
+
+    .item {
+      position: relative;
+      background-color: #fff;
+      display: flex;
+      margin-bottom: 8px;
+
+      .icon {
+        display: none;
+        color: $brand-secondary;
+
+        @media (min-width: 500px) {
+          display: block;
+          @include circle-icon(#fff, 69px, 69px);
+          border: 1px solid $brand-secondary;
+          margin: 14px 16px;
+        }
+      }
+
+      .description {
+        padding: 7px 14px 12px;
+
+        @media (min-width: $point) {
+          padding: 23px 0;
+        }
+
+        .package-title {
+          font-size: 1.222rem;
+          font-weight: 500;
+        }
+
+        .text-bottom {
+          span {
+            display: block;
+          }
+
+          @media (min-width: $point) {
+            display: flex;
+            justify-content: space-between;
+
+            span:first-of-type {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+
+      .close {
+        position: absolute;
+        right: 11px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .payment {
+    @extend %block-width;
+    font-weight: 500;
+    font-size: 1.667rem;
+    text-align: right;
+
+    &.promo {
+      font-size: 1rem;
+    }
+  }
+
+  .total {
+    @extend .payment;
+    margin-top: 4px;
+    padding: 2px 9px;
+    border-top: 0.111rem solid $brand-secondary;
+
+    span {
+      margin-right: 4px;
+    }
+  }
+}
